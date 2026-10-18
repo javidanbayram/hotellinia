@@ -2364,3 +2364,235 @@ a { text-decoration: none; color: inherit; }
   .pos-visual { flex-direction: column; }
   .workflow-diagram { flex-wrap: wrap; justify-content: center; }
 }
+
+/* ════════════════════════════════════════════════════════
+   MODULES DIVIDER
+════════════════════════════════════════════════════════ */
+.modules-divider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 48px 0 36px;
+  text-align: center;
+}
+.modules-divider::before,
+.modules-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0,200,150,0.3), transparent);
+}
+.modules-divider span {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--green);
+  white-space: nowrap;
+  padding: 6px 16px;
+  border: 1px solid rgba(0,200,150,0.25);
+  border-radius: 20px;
+  background: rgba(0,200,150,0.05);
+}
+
+/* ════════════════════════════════════════════════════════
+   HAMBURGER / MOBILE NAVBAR
+════════════════════════════════════════════════════════ */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 4px;
+  border-radius: 8px;
+  transition: background 0.2s;
+  z-index: 1001;
+}
+.hamburger:hover { background: rgba(255,255,255,0.08); }
+.hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--text-primary);
+  border-radius: 2px;
+  transition: all 0.3s var(--ease-smooth);
+  transform-origin: center;
+}
+.hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.active span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ════════════════════════════════════════════════════════
+   MOBILE RESPONSIVE — Main Breakpoints
+════════════════════════════════════════════════════════ */
+
+/* ── 1024px: Tablet landscape ── */
+@media (max-width: 1024px) {
+  .hero { padding: 100px 0 60px; }
+  .hero-inner { gap: 40px; }
+  .hero-visual { max-width: 420px; }
+  .hero-title { font-size: clamp(2rem, 5vw, 3.2rem); }
+
+  .bento-grid {
+    grid-template-columns: repeat(6, 1fr) !important;
+  }
+  .bento-large  { grid-column: span 6 !important; }
+  .bento-tall   { grid-column: span 6 !important; grid-row: span 1 !important; }
+  .bento-small  { grid-column: span 3 !important; }
+  .bento-wide   { grid-column: span 6 !important; }
+
+  .modules-grid { grid-template-columns: repeat(2, 1fr); }
+  .allops-grid  { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ── 768px: Tablet portrait ── */
+@media (max-width: 768px) {
+  :root { --section-py: 56px; }
+
+  /* Navbar */
+  .hamburger { display: flex; }
+
+  .nav-links {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: 100vh;
+    background: rgba(10,14,23,0.98);
+    backdrop-filter: blur(20px);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+    transform: translateX(100%);
+    transition: transform 0.35s var(--ease-smooth);
+    z-index: 999;
+  }
+  .nav-links.open { transform: translateX(0); }
+  .nav-links .nav-link { font-size: 1.25rem; font-weight: 600; }
+
+  .nav-actions { gap: 8px; }
+  .nav-login { display: none; }
+
+  /* Hero */
+  .hero-inner {
+    flex-direction: column;
+    text-align: center;
+    gap: 32px;
+  }
+  .hero-content { max-width: 100%; }
+  .hero-title { font-size: clamp(1.9rem, 8vw, 2.8rem); }
+  .hero-sub { font-size: 1rem; }
+  .hero-cta { justify-content: center; flex-wrap: wrap; }
+  .hero-stats { justify-content: center; flex-wrap: wrap; gap: 16px 32px; }
+  .hero-visual { width: 100%; max-width: 480px; margin: 0 auto; }
+  .hero-visual img { width: 100%; border-radius: 16px; }
+
+  /* Bento */
+  .bento-section { padding: 48px 0 32px; }
+  .bento-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px;
+  }
+  .bento-large,
+  .bento-tall,
+  .bento-small,
+  .bento-wide { grid-column: span 1 !important; grid-row: span 1 !important; }
+  .bento-card-inner { padding: 24px; }
+  .ocr-demo { min-height: 160px; }
+  .face-demo { margin-top: 12px; }
+  .face-cam { width: 90px; height: 90px; }
+  .pos-visual { flex-direction: column; gap: 16px; }
+  .pos-revenue { border-left: none; border-top: 1px solid rgba(255,255,255,0.06); padding-left: 0; padding-top: 16px; }
+
+  /* Integrations bar */
+  .integrations-bar { padding: 24px 0; }
+  .marquee-item { font-size: 12px; padding: 6px 14px; }
+
+  /* Section titles */
+  .section-title { font-size: clamp(1.6rem, 6vw, 2.4rem); }
+  .section-sub { font-size: 0.95rem; }
+
+  /* Modules */
+  .modules-section { padding: 48px 0; }
+  .modules-grid { grid-template-columns: 1fr; }
+  .allops-grid  { grid-template-columns: 1fr 1fr; }
+  .modules-divider { margin: 32px 0 24px; }
+
+  /* Automation / OTA */
+  .automation-grid { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .automation-feature { padding: 16px; }
+  .ota-grid { grid-template-columns: repeat(3, 1fr); }
+
+  /* Pricing cards */
+  .pricing-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+  .pricing-card.popular { transform: none; }
+
+  /* About */
+  .about-hero-title { font-size: clamp(1.8rem, 7vw, 3rem); }
+  .story-grid { grid-template-columns: 1fr; }
+  .values-grid { grid-template-columns: 1fr 1fr; }
+  .team-grid { grid-template-columns: 1fr 1fr; }
+  .milestones { grid-template-columns: 1fr 1fr; }
+
+  /* Contact */
+  .contact-grid { grid-template-columns: 1fr; }
+  .contact-info-side { order: 2; }
+  .contact-form-side { order: 1; }
+  .offices-grid { grid-template-columns: 1fr; }
+  .faq-grid { grid-template-columns: 1fr; }
+
+  /* Footer */
+  .footer-top { flex-direction: column; gap: 32px; }
+  .footer-links-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+  .footer-legal { flex-wrap: wrap; justify-content: center; }
+
+  /* Footer CTA */
+  .cta-title { font-size: clamp(1.6rem, 6vw, 2.4rem); }
+  .cta-actions { flex-direction: column; align-items: center; }
+
+  /* Hero scroll indicator */
+  .scroll-indicator { display: none; }
+}
+
+/* ── 480px: Mobile ── */
+@media (max-width: 480px) {
+  :root { --section-py: 44px; }
+
+  .container { padding: 0 16px; }
+
+  .navbar-inner { padding: 0 16px; }
+
+  .hero-title { font-size: clamp(1.7rem, 9vw, 2.4rem); }
+  .hero-badge { font-size: 11px; padding: 6px 12px; }
+  .btn-xl { padding: 14px 20px; font-size: 0.9rem; }
+
+  .allops-grid  { grid-template-columns: 1fr; }
+  .values-grid  { grid-template-columns: 1fr; }
+  .team-grid    { grid-template-columns: 1fr; }
+  .milestones   { grid-template-columns: 1fr; }
+  .footer-links-grid { grid-template-columns: 1fr; }
+
+  .automation-grid { grid-template-columns: repeat(2, 1fr); }
+  .ota-grid { grid-template-columns: repeat(2, 1fr); }
+
+  .wf-stats { flex-direction: column; gap: 12px; }
+  .wf-stat-div { display: none; }
+
+  /* Pricing */
+  .pricing-grid { max-width: 100%; }
+
+  /* Stat numbers */
+  .stat-number { font-size: 2.2rem; }
+}
+
+/* ── Touch: improve tap targets ── */
+@media (hover: none) {
+  .btn, .nav-link, .module-card, .bento-card {
+    -webkit-tap-highlight-color: transparent;
+  }
+}

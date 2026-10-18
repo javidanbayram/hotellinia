@@ -500,3 +500,39 @@ function animateWorkflow() {
   }, 1200);
 }
 animateWorkflow();
+
+// ─── HAMBURGER MOBILE MENU ────────────────────────────
+(function() {
+  const btn = document.getElementById('hamburgerBtn');
+  const nav = document.getElementById('navLinks');
+  if (!btn || !nav) return;
+
+  function toggleMenu(open) {
+    btn.classList.toggle('active', open);
+    nav.classList.toggle('open', open);
+    btn.setAttribute('aria-expanded', String(open));
+    document.body.style.overflow = open ? 'hidden' : '';
+  }
+
+  btn.addEventListener('click', () => {
+    const isOpen = nav.classList.contains('open');
+    toggleMenu(!isOpen);
+  });
+
+  // Close on nav link click
+  nav.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', () => toggleMenu(false));
+  });
+
+  // Close on outside click
+  document.addEventListener('click', (e) => {
+    if (nav.classList.contains('open') && !btn.contains(e.target) && !nav.contains(e.target)) {
+      toggleMenu(false);
+    }
+  });
+
+  // Close on resize to desktop
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 768) toggleMenu(false);
+  });
+})();
