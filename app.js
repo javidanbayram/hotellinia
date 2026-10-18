@@ -502,72 +502,55 @@ function animateWorkflow() {
 animateWorkflow();
 
 
+
 // ─── HAMBURGER MOBILE MENU ────────────────────────────
 ;(function () {
-  var hamburger  = document.getElementById('hamburgerBtn');
-  var navLinks   = document.getElementById('navLinks');
-  var closeBtn   = document.getElementById('mobileCloseBtn');
+  var btn      = document.getElementById('hamburgerBtn');
+  var nav      = document.getElementById('navLinks');
+  var closeBtn = document.getElementById('mobileCloseBtn');
+  if (!btn || !nav) return;
 
-  if (!hamburger || !navLinks) return;
-
-  function openMenu() {
-    navLinks.classList.add('is-open');
-    hamburger.classList.add('is-active');
-    hamburger.setAttribute('aria-expanded', 'true');
+  function open() {
+    nav.classList.add('is-open');
+    btn.classList.add('is-active');
+    btn.setAttribute('aria-expanded', 'true');
     document.body.classList.add('menu-open');
   }
-
-  function closeMenu() {
-    navLinks.classList.remove('is-open');
-    hamburger.classList.remove('is-active');
-    hamburger.setAttribute('aria-expanded', 'false');
+  function close() {
+    nav.classList.remove('is-open');
+    btn.classList.remove('is-active');
+    btn.setAttribute('aria-expanded', 'false');
     document.body.classList.remove('menu-open');
   }
 
-  // Hamburger tap/click
-  hamburger.addEventListener('click', function (e) {
+  btn.addEventListener('click', function(e) {
     e.stopPropagation();
-    if (navLinks.classList.contains('is-open')) {
-      closeMenu();
-    } else {
-      openMenu();
-    }
+    nav.classList.contains('is-open') ? close() : open();
   });
 
-  // X button inside overlay
   if (closeBtn) {
-    closeBtn.addEventListener('click', function (e) {
+    closeBtn.addEventListener('click', function(e) {
       e.stopPropagation();
-      closeMenu();
+      close();
     });
   }
 
-  // Any nav link tap → close
-  var links = navLinks.querySelectorAll('.nav-link');
-  links.forEach(function (link) {
-    link.addEventListener('click', function () {
-      closeMenu();
-    });
+  nav.querySelectorAll('.nav-link').forEach(function(link) {
+    link.addEventListener('click', close);
   });
 
-  // Tap outside overlay → close
-  document.addEventListener('click', function (e) {
-    if (
-      navLinks.classList.contains('is-open') &&
-      !navLinks.contains(e.target) &&
-      !hamburger.contains(e.target)
-    ) {
-      closeMenu();
+  document.addEventListener('click', function(e) {
+    if (nav.classList.contains('is-open') &&
+        !nav.contains(e.target) && !btn.contains(e.target)) {
+      close();
     }
   });
 
-  // Resize to desktop → close
-  window.addEventListener('resize', function () {
-    if (window.innerWidth > 768) closeMenu();
+  window.addEventListener('resize', function() {
+    if (window.innerWidth > 768) close();
   });
 
-  // Escape key → close
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') closeMenu();
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') close();
   });
 })();

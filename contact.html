@@ -194,27 +194,29 @@
         <span class="logo-text">Hotellinia</span>
       </a>
       
-      <div class="nav-actions">
-        <a href="#" class="btn btn-ghost btn-sm" id="nav-login-btn">Daxil ol</a>
-        <a href="contact.html" class="btn btn-primary btn-sm" id="nav-demo-btn" style="background:var(--green);border-color:var(--green);">Demo Tələb Et</a>
       
+
+      <nav class="nav-links" id="navLinks">
+        <button class="mobile-close-btn" id="mobileCloseBtn" aria-label="Bağla">✕</button>
+        <a href="index.html#features" class="nav-link">Xüsusiyyətlər</a>
+        <a href="index.html#modules" class="nav-link">Modullar</a>
+        <a href="index.html#integrations" class="nav-link">İnteqrasiyalar</a>
+        <a href="pricing.html" class="nav-link">Qiymətlər</a>
+        <a href="about.html" class="nav-link">Haqqımızda</a>
+        <a href="contact.html" class="nav-link" id="nav-contact" style="color:var(--green)">Əlaqə</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="#" class="nav-login" id="nav-login-link">Daxil ol</a>
+        <a href="contact.html#contactForm" class="btn btn-glow" id="nav-demo-btn">Demo Tələb Et</a>
         <button class="hamburger" id="hamburgerBtn" aria-label="Menyu" aria-expanded="false">
           <span></span><span></span><span></span>
         </button>
       </div>
+    
+      </div>
     </div>
   </header>
-
-    <nav class="nav-links" id="navLinks">
-        <button class="mobile-close-btn" id="mobileCloseBtn" aria-label="Bağla" onclick="document.getElementById('navLinks').classList.remove('is-open');document.getElementById('hamburgerBtn').classList.remove('is-active');document.body.classList.remove('menu-open')">✕</button>
-
-        <a href="index.html#features" class="nav-link" id="nav-features">Xüsusiyyətlər</a>
-        <a href="index.html#modules"  class="nav-link" id="nav-modules">Modullar</a>
-        <a href="index.html#integrations" class="nav-link" id="nav-integrations">İnteqrasiyalar</a>
-        <a href="pricing.html" class="nav-link" id="nav-pricing">Qiymətlər</a>
-        <a href="about.html"   class="nav-link" id="nav-about">Haqqımızda</a>
-        <a href="contact.html" class="nav-link" id="nav-contact">Əlaqə</a>
-      </nav>
 
   <main>
     <!-- HERO -->
