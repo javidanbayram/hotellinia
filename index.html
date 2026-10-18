@@ -47,7 +47,21 @@
         <span class="logo-text">Hotellinia</span>
       </a>
 
-      <nav class="nav-links" id="navLinks">
+      
+      <div class="nav-actions">
+        <a href="/login" class="nav-login" id="nav-login-link">Daxil ol</a>
+        <a href="contact.html" class="btn btn-glow" id="nav-demo-btn">Demo Tələb Et</a>
+      
+        <button class="hamburger" id="hamburgerBtn" aria-label="Menyu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+    <nav class="nav-links" id="navLinks">
+        <button class="mobile-close-btn" id="mobileCloseBtn" aria-label="Bağla" onclick="document.getElementById('navLinks').classList.remove('is-open');document.getElementById('hamburgerBtn').classList.remove('is-active');document.body.classList.remove('menu-open')">✕</button>
+
         <a href="#features" class="nav-link">Xüsusiyyətlər</a>
         <a href="#modules" class="nav-link">Modullar</a>
         <a href="#integrations" class="nav-link">İnteqrasiyalar</a>
@@ -55,16 +69,6 @@
         <a href="about.html" class="nav-link">Haqqımızda</a>
         <a href="contact.html" class="nav-link" id="nav-contact">Əlaqə</a>
       </nav>
-
-      <button class="hamburger" id="hamburgerBtn" aria-label="Menyu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-      <div class="nav-actions">
-        <a href="/login" class="nav-login" id="nav-login-link">Daxil ol</a>
-        <a href="contact.html" class="btn btn-glow" id="nav-demo-btn">Demo Tələb Et</a>
-      </div>
-    </div>
-  </header>
 
   <main>
 

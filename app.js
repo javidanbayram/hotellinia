@@ -501,38 +501,73 @@ function animateWorkflow() {
 }
 animateWorkflow();
 
-// ─── HAMBURGER MOBILE MENU ────────────────────────────
-(function() {
-  const btn = document.getElementById('hamburgerBtn');
-  const nav = document.getElementById('navLinks');
-  if (!btn || !nav) return;
 
-  function toggleMenu(open) {
-    btn.classList.toggle('active', open);
-    nav.classList.toggle('open', open);
-    btn.setAttribute('aria-expanded', String(open));
-    document.body.style.overflow = open ? 'hidden' : '';
+// ─── HAMBURGER MOBILE MENU ────────────────────────────
+;(function () {
+  var hamburger  = document.getElementById('hamburgerBtn');
+  var navLinks   = document.getElementById('navLinks');
+  var closeBtn   = document.getElementById('mobileCloseBtn');
+
+  if (!hamburger || !navLinks) return;
+
+  function openMenu() {
+    navLinks.classList.add('is-open');
+    hamburger.classList.add('is-active');
+    hamburger.setAttribute('aria-expanded', 'true');
+    document.body.classList.add('menu-open');
   }
 
-  btn.addEventListener('click', () => {
-    const isOpen = nav.classList.contains('open');
-    toggleMenu(!isOpen);
-  });
+  function closeMenu() {
+    navLinks.classList.remove('is-open');
+    hamburger.classList.remove('is-active');
+    hamburger.setAttribute('aria-expanded', 'false');
+    document.body.classList.remove('menu-open');
+  }
 
-  // Close on nav link click
-  nav.querySelectorAll('.nav-link').forEach(link => {
-    link.addEventListener('click', () => toggleMenu(false));
-  });
-
-  // Close on outside click
-  document.addEventListener('click', (e) => {
-    if (nav.classList.contains('open') && !btn.contains(e.target) && !nav.contains(e.target)) {
-      toggleMenu(false);
+  // Hamburger tap/click
+  hamburger.addEventListener('click', function (e) {
+    e.stopPropagation();
+    if (navLinks.classList.contains('is-open')) {
+      closeMenu();
+    } else {
+      openMenu();
     }
   });
 
-  // Close on resize to desktop
-  window.addEventListener('resize', () => {
-    if (window.innerWidth > 768) toggleMenu(false);
+  // X button inside overlay
+  if (closeBtn) {
+    closeBtn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      closeMenu();
+    });
+  }
+
+  // Any nav link tap → close
+  var links = navLinks.querySelectorAll('.nav-link');
+  links.forEach(function (link) {
+    link.addEventListener('click', function () {
+      closeMenu();
+    });
+  });
+
+  // Tap outside overlay → close
+  document.addEventListener('click', function (e) {
+    if (
+      navLinks.classList.contains('is-open') &&
+      !navLinks.contains(e.target) &&
+      !hamburger.contains(e.target)
+    ) {
+      closeMenu();
+    }
+  });
+
+  // Resize to desktop → close
+  window.addEventListener('resize', function () {
+    if (window.innerWidth > 768) closeMenu();
+  });
+
+  // Escape key → close
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeMenu();
   });
 })();
