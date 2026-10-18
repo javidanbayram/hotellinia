@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Qiymətlər — Hotellinia</title>
+  <meta name="description" content="Hotellinia-nın şəffaf qiymət planları. Otelin ölçüsündən asılı olmayaraq sizin üçün uyğun plan tapın." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* ── PAGE-SPECIFIC ── */
+    .page-hero {
+      padding: 180px 0 80px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+    .page-hero-aura {
+      position: absolute;
+      top: 0; left: 50%; transform: translateX(-50%);
+      width: 900px; height: 500px;
+      background: radial-gradient(ellipse at 50% 30%,
+        rgba(0,200,150,0.09) 0%,
+        rgba(0,102,255,0.07) 40%,
+        transparent 70%);
+      pointer-events: none;
+    }
+    .page-hero .section-pill { margin-bottom: 20px; }
+    .page-hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(36px, 5vw, 64px);
+      font-weight: 800;
+      letter-spacing: -2px;
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+    .page-hero-sub {
+      font-size: 18px;
+      color: var(--text-secondary);
+      max-width: 540px;
+      margin: 0 auto 48px;
+      line-height: 1.7;
+    }
+
+    /* ── TOGGLE ── */
+    .billing-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 16px;
+      background: var(--bg-glass);
+      border: 1px solid var(--border-glass);
+      border-radius: 100px;
+      padding: 6px 8px;
+      margin-bottom: 72px;
+    }
+    .toggle-label {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-muted);
+      padding: 6px 16px;
+      border-radius: 100px;
+      cursor: pointer;
+      transition: all 0.25s;
+    }
+    .toggle-label.active {
+      background: linear-gradient(135deg, var(--green) 0%, #00A87A 100%);
+      color: #000;
+      font-weight: 700;
+    }
+    .toggle-save {
+      font-size: 11px;
+      font-weight: 700;
+      background: rgba(0,200,150,0.12);
+      color: var(--green);
+      border: 1px solid rgba(0,200,150,0.2);
+      padding: 3px 10px;
+      border-radius: 100px;
+      margin-left: -8px;
+    }
+
+    /* ── PLANS GRID ── */
+    .plans-section { padding: 0 0 100px; position: relative; z-index: 1; }
+    .plans-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      align-items: start;
+    }
+    .plan-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius-xl);
+      padding: 40px 36px;
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(12px);
+      transition: all 0.35s var(--ease-smooth);
+    }
+    .plan-card:hover {
+      border-color: var(--border-bright);
+      transform: translateY(-6px);
+      box-shadow: 0 30px 60px rgba(0,0,0,0.35);
+    }
+    .plan-card.featured {
+      border-color: rgba(0,200,150,0.35);
+      background: linear-gradient(160deg,
+        rgba(0,200,150,0.06) 0%,
+        rgba(0,102,255,0.04) 100%),
+        var(--bg-card);
+      transform: scale(1.03);
+    }
+    .plan-card.featured:hover { transform: scale(1.03) translateY(-6px); }
+    .plan-card-glow {
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 220px; height: 220px;
+      border-radius: 50%;
+      filter: blur(70px);
+      opacity: 0.18;
+      pointer-events: none;
+    }
+    .plan-card.featured .plan-card-glow { background: var(--green); opacity: 0.28; }
+    .plan-card:not(.featured) .plan-card-glow { background: var(--blue); }
+
+    .plan-badge-popular {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: linear-gradient(135deg, var(--green), #00A87A);
+      color: #000;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 100px;
+      margin-bottom: 20px;
+    }
+    .plan-badge-popular::before {
+      content: '★';
+      font-size: 10px;
+    }
+    .plan-name {
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+    .plan-desc {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 28px;
+    }
+    .plan-price {
+      display: flex;
+      align-items: baseline;
+      gap: 4px;
+      margin-bottom: 6px;
+    }
+    .plan-currency {
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--text-secondary);
+    }
+    .plan-amount {
+      font-family: var(--font-display);
+      font-size: 52px;
+      font-weight: 800;
+      letter-spacing: -2px;
+      line-height: 1;
+    }
+    .plan-period {
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+    .plan-price-note {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 28px;
+    }
+    .plan-divider {
+      height: 1px;
+      background: var(--border-glass);
+      margin-bottom: 28px;
+    }
+    .plan-features { list-style: none; display: flex; flex-direction: column; gap: 14px; margin-bottom: 36px; }
+    .plan-feature {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 14px;
+      color: var(--text-secondary);
+    }
+    .plan-feature-check {
+      width: 20px; height: 20px;
+      border-radius: 50%;
+      background: var(--green-dim);
+      border: 1px solid rgba(0,200,150,0.25);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      color: var(--green);
+      font-size: 11px;
+      margin-top: 1px;
+    }
+    .plan-feature-check.cross {
+      background: rgba(255,255,255,0.04);
+      border-color: var(--border-glass);
+      color: var(--text-muted);
+    }
+    .plan-feature strong { color: var(--text-primary); }
+
+    .btn-plan-primary {
+      width: 100%;
+      justify-content: center;
+      padding: 16px;
+      font-size: 16px;
+      border-radius: 14px;
+    }
+    .btn-plan-ghost {
+      width: 100%;
+      justify-content: center;
+      padding: 16px;
+      font-size: 16px;
+      border-radius: 14px;
+    }
+
+    /* ── ENTERPRISE STRIP ── */
+    .enterprise-strip {
+      margin: 0 0 100px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius-xl);
+      padding: 48px 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+      backdrop-filter: blur(12px);
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+    .enterprise-strip::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg,
+        rgba(139,92,246,0.06) 0%,
+        rgba(0,102,255,0.04) 100%);
+      pointer-events: none;
+    }
+    .enterprise-left { position: relative; z-index: 1; }
+    .enterprise-tag {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(139,92,246,0.12);
+      border: 1px solid rgba(139,92,246,0.25);
+      color: var(--purple);
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 0.5px; text-transform: uppercase;
+      padding: 4px 12px; border-radius: 100px;
+      margin-bottom: 16px;
+    }
+    .enterprise-title {
+      font-family: var(--font-display);
+      font-size: 28px; font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: 10px;
+    }
+    .enterprise-desc { font-size: 15px; color: var(--text-secondary); line-height: 1.6; max-width: 500px; }
+    .enterprise-perks {
+      display: flex; gap: 24px; margin-top: 20px; flex-wrap: wrap;
+    }
+    .enterprise-perk {
+      display: flex; align-items: center; gap: 7px;
+      font-size: 13px; color: var(--text-secondary);
+    }
+    .enterprise-perk svg { color: var(--purple); flex-shrink: 0; }
+    .enterprise-actions { display: flex; flex-direction: column; gap: 12px; align-items: flex-end; flex-shrink: 0; position: relative; z-index: 1; }
+    .enterprise-note { font-size: 12px; color: var(--text-muted); text-align: right; }
+
+    /* ── FEATURE TABLE ── */
+    .compare-section { padding: 0 0 100px; position: relative; z-index: 1; }
+    .compare-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      background: var(--bg-card);
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      backdrop-filter: blur(12px);
+    }
+    .compare-table th, .compare-table td {
+      padding: 18px 24px;
+      text-align: left;
+      border-bottom: 1px solid var(--border-glass);
+    }
+    .compare-table th {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 15px;
+      background: rgba(255,255,255,0.02);
+    }
+    .compare-table th.col-feature { color: var(--text-muted); font-size: 13px; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; }
+    .compare-table th.col-plan-name { text-align: center; }
+    .compare-table th.col-featured-plan {
+      background: rgba(0,200,150,0.06);
+      color: var(--green);
+    }
+    .compare-table td { font-size: 14px; color: var(--text-secondary); }
+    .compare-table td.center { text-align: center; }
+    .compare-table td.featured-col { background: rgba(0,200,150,0.03); }
+    .compare-table tr:last-child td { border-bottom: none; }
+    .compare-table tr:hover td { background: rgba(255,255,255,0.015); }
+    .compare-table .row-category td {
+      background: rgba(255,255,255,0.02);
+      color: var(--text-muted);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 12px 24px;
+    }
+    .check-green { color: var(--green); font-size: 16px; }
+    .check-muted { color: var(--text-muted); font-size: 16px; }
+    .check-cyan  { color: var(--cyan); font-size: 13px; font-weight: 600; }
+
+    /* ── FAQ ── */
+    .faq-section { padding: 0 0 100px; position: relative; z-index: 1; }
+    .faq-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .faq-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      backdrop-filter: blur(12px);
+      transition: border-color 0.25s;
+    }
+    .faq-item:hover { border-color: var(--border-bright); }
+    .faq-q {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 24px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      cursor: pointer;
+      text-align: left;
+      color: var(--text-primary);
+      font-family: var(--font-display);
+      font-size: 15px;
+      font-weight: 600;
+    }
+    .faq-icon {
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      background: var(--bg-glass);
+      border: 1px solid var(--border-glass);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      color: var(--text-muted);
+      font-size: 18px;
+      transition: all 0.3s;
+    }
+    .faq-item.open .faq-icon { transform: rotate(45deg); background: var(--green-dim); color: var(--green); border-color: rgba(0,200,150,0.25); }
+    .faq-a {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      padding: 0 28px;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s var(--ease-smooth), padding 0.3s;
+    }
+    .faq-item.open .faq-a {
+      max-height: 300px;
+      padding: 0 28px 24px;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .plans-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
+      .plan-card.featured { transform: none; }
+      .enterprise-strip { flex-direction: column; align-items: flex-start; }
+      .enterprise-actions { align-items: flex-start; }
+      .compare-table { font-size: 13px; }
+      .faq-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      .page-hero { padding: 140px 0 60px; }
+      .enterprise-strip { padding: 32px 28px; }
+      .compare-table th, .compare-table td { padding: 14px 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="cursor-glow" id="cursorGlow"></div>
+  <div class="bg-grid"></div>
+  <div class="bg-radials">
+    <div class="radial radial-1"></div>
+    <div class="radial radial-2"></div>
+    <div class="radial radial-3"></div>
+  </div>
+
+  <!-- NAVBAR -->
+  <header class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a href="/" class="logo" id="logo-link">
+        <span class="logo-icon">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+            <rect width="28" height="28" rx="7" fill="url(#logoGrad2)"/>
+            <path d="M7 20V10l7-4 7 4v10" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M11 20v-5h6v5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            <defs>
+              <linearGradient id="logoGrad2" x1="0" y1="0" x2="28" y2="28" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#00C896"/><stop offset="1" stop-color="#0066FF"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </span>
+        <span class="logo-text">Hotellinia</span>
+      </a>
+      <nav class="nav-links" id="navLinks">
+        <a href="/#features" class="nav-link">Xüsusiyyətlər</a>
+        <a href="/#modules" class="nav-link">Modullar</a>
+        <a href="/#integrations" class="nav-link">İnteqrasiyalar</a>
+        <a href="/pricing.html" class="nav-link" style="color:var(--text-primary)">Qiymətlər</a>
+        <a href="/about.html" class="nav-link">Haqqımızda</a>
+        <a href="contact.html" class="nav-link" id="nav-contact">Əlaqə</a>
+      </nav>
+      <div class="nav-actions">
+        <a href="/login" class="nav-login">Daxil ol</a>
+        <a href="contact.html#contactForm" class="btn btn-glow" id="nav-demo-btn">Demo Tələb Et</a>
+      </div>
+      <button class="nav-hamburger" id="navHamburger" aria-label="Menyu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- PAGE HERO -->
+    <section class="page-hero">
+      <div class="page-hero-aura"></div>
+      <div class="container">
+        <div class="section-pill">Qiymətlər</div>
+        <h1 class="page-hero-title">
+          Sizə Uyğun Planı Seçin
+        </h1>
+        <p class="page-hero-sub">
+          Otelinizin ölçüsünə və ehtiyacına uyğun çəvik planlar. Qiymət otaq sayınıza və seçdiyiniz modullara görə müyyən edilir — fərdi təklif üçün bizimle əlaqə saxlayın.
+        </p>
+
+        <!-- Billing Toggle -->
+        <div class="billing-toggle" id="billingToggle">
+          <span class="toggle-label active" id="toggleMonthly" onclick="setBilling('monthly')">Aylıq</span>
+          <span class="toggle-label" id="toggleAnnual" onclick="setBilling('annual')">
+            İllik
+          </span>
+          <span class="toggle-save">20% endirim</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- PLANS -->
+    <section class="plans-section">
+      <div class="container">
+        <div class="plans-grid">
+
+          <!-- Başlanğıc -->
+          <div class="plan-card" id="plan-starter">
+            <div class="plan-card-glow"></div>
+            <div class="plan-name">Başlanğıc</div>
+            <p class="plan-desc">Kiçik butik otellər üçün ideal</p>
+            <div class="plan-divider"></div>
+            <ul class="plan-features">
+              <li class="plan-feature">
+                <span class="plan-feature-check">✓</span>
+                <span><strong>20 otağa qədər</strong></span>
+              </li>
+              <li class="plan-feature">
+                <span class="plan-feature-check">✓</span>
+                <span>Ön Büro (PMS)</span>
+              </li>
+              <li class="plan-feature">
+                <span class="plan-feature-check">✓</span>
+                <span>Həsabatlar və Analitika: Əsas</span>
+              </li>
+              <li class="plan-feature">
+                <span class="plan-feature-check">✓</span>
+                <span>Dəstək: E-poçt</span>
+              </li>
+            </ul>
+            <a href="contact.html#contactForm" class="btn btn-ghost btn-plan-ghost" id="starter-btn">Təklif Alın →</a>
+          </div>
+
+          <!-- Professional (Featured) -->
+          <div class="plan-card featured" id="plan-pro">
+            <div class="plan-card-glow"></div>
+            <div class="plan-badge-popular">Ən Populyar</div>
+            <div class="plan-name">Peşəkar</div>
+            <p class="plan-desc">Orta ölçülü otellər üçün tam funksional PMS həlli. Əksər otellər bu planı seçir.</p>
+            <div class="plan-price">
+              <span class="plan-currency">₼</span>
+              <span class="plan-amount" id="price-pro">449</span>
+              <span class="plan-period">/ay</span>
+            </div>
+            <p class="plan-price-note" id="note-pro">Ayda ₼449, aylıq ödəniş</p>
+            <div class="plan-divider"></div>
+            <ul class="plan-features">
+              <li class="plan-feature">
+                <span class="plan-feature-check">✓</span>
+                <span><strong>150 otağa qədər</strong> idarəetmə</span>
+              </li>
+              <li class="plan-feature">
+                <span class="plan-feature-check">✓</span>
+                <span>Başlanğıc planının bütün imkanları</span>
+              </li>
+              <li class="plan-feature">
+                <span class="plan-feature-check">✓</span>
+                <span><strong>AI OCR</strong> Pasport/ŞV Skanlaması</span>
+              </li>
+              <li class="plan-feature">
+                <span class="plan-feature-check">✓</span>
+                <span>Üz tanıma check-in sistemi</span>
+              </li>
+              <li class="plan-feature">
+                <span class="plan-feature-check">✓</span>
+                <span><strong>Limitsiz</strong> OTA kanal inteqrasiyası</span>
+              </li>
+              <li class="plan-feature">
+                <span class="plan-feature-check">✓</span>
+                <span>Restoran & POS modulu</span>
+              </li>
+              <li class="plan-feature">
+                <span class="plan-feature-check">✓</span>
+                <span>Gəlir idarəetmə analitikası</span>
+              </li>
+              <li class="plan-feature">
+                <span class="plan-feature-check">✓</span>
+                <span>7/24 prioritet telefon dəstəyi</span>
+              </li>
+            </ul>
+            <a href="contact.html#contactForm" class="btn btn-primary btn-plan-primary" id="pro-btn">Peşəkarla Başla →</a>
+          </div>
+
+          <!-- Business -->
+          <div class="plan-card" id="plan-business">
+            <div class="plan-card-glow"></div>
+            <div class="plan-name">Biznes</div>
+            <p class="plan-desc">Böyük otellər və otel şəbəkələri üçün genişləndirilmiş həll.</p>
+            <div class="plan-price">
+              <span class="plan-currency">₼</span>
+              <span class="plan-amount" id="price-business">899</span>
+              <span class="plan-period">/ay</span>
+            </div>
+            <p class="plan-price-note" id="note-business">Ayda ₼899, aylıq ödəniş</p>
+            <div class="plan-divider"></div>
+            <ul class="plan-features">
+              <li class="plan-feature">
+                <span class="plan-feature-check">✓</span>
+                <span><strong>Limitsiz</strong> otaq idarəetməsi</span>
+              </li>
+              <li class="plan-feature">
+                <span class="plan-feature-check">✓</span>
+                <span>Peşəkar planın bütün imkanları</span>
+              </li>
+              <li class="plan-feature">
+                <span class="plan-feature-check">✓</span>
+                <span><strong>5 mülkə qədər</strong> mərkəzi idarəetmə</span>
+              </li>
+              <li class="plan-feature">
+                <span class="plan-feature-check">✓</span>
+                <span>SPA & Wellness modulu</span>
+              </li>
+              <li class="plan-feature">
+                <span class="plan-feature-check">✓</span>
+                <span>Xüsusi API inteqrasiyaları</span>
+              </li>
+              <li class="plan-feature">
+                <span class="plan-feature-check">✓</span>
+                <span>Rəqib qiymət izləmə sistemi</span>
+              </li>
+              <li class="plan-feature">
+                <span class="plan-feature-check">✓</span>
+                <span>Xüsusi hesabat & BI paneli</span>
+              </li>
+              <li class="plan-feature">
+                <span class="plan-feature-check">✓</span>
+                <span>Fərdi onboarding & tədris</span>
+              </li>
+            </ul>
+            <a href="contact.html#contactForm" class="btn btn-ghost btn-plan-ghost" id="business-btn">Biznesə Keç →</a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ENTERPRISE STRIP -->
+    <div class="container">
+      <div class="enterprise-strip" id="enterprise-section">
+        <div class="enterprise-left">
+          <div class="enterprise-tag">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+            Enterprise
+          </div>
+          <h2 class="enterprise-title">Böyük otel şəbəkəsi üçün<br/>fərdi həll</h2>
+          <p class="enterprise-desc">5-dən çox mülk, xüsusi tələblər, tam özəlləşdirilmiş inteqrasiyalar? Sizin üçün fərdi təklif hazırlayırıq.</p>
+          <div class="enterprise-perks">
+            <div class="enterprise-perk">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="2"/></svg>
+              SLA Zəmanəti
+            </div>
+            <div class="enterprise-perk">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              Fərdi Onboarding
+            </div>
+            <div class="enterprise-perk">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" stroke="currentColor" stroke-width="2"/><circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="2"/></svg>
+              Xüsusi Hesab Meneceri
+            </div>
+            <div class="enterprise-perk">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              99.9% Uptime SLA
+            </div>
+          </div>
+        </div>
+        <div class="enterprise-actions">
+          <a href="contact.html#contactForm" class="btn btn-primary btn-xl" id="enterprise-btn">Satış İlə Əlaqə</a>
+          <span class="enterprise-note">Orta cavab vaxtı: 2 saat</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- COMPARISON TABLE -->
+    <section class="compare-section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Xüsusiyyətləri Müqayisə Edin</h2>
+        </div>
+        <table class="compare-table" id="compare-table">
+          <thead>
+            <tr>
+              <th class="col-feature">Xüsusiyyət</th>
+              <th class="col-plan-name">Başlanğıc</th>
+              <th class="col-plan-name col-featured-plan">Peşəkar</th>
+              <th class="col-plan-name">Korporativ</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Otaq sayı</td>
+              <td class="center">20 otağa qədər</td>
+              <td class="center featured-col">50 otağa qədər</td>
+              <td class="center">Limitsiz</td>
+            </tr>
+            <tr>
+              <td>Ön Büro (PMS)</td>
+              <td class="center"><span class="check-green">✓</span></td>
+              <td class="center featured-col"><span class="check-green">✓</span></td>
+              <td class="center"><span class="check-green">✓</span></td>
+            </tr>
+            <tr>
+              <td>Hesabatlar və Analitika</td>
+              <td class="center"><span class="check-cyan">Əsas</span></td>
+              <td class="center featured-col"><span class="check-cyan">Genişləndirilmiş</span></td>
+              <td class="center"><span class="check-cyan">Genişləndirilmiş</span></td>
+            </tr>
+            <tr>
+              <td>Bütün modullar (F&amp;B, SPA, Otaq Xidmətləri...)</td>
+              <td class="center"><span class="check-muted">—</span></td>
+              <td class="center featured-col"><span class="check-green">✓</span></td>
+              <td class="center"><span class="check-green">✓</span></td>
+            </tr>
+            <tr>
+              <td>Channel Manager</td>
+              <td class="center"><span class="check-muted">—</span></td>
+              <td class="center featured-col"><span class="check-green">✓</span></td>
+              <td class="center"><span class="check-green">✓</span></td>
+            </tr>
+            <tr>
+              <td>API girişi</td>
+              <td class="center"><span class="check-muted">—</span></td>
+              <td class="center featured-col"><span class="check-green">✓</span></td>
+              <td class="center"><span class="check-green">✓</span></td>
+            </tr>
+            <tr>
+              <td>Çoxobyektli idarəetmə</td>
+              <td class="center"><span class="check-muted">—</span></td>
+              <td class="center featured-col"><span class="check-muted">—</span></td>
+              <td class="center"><span class="check-green">✓</span></td>
+            </tr>
+            <tr>
+              <td>Xüsusi inteqrasiyalar</td>
+              <td class="center"><span class="check-muted">—</span></td>
+              <td class="center featured-col"><span class="check-muted">—</span></td>
+              <td class="center"><span class="check-green">✓</span></td>
+            </tr>
+            <tr>
+              <td>Yerində talim</td>
+              <td class="center"><span class="check-muted">—</span></td>
+              <td class="center featured-col"><span class="check-muted">—</span></td>
+              <td class="center"><span class="check-green">✓</span></td>
+            </tr>
+            <tr>
+              <td>Dəstək</td>
+              <td class="center">E-poçt</td>
+              <td class="center featured-col">Prioritet</td>
+              <td class="center">7/24 prioritet</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq-section">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-pill">FAQ</div>
+          <h2 class="section-title">Tez-tez soruşulan suallar</h2>
+        </div>
+        <div class="faq-grid" id="faqGrid">
+
+          <div class="faq-item" id="faq-1">
+            <button class="faq-q" onclick="toggleFaq('faq-1')">
+              Pulsuz sınaq dövrü varmı?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-a">
+              Bəli! Bütün planlarda <strong>14 günlük pulsuz sınaq</strong> dövrü mövcuddur. Kredit kartı tələb edilmir. Sınaq müddətindən sonra planı seçib ödənişi aktivləşdirirsiniz.
+            </div>
+          </div>
+
+          <div class="faq-item" id="faq-2">
+            <button class="faq-q" onclick="toggleFaq('faq-2')">
+              Planı istənilən vaxt dəyişmək mümkündürmü?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-a">
+              Bəli, hər zaman yuxarı və ya aşağı plana keçid edə bilərsiniz. Yuxarı keçiddə fərq o günün tarixindən hesablanır, aşağı keçiddə isə növbəti ödəniş dövrünüzdə tətbiq edilir.
+            </div>
+          </div>
+
+          <div class="faq-item" id="faq-3">
+            <button class="faq-q" onclick="toggleFaq('faq-3')">
+              Məlumatlarım köçürülür?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-a">
+              Bəli. Mövcud PMS sisteminizdən (Opera, Protel, SIHOT və s.) məlumatlarınızı tam şəkildə köçürürük. Bu xidmət bütün planlarda pulsuz daxildir.
+            </div>
+          </div>
+
+          <div class="faq-item" id="faq-4">
+            <button class="faq-q" onclick="toggleFaq('faq-4')">
+              Hansı ödəniş üsulları qəbul edilir?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-a">
+              Visa, Mastercard, bank köçürməsi və Azərbaycan yerli bank kartları ilə ödəniş qəbul edilir. Enterprise planlarda bank köçürməsi ilə illik ödəniş seçeneği mövcuddur.
+            </div>
+          </div>
+
+          <div class="faq-item" id="faq-5">
+            <button class="faq-q" onclick="toggleFaq('faq-5')">
+              Əgər internet kəsilərsə nə baş verir?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-a">
+              Hotellinia-nın offline rejimi mövcuddur. İnternet bağlantısı olmadan da ön büro, housekeeping və POS funksiyaları işləməyə davam edir. Bağlantı bərpa olunduqda məlumatlar avtomatik sinxronlaşır.
+            </div>
+          </div>
+
+          <div class="faq-item" id="faq-6">
+            <button class="faq-q" onclick="toggleFaq('faq-6')">
+              Təlim və dəstək necə həyata keçirilir?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-a">
+              Bütün yeni müştərilər üçün Azərbaycan dilinde onlayn onboarding sessiyaları keçirilir. Bundan əlavə video dərslər kitabxanası, sənədlər bazası və 7/24 dəstək xidməti mövcuddur.
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER CTA -->
+    <section class="footer-cta" id="cta-pricing">
+      <div class="cta-aura"></div>
+      <div class="container">
+        <div class="cta-inner">
+          <div class="cta-badge">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            14 Gün Pulsuz
+          </div>
+          <h2 class="cta-title">Bu gün <span class="gradient-text">pulsuz başlayın</span></h2>
+          <p class="cta-sub">Kredit kartı tələb olunmur. 14 günlük tam funksional sınaq.</p>
+          <form class="cta-form" id="ctaForm" onsubmit="handleFormSubmit(event)">
+            <div class="cta-input-wrap">
+              <svg class="cta-input-icon" width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="currentColor" stroke-width="2"/><path d="M22 6l-10 7L2 6" stroke="currentColor" stroke-width="2"/></svg>
+              <input type="email" id="ctaEmail" class="cta-input" placeholder="E-poçt ünvanınız" required />
+            </div>
+            <button type="submit" class="btn btn-primary btn-xl btn-cta" id="cta-submit-btn">
+              Pulsuz Başla
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            </button>
+          </form>
+          <div class="cta-success" id="ctaSuccess" style="display:none">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#00C896" opacity="0.15"/><path d="M8 12l3 3 5-5" stroke="#00C896" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Müraciətiniz qeydə alındı! Tezliklə sizinlə əlaqə saxlayacağıq.
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <a href="/" class="logo">
+            <span class="logo-icon">
+              <svg width="24" height="24" viewBox="0 0 28 28" fill="none">
+                <rect width="28" height="28" rx="7" fill="url(#footerLG2)"/>
+                <path d="M7 20V10l7-4 7 4v10" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M11 20v-5h6v5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                <defs><linearGradient id="footerLG2" x1="0" y1="0" x2="28" y2="28" gradientUnits="userSpaceOnUse"><stop stop-color="#00C896"/><stop offset="1" stop-color="#0066FF"/></linearGradient></defs>
+              </svg>
+            </span>
+            <span class="logo-text">Hotellinia</span>
+          </a>
+          <p class="footer-tagline">Növbəti nəsil otel idarəetmə platforması.</p>
+        </div>
+        <div class="footer-links-row">
+          <div class="footer-col">
+            <div class="footer-col-title">Məhsul</div>
+            <a href="/#features" class="footer-link">Xüsusiyyətlər</a>
+            <a href="/#modules" class="footer-link">Modullar</a>
+            <a href="/pricing.html" class="footer-link">Qiymətlər</a>
+          </div>
+          <div class="footer-col">
+            <div class="footer-col-title">Şirkət</div>
+            <a href="/about.html" class="footer-link">Haqqımızda</a>
+            <a href="/blog" class="footer-link">Blog</a>
+            <a href="/careers" class="footer-link">Karyera</a>
+          </div>
+          <div class="footer-col">
+            <div class="footer-col-title">Dəstək</div>
+            <a href="/docs" class="footer-link">Sənədlər</a>
+            <a href="/contact" class="footer-link">Əlaqə</a>
+            <a href="/status" class="footer-link">Sistem Statusu</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">© 2025 Hotellinia. Müəllif hüquqları qorunur.</p>
+        <div class="footer-legal">
+          <a href="/privacy" class="footer-legal-link">Məxfilik Siyasəti</a>
+          <a href="/terms" class="footer-legal-link">İstifadə Şərtləri</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+  <script>
+    // Billing toggle
+    const prices = {
+      monthly: { starter: 199, pro: 449, business: 899 },
+      annual:  { starter: 159, pro: 359, business: 719 }
+    };
+    const notes = {
+      monthly: {
+        starter: 'Ayda ₼199, aylıq ödəniş',
+        pro:     'Ayda ₼449, aylıq ödəniş',
+        business:'Ayda ₼899, aylıq ödəniş'
+      },
+      annual: {
+        starter: 'İllik ₼1,908 — 20% qənaət (₼477)',
+        pro:     'İllik ₼4,308 — 20% qənaət (₼1,080)',
+        business:'İllik ₼8,628 — 20% qənaət (₼2,160)'
+      }
+    };
+
+    function setBilling(type) {
+      document.getElementById('toggleMonthly').classList.toggle('active', type === 'monthly');
+      document.getElementById('toggleAnnual').classList.toggle('active', type === 'annual');
+      ['starter','pro','business'].forEach(plan => {
+        const el = document.getElementById('price-' + plan);
+        const note = document.getElementById('note-' + plan);
+        if (el) {
+          el.style.transition = 'all 0.3s';
+          el.style.opacity = '0';
+          setTimeout(() => {
+            el.textContent = prices[type][plan];
+            el.style.opacity = '1';
+          }, 150);
+        }
+        if (note) note.textContent = notes[type][plan];
+      });
+    }
+
+    // FAQ toggle
+    function toggleFaq(id) {
+      const item = document.getElementById(id);
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(f => f.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    }
+
+    function handleFormSubmit(e) {
+      e.preventDefault();
+      const email = document.getElementById('ctaEmail');
+      if (!email.validity.valid) return;
+      document.getElementById('ctaForm').style.display = 'none';
+      document.getElementById('ctaSuccess').style.display = 'flex';
+    }
+  </script>
+</body>
+</html>
