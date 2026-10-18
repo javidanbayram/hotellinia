@@ -196,27 +196,47 @@
       
       
 
-      <nav class="nav-links" id="navLinks">
-        <button class="mobile-close-btn" id="mobileCloseBtn" aria-label="Bağla">✕</button>
+
+      <nav class="nav-links" id="navLinksDesktop">
         <a href="index.html#features" class="nav-link">Xüsusiyyətlər</a>
         <a href="index.html#modules" class="nav-link">Modullar</a>
         <a href="index.html#integrations" class="nav-link">İnteqrasiyalar</a>
         <a href="pricing.html" class="nav-link">Qiymətlər</a>
         <a href="about.html" class="nav-link">Haqqımızda</a>
-        <a href="contact.html" class="nav-link" id="nav-contact" style="color:var(--green)">Əlaqə</a>
+        <a href="contact.html" class="nav-link nav-link--active">Əlaqə</a>
       </nav>
 
       <div class="nav-actions">
-        <a href="#" class="nav-login" id="nav-login-link">Daxil ol</a>
+        <a href="#" class="nav-login">Daxil ol</a>
         <a href="contact.html#contactForm" class="btn btn-glow" id="nav-demo-btn">Demo Tələb Et</a>
         <button class="hamburger" id="hamburgerBtn" aria-label="Menyu" aria-expanded="false">
           <span></span><span></span><span></span>
         </button>
       </div>
-    
-      </div>
     </div>
   </header>
+
+  <!-- Mobile fullscreen menu — direct body child, no stacking context issues -->
+  <div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Naviqasiya menyusu">
+    <button class="mob-close" id="mobCloseBtn" aria-label="Menyunu bağla">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M2 2L18 18M18 2L2 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+    <div class="mob-logo">
+      <span class="mob-logo-dot">🏨</span> Hotellinia
+    </div>
+    <nav class="mob-links">
+        <a href="index.html#features" class="mob-link" id="mob-link-0">Xüsusiyyətlər</a>
+        <a href="index.html#modules" class="mob-link" id="mob-link-1">Modullar</a>
+        <a href="index.html#integrations" class="mob-link" id="mob-link-2">İnteqrasiyalar</a>
+        <a href="pricing.html" class="mob-link" id="mob-link-3">Qiymətlər</a>
+        <a href="about.html" class="mob-link" id="mob-link-4">Haqqımızda</a>
+        <a href="contact.html" class="mob-link" id="mob-link-5">Əlaqə</a>
+    </nav>
+    <div class="mob-actions">
+      <a href="contact.html#contactForm" class="btn btn-glow btn-block">⚡ Pulsuz Demo Tələb Et</a>
+    </div>
+    <div class="mob-footer-note">Azərbaycan · 500+ Otel Partnyor</div>
+  </div>
 
   <main>
     <!-- HERO -->

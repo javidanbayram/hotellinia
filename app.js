@@ -503,54 +503,54 @@ animateWorkflow();
 
 
 
-// ─── HAMBURGER MOBILE MENU ────────────────────────────
+
+// ─── MOBILE MENU ─────────────────────────────────────
 ;(function () {
-  var btn      = document.getElementById('hamburgerBtn');
-  var nav      = document.getElementById('navLinks');
-  var closeBtn = document.getElementById('mobileCloseBtn');
-  if (!btn || !nav) return;
+  var hamburger = document.getElementById('hamburgerBtn');
+  var menu      = document.getElementById('mobileMenu');
+  var closeBtn  = document.getElementById('mobCloseBtn');
+  if (!hamburger || !menu) return;
 
-  function open() {
-    nav.classList.add('is-open');
-    btn.classList.add('is-active');
-    btn.setAttribute('aria-expanded', 'true');
-    document.body.classList.add('menu-open');
+  function openMenu() {
+    menu.classList.add('is-open');
+    hamburger.classList.add('is-active');
+    hamburger.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
   }
-  function close() {
-    nav.classList.remove('is-open');
-    btn.classList.remove('is-active');
-    btn.setAttribute('aria-expanded', 'false');
-    document.body.classList.remove('menu-open');
+  function closeMenu() {
+    menu.classList.remove('is-open');
+    hamburger.classList.remove('is-active');
+    hamburger.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
   }
 
-  btn.addEventListener('click', function(e) {
+  hamburger.addEventListener('click', function(e) {
     e.stopPropagation();
-    nav.classList.contains('is-open') ? close() : open();
+    menu.classList.contains('is-open') ? closeMenu() : openMenu();
   });
 
-  if (closeBtn) {
-    closeBtn.addEventListener('click', function(e) {
-      e.stopPropagation();
-      close();
-    });
-  }
+  if (closeBtn) closeBtn.addEventListener('click', closeMenu);
 
-  nav.querySelectorAll('.nav-link').forEach(function(link) {
-    link.addEventListener('click', close);
+  // Close on any mobile link click
+  menu.querySelectorAll('.mob-link').forEach(function(link) {
+    link.addEventListener('click', closeMenu);
+  });
+  // Also close on CTA button
+  var ctaBtn = menu.querySelector('.mob-actions .btn');
+  if (ctaBtn) ctaBtn.addEventListener('click', closeMenu);
+
+  // Close on backdrop tap (outside the menu content)
+  menu.addEventListener('click', function(e) {
+    if (e.target === menu) closeMenu();
   });
 
-  document.addEventListener('click', function(e) {
-    if (nav.classList.contains('is-open') &&
-        !nav.contains(e.target) && !btn.contains(e.target)) {
-      close();
-    }
-  });
-
+  // Resize → close
   window.addEventListener('resize', function() {
-    if (window.innerWidth > 768) close();
+    if (window.innerWidth > 768) closeMenu();
   });
 
+  // Escape key
   document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') close();
+    if (e.key === 'Escape') closeMenu();
   });
 })();
