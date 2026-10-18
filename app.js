@@ -504,6 +504,7 @@ animateWorkflow();
 
 
 
+
 // ─── MOBILE MENU ─────────────────────────────────────
 ;(function () {
   var hamburger = document.getElementById('hamburgerBtn');
@@ -512,44 +513,44 @@ animateWorkflow();
   if (!hamburger || !menu) return;
 
   function openMenu() {
+    // Force display:flex then add is-open class
     menu.classList.add('is-open');
     hamburger.classList.add('is-active');
     hamburger.setAttribute('aria-expanded', 'true');
-    document.body.style.overflow = 'hidden';
+    document.body.classList.add('menu-open');
   }
+
   function closeMenu() {
     menu.classList.remove('is-open');
     hamburger.classList.remove('is-active');
     hamburger.setAttribute('aria-expanded', 'false');
-    document.body.style.overflow = '';
+    document.body.classList.remove('menu-open');
   }
 
   hamburger.addEventListener('click', function(e) {
+    e.preventDefault();
     e.stopPropagation();
     menu.classList.contains('is-open') ? closeMenu() : openMenu();
   });
 
-  if (closeBtn) closeBtn.addEventListener('click', closeMenu);
+  if (closeBtn) {
+    closeBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      closeMenu();
+    });
+  }
 
-  // Close on any mobile link click
-  menu.querySelectorAll('.mob-link').forEach(function(link) {
-    link.addEventListener('click', closeMenu);
+  menu.querySelectorAll('.mob-link, .mob-actions .btn').forEach(function(el) {
+    el.addEventListener('click', function() {
+      setTimeout(closeMenu, 50);
+    });
   });
-  // Also close on CTA button
-  var ctaBtn = menu.querySelector('.mob-actions .btn');
-  if (ctaBtn) ctaBtn.addEventListener('click', closeMenu);
 
-  // Close on backdrop tap (outside the menu content)
-  menu.addEventListener('click', function(e) {
-    if (e.target === menu) closeMenu();
-  });
-
-  // Resize → close
   window.addEventListener('resize', function() {
     if (window.innerWidth > 768) closeMenu();
   });
 
-  // Escape key
   document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') closeMenu();
   });
