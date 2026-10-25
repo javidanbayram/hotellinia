@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css?v=4" />
 </head>
 <body>
 
@@ -52,17 +52,45 @@
 
 
       <nav class="nav-links" id="navLinksDesktop">
-        <a href="#features" class="nav-link">Xüsusiyyətlər</a>
-        <a href="#modules" class="nav-link">Modullar</a>
-        <a href="#integrations" class="nav-link">İnteqrasiyalar</a>
-        <a href="pricing.html" class="nav-link">Qiymətlər</a>
-        <a href="about.html" class="nav-link">Haqqımızda</a>
-        <a href="contact.html" class="nav-link">Əlaqə</a>
+        <a href="#features" class="nav-link" data-i18n="nav.features">Xüsusiyyətlər</a>
+        <a href="#modules" class="nav-link" data-i18n="nav.modules">Modullar</a>
+        <a href="#integrations" class="nav-link" data-i18n="nav.integrations">İnteqrasiyalar</a>
+        <a href="pricing.html" class="nav-link" data-i18n="nav.pricing">Qiymətlər</a>
+        <a href="about.html" class="nav-link" data-i18n="nav.about">Haqqımızda</a>
+        <a href="contact.html" class="nav-link" data-i18n="nav.contact">Əlaqə</a>
       </nav>
 
       <div class="nav-actions">
-        <a href="#" class="nav-login">Daxil ol</a>
-        <a href="contact.html#contactForm" class="btn btn-glow" id="nav-demo-btn">Demo Tələb Et</a>
+        <!-- Cool Language Dropdown -->
+        <div class="lang-dropdown" id="langDropdown">
+          <button type="button" class="lang-dropdown-btn" id="langDropdownBtn" aria-expanded="false" aria-haspopup="true" aria-label="Dil seçimi">
+            <span class="lang-flag" id="langActiveFlag">🇦🇿</span>
+            <span class="lang-code" id="langActiveCode">AZ</span>
+            <svg class="lang-arrow" width="12" height="12" viewBox="0 0 12 12" fill="none">
+              <path d="M2.5 4.5L6 8L9.5 4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <div class="lang-dropdown-menu" id="langDropdownMenu" role="menu">
+            <button type="button" class="lang-dropdown-item active" data-lang="az" role="menuitem">
+              <span class="item-flag">🇦🇿</span>
+              <div class="item-text">
+                <span class="item-name">Azərbaycan</span>
+                <span class="item-sub">AZ · Əsas dil</span>
+              </div>
+              <span class="item-check">✓</span>
+            </button>
+            <button type="button" class="lang-dropdown-item" data-lang="ru" role="menuitem">
+              <span class="item-flag">🇷🇺</span>
+              <div class="item-text">
+                <span class="item-name">Русский</span>
+                <span class="item-sub">RU · Язык интерфейса</span>
+              </div>
+              <span class="item-check">✓</span>
+            </button>
+          </div>
+        </div>
+        <a href="#" onclick="return false" class="nav-login" data-i18n="nav.login">Daxil ol</a>
+        <a href="contact.html#contactForm" class="btn btn-glow" id="nav-demo-btn" data-i18n="nav.demo">Demo Tələb Et</a>
         <button class="hamburger" id="hamburgerBtn" aria-label="Menyu" aria-expanded="false">
           <span></span><span></span><span></span>
         </button>
@@ -78,18 +106,33 @@
     <div class="mob-logo">
       <span class="mob-logo-dot">🏨</span> Hotellinia
     </div>
+    <div class="mob-lang-wrapper">
+      <div class="mob-lang-label" data-i18n="nav.lang_label">Dil seçimi</div>
+      <div class="mob-lang-bar">
+        <button type="button" class="mob-lang-btn active" data-lang="az">
+          <span class="mob-lang-flag">🇦🇿</span>
+          <span>AZ</span>
+          <span class="mob-lang-check">✓</span>
+        </button>
+        <button type="button" class="mob-lang-btn" data-lang="ru">
+          <span class="mob-lang-flag">🇷🇺</span>
+          <span>RU</span>
+          <span class="mob-lang-check">✓</span>
+        </button>
+      </div>
+    </div>
     <nav class="mob-links">
-        <a href="#features" class="mob-link" id="mob-link-0">Xüsusiyyətlər</a>
-        <a href="#modules" class="mob-link" id="mob-link-1">Modullar</a>
-        <a href="#integrations" class="mob-link" id="mob-link-2">İnteqrasiyalar</a>
-        <a href="pricing.html" class="mob-link" id="mob-link-3">Qiymətlər</a>
-        <a href="about.html" class="mob-link" id="mob-link-4">Haqqımızda</a>
-        <a href="contact.html" class="mob-link" id="mob-link-5">Əlaqə</a>
+        <a href="#features" class="mob-link" id="mob-link-0" data-i18n="nav.features">Xüsusiyyətlər</a>
+        <a href="#modules" class="mob-link" id="mob-link-1" data-i18n="nav.modules">Modullar</a>
+        <a href="#integrations" class="mob-link" id="mob-link-2" data-i18n="nav.integrations">İnteqrasiyalar</a>
+        <a href="pricing.html" class="mob-link" id="mob-link-3" data-i18n="nav.pricing">Qiymətlər</a>
+        <a href="about.html" class="mob-link" id="mob-link-4" data-i18n="nav.about">Haqqımızda</a>
+        <a href="contact.html" class="mob-link" id="mob-link-5" data-i18n="nav.contact">Əlaqə</a>
     </nav>
     <div class="mob-actions">
-      <a href="contact.html#contactForm" class="btn btn-glow btn-block">⚡ Pulsuz Demo Tələb Et</a>
+      <a href="contact.html#contactForm" class="btn btn-glow btn-block" data-i18n="nav.free_demo">⚡ Pulsuz Demo Tələb Et</a>
     </div>
-    <div class="mob-footer-note">Azərbaycan · 500+ Otel Partnyor</div>
+    <div class="mob-footer-note" data-i18n="nav.partner_badge">Azərbaycan · 500+ Otel Partnyor</div>
   </div>
 
   <main>
@@ -101,25 +144,25 @@
       <div class="hero-content">
         <div class="hero-badge">
           <span class="badge-dot"></span>
-          <span>Yeni Nəsil PMS Platforması</span>
+          <span data-i18n="hero.badge">Yeni Nəsil PMS Platforması</span>
         </div>
 
-        <h1 class="hero-headline">
+        <h1 class="hero-headline" data-i18n="hero.headline">
           Otelinizin Bütün Əməliyyatlarını
           <span class="gradient-text">Tək Bir Bulud Platformasından</span> İdarə Edin.
         </h1>
 
-        <p class="hero-sub">
+        <p class="hero-sub" data-i18n="hero.sub">
           Ön bürodan otaq təmizliyinə qədər bütün prosesləri avtomatlaşdırın
           və rezervasiyalarınızı vahid mərkəzdən sinxronlaşdırın.
         </p>
 
         <div class="hero-ctas">
-          <a href="contact.html#contactForm" class="btn btn-primary btn-xl" id="hero-cta-btn">
+          <a href="contact.html#contactForm" class="btn btn-primary btn-xl" id="hero-cta-btn" data-i18n="hero.cta_demo">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             Pulsuz Demo Tələb Et
           </a>
-          <a href="#features" class="btn btn-ghost btn-xl" id="hero-features-link">
+          <a href="#features" class="btn btn-ghost btn-xl" id="hero-features-link" data-i18n="hero.cta_features">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="M10 8l6 4-6 4V8z" fill="currentColor"/></svg>
             Xüsusiyyətlərə Bax
           </a>
@@ -128,17 +171,17 @@
         <div class="hero-stats">
           <div class="stat-item">
             <span class="stat-num">500<span class="stat-plus">+</span></span>
-            <span class="stat-label">Otel Partnyor</span>
+            <span class="stat-label" data-i18n="hero.stat1_label">Otel Partnyor</span>
           </div>
           <div class="stat-divider"></div>
           <div class="stat-item">
             <span class="stat-num">98<span class="stat-plus">%</span></span>
-            <span class="stat-label">Müştəri Məmnuniyyəti</span>
+            <span class="stat-label" data-i18n="hero.stat2_label">Müştəri Məmnuniyyəti</span>
           </div>
           <div class="stat-divider"></div>
           <div class="stat-item">
             <span class="stat-num">40<span class="stat-plus">%</span></span>
-            <span class="stat-label">Əməliyyat Xərclərinin Azalması</span>
+            <span class="stat-label" data-i18n="hero.stat3_label">Əməliyyat Xərclərinin Azalması</span>
           </div>
         </div>
       </div>
@@ -155,7 +198,7 @@
             </div>
             <div>
               <div class="float-card-val">$18,450</div>
-              <div class="float-card-label">Bugünkü Gəlir</div>
+              <div class="float-card-label" data-i18n="hero.float_rev">Bugünkü Gəlir</div>
             </div>
             <div class="float-card-badge green">↑ 28%</div>
           </div>
@@ -166,7 +209,7 @@
             </div>
             <div>
               <div class="float-card-val">87%</div>
-              <div class="float-card-label">Doluluq Dərəcəsi</div>
+              <div class="float-card-label" data-i18n="hero.float_occ">Doluluq Dərəcəsi</div>
             </div>
             <div class="float-card-badge cyan">↑ 12%</div>
           </div>
@@ -177,9 +220,9 @@
             </div>
             <div>
               <div class="float-card-val">24</div>
-              <div class="float-card-label">Check-in Bu Gün</div>
+              <div class="float-card-label" data-i18n="hero.float_checkin">Check-in Bu Gün</div>
             </div>
-            <div class="float-card-badge purple">Aktiv</div>
+            <div class="float-card-badge purple" data-i18n="hero.float_active">Aktiv</div>
           </div>
         </div>
       </div>
@@ -190,7 +233,7 @@
     ═══════════════════════════════════════════ -->
     <section class="integrations-bar" id="integrations">
       <div class="container">
-        <p class="integrations-label">Qlobal liderlərlə tam sinxronlaşdırılmışdır</p>
+        <p class="integrations-label" data-i18n="integ.label">Qlobal liderlərlə tam sinxronlaşdırılmışdır</p>
         <div class="marquee-wrap">
           <div class="marquee-track" id="marqueeTrack">
             <div class="marquee-item">
@@ -241,9 +284,9 @@
     <section class="bento-section" id="features">
       <div class="container">
         <div class="section-header">
-          <div class="section-pill">Xüsusiyyətlər</div>
-          <h2 class="section-title">Hər şey bir platformada</h2>
-          <p class="section-sub">Enterprise-grade alətlər ilə otelinizdə hər qatda mükəmməllik əldə edin.</p>
+          <div class="section-pill" data-i18n="bento.tag">İmkanlar</div>
+          <h2 class="section-title" data-i18n="bento.title">Müasir otellər üçün <span class="gradient-text">hər şey bir yerdə</span></h2>
+          <p class="section-sub" data-i18n="bento.sub">Ənənəvi, qarışıq proqramları unudun. Hotellinia ilə komandanız dəqiqələr içində işə başlaya bilər.</p>
         </div>
 
         <div class="bento-grid" id="bento-main">
@@ -253,18 +296,18 @@
             <div class="bento-card-inner">
               <div class="bento-tag">
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M12 2a10 10 0 100 20A10 10 0 0012 2z" stroke="currentColor" stroke-width="2"/><path d="M8 12h8M12 8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-                Süni İntellekt
+                <span data-i18n="bento.ai_tag">Süni İntellekt</span>
               </div>
-              <h3 class="bento-title">Pasport / Şəxsiyyət Vəsiqəsi OCR Skanlaması</h3>
-              <p class="bento-desc">Qonağın sənədini telefon kamerası ilə skan edin — bütün məlumatlar saniyələr içində avtomatik doldurulur.</p>
+              <h3 class="bento-title" data-i18n="bento.ai_title">Pasport / Şəxsiyyət Vəsiqəsi OCR Skanlaması</h3>
+              <p class="bento-desc" data-i18n="bento.ai_desc">Qonağın sənədini telefon kamerası ilə skan edin — bütün məlumatlar saniyələr içində avtomatik doldurulur.</p>
 
               <!-- OCR Scanner Animation -->
               <div class="ocr-demo">
                 <div class="ocr-card">
                   <div class="ocr-header">
                     <div class="ocr-dot green"></div>
-                    <span>Pasport Skan</span>
-                    <div class="ocr-status">Aktiv</div>
+                    <span data-i18n="bento.ocr_scan_title">Pasport Skan</span>
+                    <div class="ocr-status" data-i18n="bento.ocr_status">Aktiv</div>
                   </div>
                   <div class="ocr-doc">
                     <div class="ocr-scan-line"></div>
@@ -274,14 +317,14 @@
                     <div class="ocr-field"><span class="ocr-label">Ölkə:</span><span class="ocr-val typing-4">Azərbaycan</span></div>
                   </div>
                   <div class="ocr-footer">
-                    <div class="ocr-check">✓ Məlumatlar doğrulandı</div>
+                    <div class="ocr-check" data-i18n="bento.ocr_verified">✓ Məlumatlar doğrulandı</div>
                     <div class="ocr-time">0.8 san</div>
                   </div>
                 </div>
                 <div class="ocr-result-card">
-                  <div class="orcard-title">Check-in tamamlandı</div>
-                  <div class="orcard-room">🏨 Otaq 412 — Deluxe King</div>
-                  <div class="orcard-badge">AI dəstəkli · 98.7% dəqiqlik</div>
+                  <div class="orcard-title" data-i18n="bento.ocr_done_title">Check-in tamamlandı</div>
+                  <div class="orcard-room" data-i18n="bento.ocr_done_room">🏨 Otaq 412 — Deluxe King</div>
+                  <div class="orcard-badge" data-i18n="bento.ocr_done_badge">AI dəstəkli · 98.7% dəqiqlik</div>
                 </div>
               </div>
             </div>
@@ -292,10 +335,10 @@
             <div class="bento-card-inner">
               <div class="bento-tag cyan">
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="2"/><path d="M6 20v-1a6 6 0 0112 0v1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-                Üz Tanıma
+                <span data-i18n="bento.face_tag">Üz Tanıma</span>
               </div>
-              <h3 class="bento-title">Üz Tanıma ilə Check-in</h3>
-              <p class="bento-desc">Kontaktsiz, anında. İşçi izlənməsi də daxil.</p>
+              <h3 class="bento-title" data-i18n="bento.face_title">Üz Tanıma ilə Check-in</h3>
+              <p class="bento-desc" data-i18n="bento.face_desc">Kontaktsiz, anında. İşçi izlənməsi də daxil.</p>
 
               <!-- Face Grid Animation -->
               <div class="face-demo">
@@ -324,13 +367,13 @@
                   <div class="face-status-bar">
                     <div class="face-status-fill"></div>
                   </div>
-                  <div class="face-status-text">Şəxsiyyət təsdiqlənir...</div>
+                  <div class="face-status-text" data-i18n="bento.face_status">Şəxsiyyət təsdiqlənir...</div>
                 </div>
                 <div class="face-match-card">
                   <span class="face-match-icon">✓</span>
                   <div>
-                    <div style="font-size:13px;font-weight:700;">Uyğunluq: 99.2%</div>
-                    <div style="font-size:11px;color:var(--text-muted);">Müştəri profilinə əlavə edildi</div>
+                    <div style="font-size:13px;font-weight:700;" data-i18n="bento.face_match">Uyğunluq: 99.2%</div>
+                    <div style="font-size:11px;color:var(--text-muted);" data-i18n="bento.face_match_sub">Müştəri profilinə əlavə edildi</div>
                   </div>
                 </div>
               </div>
@@ -344,8 +387,8 @@
                 <span class="bento-big-num" id="counter-rooms">0</span>
                 <span class="bento-big-unit">+</span>
               </div>
-              <div class="bento-stat-label">Aktiv Otaq Növü</div>
-              <div class="bento-stat-sub">Real vaxtda sinxronlaşdırılır</div>
+              <div class="bento-stat-label" data-i18n="bento.stat_rooms_label">Aktiv Otaq Növü</div>
+              <div class="bento-stat-sub" data-i18n="bento.stat_rooms_sub">Real vaxtda sinxronlaşdırılır</div>
               <div class="bento-mini-bars">
                 <div class="bm-bar" style="height:40%"></div>
                 <div class="bm-bar" style="height:65%"></div>
@@ -369,8 +412,8 @@
                 </svg>
                 <div class="bento-uptime-val">99.9%</div>
               </div>
-              <div class="bento-stat-label">Platform Uptime</div>
-              <div class="bento-stat-sub">SLA zəmanəti</div>
+              <div class="bento-stat-label" data-i18n="bento.stat_uptime_label">Platform Uptime</div>
+              <div class="bento-stat-sub" data-i18n="bento.stat_uptime_sub">SLA zəmanəti</div>
             </div>
           </div>
 
@@ -379,9 +422,9 @@
             <div class="bento-card-inner">
               <div class="bento-tag orange">
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M18 8h1a4 4 0 010 8h-1M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8zM6 1v3M10 1v3M14 1v3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-                Restoran POS
+                <span data-i18n="bento.pos_tag">Restoran POS</span>
               </div>
-              <h3 class="bento-title">F&amp;B — Real Vaxtda Sifariş İdarəetməsi</h3>
+              <h3 class="bento-title" data-i18n="bento.pos_title">F&amp;B — Real Vaxtda Sifariş İdarəetməsi</h3>
 
               <!-- POS Live Feed -->
               <div class="pos-visual">
@@ -389,42 +432,42 @@
                   <div class="pos-order-item pos-new" id="pos-o1">
                     <div class="pos-order-num">#042</div>
                     <div class="pos-order-detail">
-                      <div class="pos-order-name">Otaq 214 — Nahar</div>
-                      <div class="pos-order-items">Qızardılmış quzu, Salat, Şərab</div>
+                      <div class="pos-order-name" data-i18n="bento.pos_o1_name">Otaq 214 — Nahar</div>
+                      <div class="pos-order-items" data-i18n="bento.pos_o1_items">Qızardılmış quzu, Salat, Şərab</div>
                     </div>
                     <div class="pos-order-amt">₼68</div>
-                    <div class="pos-order-badge new">Yeni</div>
+                    <div class="pos-order-badge new" data-i18n="bento.pos_o1_badge">Yeni</div>
                   </div>
                   <div class="pos-order-item pos-cooking" id="pos-o2">
                     <div class="pos-order-num">#041</div>
                     <div class="pos-order-detail">
-                      <div class="pos-order-name">Bar — Masa 7</div>
-                      <div class="pos-order-items">Kokteyil × 2, Qəlyanaltı</div>
+                      <div class="pos-order-name" data-i18n="bento.pos_o2_name">Bar — Masa 7</div>
+                      <div class="pos-order-items" data-i18n="bento.pos_o2_items">Kokteyil × 2, Qəlyanaltı</div>
                     </div>
                     <div class="pos-order-amt">₼34</div>
-                    <div class="pos-order-badge cooking">Hazırlanır</div>
+                    <div class="pos-order-badge cooking" data-i18n="bento.pos_o2_badge">Hazırlanır</div>
                   </div>
                   <div class="pos-order-item pos-done" id="pos-o3">
                     <div class="pos-order-num">#040</div>
                     <div class="pos-order-detail">
-                      <div class="pos-order-name">Otaq 301 — Səhər yeməyi</div>
-                      <div class="pos-order-items">Bufet + Əlavə çay</div>
+                      <div class="pos-order-name" data-i18n="bento.pos_o3_name">Otaq 301 — Səhər yeməyi</div>
+                      <div class="pos-order-items" data-i18n="bento.pos_o3_items">Bufet + Əlavə çay</div>
                     </div>
                     <div class="pos-order-amt">₼22</div>
-                    <div class="pos-order-badge done">Təhvil verildi</div>
+                    <div class="pos-order-badge done" data-i18n="bento.pos_o3_badge">Təhvil verildi</div>
                   </div>
                 </div>
                 <div class="pos-link-arrow">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
                 </div>
                 <div class="pos-summary">
-                  <div class="pos-sum-title">Bu gün</div>
+                  <div class="pos-sum-title" data-i18n="bento.pos_sum_title">Bu gün</div>
                   <div class="pos-sum-val">₼4,280</div>
-                  <div class="pos-sum-sub">↑ 18% dünənə nisbətən</div>
+                  <div class="pos-sum-sub" data-i18n="bento.pos_sum_sub">↑ 18% dünənə nisbətən</div>
                   <div class="pos-sum-items">
-                    <div class="psi"><div class="psi-dot green"></div>Restoran: ₼2,840</div>
-                    <div class="psi"><div class="psi-dot cyan"></div>Bar: ₼890</div>
-                    <div class="psi"><div class="psi-dot purple"></div>Otaq Xidməti: ₼550</div>
+                    <div class="psi" data-i18n="bento.pos_sum_r"><div class="psi-dot green"></div>Restoran: ₼2,840</div>
+                    <div class="psi" data-i18n="bento.pos_sum_b"><div class="psi-dot cyan"></div>Bar: ₼890</div>
+                    <div class="psi" data-i18n="bento.pos_sum_s"><div class="psi-dot purple"></div>Otaq Xidməti: ₼550</div>
                   </div>
                 </div>
               </div>
@@ -436,39 +479,39 @@
             <div class="bento-card-inner">
               <div class="bento-tag purple">
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                Avtomatlaşdırma
+                <span data-i18n="bento.wf_tag">Avtomatlaşdırma</span>
               </div>
-              <h3 class="bento-title">Ağıllı İş Axını — Sıfır Manual Əməliyyat</h3>
-              <p class="bento-desc">Rezervasiyadan check-out'a qədər bütün proseslər avtomatik tetiklenir.</p>
+              <h3 class="bento-title" data-i18n="bento.wf_title">Ağıllı İş Axını — Sıfır Manual Əməliyyat</h3>
+              <p class="bento-desc" data-i18n="bento.wf_desc">Rezervasiyadan check-out'a qədər bütün proseslər avtomatik tetiklenir.</p>
 
               <!-- Workflow 2×2 Grid -->
               <div class="workflow-diagram">
                 <div class="wf-node wf-start" id="wf-n1">
                   <div class="wf-icon">📅</div>
-                  <div class="wf-label">Rezervasiya</div>
+                  <div class="wf-label" data-i18n="bento.wf_n1">Rezervasiya</div>
                 </div>
                 <div class="wf-arrow">→</div>
                 <div class="wf-node wf-mid" id="wf-n2">
                   <div class="wf-icon">📧</div>
-                  <div class="wf-label">Avtomatik E-poçt</div>
+                  <div class="wf-label" data-i18n="bento.wf_n2">Avtomatik E-poçt</div>
                 </div>
                 <div class="wf-node wf-mid" id="wf-n3">
                   <div class="wf-icon">🧹</div>
-                  <div class="wf-label">Housekeeping</div>
+                  <div class="wf-label" data-i18n="bento.wf_n3">Housekeeping</div>
                 </div>
                 <div class="wf-arrow">→</div>
                 <div class="wf-node wf-end" id="wf-n4">
                   <div class="wf-icon">✅</div>
-                  <div class="wf-label">Check-out + Faktura</div>
+                  <div class="wf-label" data-i18n="bento.wf_n4">Check-out + Faktura</div>
                 </div>
               </div>
 
               <div class="wf-stats">
-                <div class="wf-stat"><span class="wf-val">35+</span><span class="wf-key">İnteqrasiya</span></div>
+                <div class="wf-stat"><span class="wf-val">35+</span><span class="wf-key" data-i18n="bento.wf_stat_int">İnteqrasiya</span></div>
                 <div class="wf-stat-div"></div>
-                <div class="wf-stat"><span class="wf-val">7</span><span class="wf-key">Dil</span></div>
+                <div class="wf-stat"><span class="wf-val">7</span><span class="wf-key" data-i18n="bento.wf_stat_lang">Dil</span></div>
                 <div class="wf-stat-div"></div>
-                <div class="wf-stat"><span class="wf-val">24/7</span><span class="wf-key">Dəstək</span></div>
+                <div class="wf-stat"><span class="wf-val">24/7</span><span class="wf-key" data-i18n="bento.wf_stat_sup">Dəstək</span></div>
               </div>
             </div>
           </div>
@@ -483,86 +526,86 @@
     <section class="modules-section" id="modules">
       <div class="container">
         <div class="section-header">
-          <div class="section-pill cyan">Modullar</div>
-          <h2 class="section-title">Tam İnteqrasiyalı Həll</h2>
-          <p class="section-sub">Hotellinia sadəcə PMS deyil — rezervasiyadan gün sonuna, kassadan nüfuz idarəetməsinə qədər 35-dən çox modul vahid platformada.</p>
+          <div class="section-pill cyan" data-i18n="modules.tag">Modullar</div>
+          <h2 class="section-title" data-i18n="modules.title">Tam İnteqrasiyalı Həll</h2>
+          <p class="section-sub" data-i18n="modules.sub">Hotellinia sadəcə PMS deyil — rezervasiyadan gün sonuna, kassadan nüfuz idarəetməsinə qədər 35-dən çox modul vahid platformada.</p>
         </div>
 
         <!-- Top feature cards -->
         <div class="modules-grid">
           <div class="module-card module-featured" id="mod-pms">
-            <div class="module-badge-popular">Populyar</div>
-            <h3 class="module-name">Ön Büro (PMS)</h3>
-            <p class="module-desc">Rezervasiya, check-in/out, otaq planı (room rack), qonaq idarəetməsi.</p>
+            <div class="module-badge-popular" data-i18n="modules.badge_popular">Populyar</div>
+            <h3 class="module-name" data-i18n="modules.m1_title">Ön Büro (PMS)</h3>
+            <p class="module-desc" data-i18n="modules.m1_desc">Rezervasiya, check-in/out, otaq planı (room rack), qonaq idarəetməsi.</p>
             <ul class="module-features">
-              <li><span class="mf-check">✓</span> Rezervasiya idarəetməsi</li>
-              <li><span class="mf-check">✓</span> Room Rack və mərtəbə planı</li>
-              <li><span class="mf-check">✓</span> Check-in / Check-out</li>
-              <li><span class="mf-check">✓</span> Qonaq profilləri</li>
-              <li><span class="mf-check">✓</span> Polis / rəsmi qurum bildirişi</li>
+              <li><span class="mf-check">✓</span> <span data-i18n="modules.m1_f1">Rezervasiya idarəetməsi</span></li>
+              <li><span class="mf-check">✓</span> <span data-i18n="modules.m1_f2">Room Rack və mərtəbə planı</span></li>
+              <li><span class="mf-check">✓</span> <span data-i18n="modules.m1_f3">Check-in / Check-out</span></li>
+              <li><span class="mf-check">✓</span> <span data-i18n="modules.m1_f4">Qonaq profilləri</span></li>
+              <li><span class="mf-check">✓</span> <span data-i18n="modules.m1_f5">Polis / rəsmi qurum bildirişi</span></li>
             </ul>
           </div>
           <div class="module-card" id="mod-finance">
-            <h3 class="module-name">Maliyyə və Faktura</h3>
-            <p class="module-desc">Folio idarəetməsi, ödəniş izlənməsi, mühasibat inteqrasiyası.</p>
+            <h3 class="module-name" data-i18n="modules.m2_title">Maliyyə və Faktura</h3>
+            <p class="module-desc" data-i18n="modules.m2_desc">Folio idarəetməsi, ödəniş izlənməsi, mühasibat inteqrasiyası.</p>
             <ul class="module-features">
-              <li><span class="mf-check">✓</span> Folio idarəetməsi</li>
-              <li><span class="mf-check">✓</span> e-Faktura / e-Arxiv</li>
-              <li><span class="mf-check">✓</span> Ödəniş əməliyyatları</li>
-              <li><span class="mf-check">✓</span> Kassa hesabatı</li>
+              <li><span class="mf-check">✓</span> <span data-i18n="modules.m2_f1">Folio idarəetməsi</span></li>
+              <li><span class="mf-check">✓</span> <span data-i18n="modules.m2_f2">e-Faktura / e-Arxiv</span></li>
+              <li><span class="mf-check">✓</span> <span data-i18n="modules.m2_f3">Ödəniş əməliyyatları</span></li>
+              <li><span class="mf-check">✓</span> <span data-i18n="modules.m2_f4">Kassa hesabatı</span></li>
             </ul>
           </div>
           <div class="module-card" id="mod-rooms">
-            <h3 class="module-name">Otaq Xidmətləri</h3>
-            <p class="module-desc">Otaq təmizliyinin izlənməsi, tapşırıq idarəetməsi, təmir tələbləri.</p>
+            <h3 class="module-name" data-i18n="modules.m3_title">Otaq Xidmətləri</h3>
+            <p class="module-desc" data-i18n="modules.m3_desc">Otaq təmizliyinin izlənməsi, tapşırıq idarəetməsi, təmir tələbləri.</p>
             <ul class="module-features">
-              <li><span class="mf-check">✓</span> Avtomatik tapşırıq yaradılması</li>
-              <li><span class="mf-check">✓</span> Mobil tətbiq dəstəyi</li>
-              <li><span class="mf-check">✓</span> Təmir tələbləri</li>
-              <li><span class="mf-check">✓</span> Performans hesabatı</li>
+              <li><span class="mf-check">✓</span> <span data-i18n="modules.m3_f1">Avtomatik tapşırıq yaradılması</span></li>
+              <li><span class="mf-check">✓</span> <span data-i18n="modules.m3_f2">Mobil tətbiq dəstəyi</span></li>
+              <li><span class="mf-check">✓</span> <span data-i18n="modules.m3_f3">Təmir tələbləri</span></li>
+              <li><span class="mf-check">✓</span> <span data-i18n="modules.m3_f4">Performans hesabatı</span></li>
             </ul>
           </div>
           <div class="module-card" id="mod-channel">
-            <h3 class="module-name">Channel Manager</h3>
-            <p class="module-desc">OTA inteqrasiyaları, qiymət və mövcudluq sinxronizasiyası.</p>
+            <h3 class="module-name" data-i18n="modules.m4_title">Channel Manager</h3>
+            <p class="module-desc" data-i18n="modules.m4_desc">OTA inteqrasiyaları, qiymət və mövcudluq sinxronizasiyası.</p>
             <ul class="module-features">
-              <li><span class="mf-check">✓</span> Booking.com</li>
-              <li><span class="mf-check">✓</span> Expedia</li>
-              <li><span class="mf-check">✓</span> Airbnb + 30-dan çox kanal</li>
-              <li><span class="mf-check">✓</span> Avtomatik yenilənmə</li>
+              <li><span class="mf-check">✓</span> <span data-i18n="modules.m4_f1">Booking.com</span></li>
+              <li><span class="mf-check">✓</span> <span data-i18n="modules.m4_f2">Expedia</span></li>
+              <li><span class="mf-check">✓</span> <span data-i18n="modules.m4_f3">Airbnb + 30-dan çox kanal</span></li>
+              <li><span class="mf-check">✓</span> <span data-i18n="modules.m4_f4">Avtomatik yenilənmə</span></li>
             </ul>
           </div>
           <div class="module-card" id="mod-analytics">
-            <h3 class="module-name">Hesabatlar və Analitika</h3>
-            <p class="module-desc">Canlı KPI izlənməsi, gəlir analizləri, proqnozlaşdırma.</p>
+            <h3 class="module-name" data-i18n="modules.m5_title">Hesabatlar və Analitika</h3>
+            <p class="module-desc" data-i18n="modules.m5_desc">Canlı KPI izlənməsi, gəlir analizləri, proqnozlaşdırma.</p>
             <ul class="module-features">
-              <li><span class="mf-check">✓</span> Doluluq, ADR və RevPAR</li>
-              <li><span class="mf-check">✓</span> Gəlir və proqnoz</li>
-              <li><span class="mf-check">✓</span> Departament üzrə hesabatlar</li>
-              <li><span class="mf-check">✓</span> CSV / Excel ixracı</li>
+              <li><span class="mf-check">✓</span> <span data-i18n="modules.m5_f1">Doluluq, ADR və RevPAR</span></li>
+              <li><span class="mf-check">✓</span> <span data-i18n="modules.m5_f2">Gəlir və proqnoz</span></li>
+              <li><span class="mf-check">✓</span> <span data-i18n="modules.m5_f3">Departament üzrə hesabatlar</span></li>
+              <li><span class="mf-check">✓</span> <span data-i18n="modules.m5_f4">CSV / Excel ixracı</span></li>
             </ul>
           </div>
           <div class="module-card" id="mod-pos">
-            <h3 class="module-name">POS və F&amp;B</h3>
-            <p class="module-desc">Restoran, bar və otaq xidməti idarəetməsi.</p>
+            <h3 class="module-name" data-i18n="modules.m6_title">POS və F&amp;B</h3>
+            <p class="module-desc" data-i18n="modules.m6_desc">Restoran, bar və otaq xidməti idarəetməsi.</p>
             <ul class="module-features">
-              <li><span class="mf-check">✓</span> Planşet / toxunuşlu POS</li>
-              <li><span class="mf-check">✓</span> Folioya birbaşa yazılma</li>
-              <li><span class="mf-check">✓</span> Anbar və menyu idarəetməsi</li>
-              <li><span class="mf-check">✓</span> Növbə hesabatları</li>
+              <li><span class="mf-check">✓</span> <span data-i18n="modules.m6_f1">Planşet / toxunuşlu POS</span></li>
+              <li><span class="mf-check">✓</span> <span data-i18n="modules.m6_f2">Folioya birbaşa yazılma</span></li>
+              <li><span class="mf-check">✓</span> <span data-i18n="modules.m6_f3">Anbar və menyu idarəetməsi</span></li>
+              <li><span class="mf-check">✓</span> <span data-i18n="modules.m6_f4">Növbə hesabatları</span></li>
             </ul>
           </div>
         </div>
 
         <!-- Divider -->
         <div class="modules-divider">
-          <span>Bütün əməliyyatlar bir platformada</span>
+          <span data-i18n="modules.divider">Bütün əməliyyatlar bir platformada</span>
         </div>
 
         <!-- Allops quick-view grid -->
         <div class="allops-grid">
           <div class="allops-card" id="allops-frontdesk">
-            <div class="allops-cat">ÖN BÜRO VƏ RESERVASİYA</div>
+            <div class="allops-cat" data-i18n="allops.c1">ÖN BÜRO VƏ RESERVASİYA</div>
             <ul class="allops-list">
               <li><span class="ao-check">✓</span> Otaq Panosu</li>
               <li><span class="ao-check">✓</span> Girişlər</li>
@@ -573,7 +616,7 @@
             </ul>
           </div>
           <div class="allops-card" id="allops-finance">
-            <div class="allops-cat">MALİYYƏ VƏ FAKTURA</div>
+            <div class="allops-cat" data-i18n="allops.c2">MALİYYƏ VƏ FAKTURA</div>
             <ul class="allops-list">
               <li><span class="ao-check">✓</span> Folio</li>
               <li><span class="ao-check">✓</span> Kassa</li>
@@ -584,7 +627,7 @@
             </ul>
           </div>
           <div class="allops-card" id="allops-revenue">
-            <div class="allops-cat">GƏLİR VƏ SATIŞ KANALLARI</div>
+            <div class="allops-cat" data-i18n="allops.c3">GƏLİR VƏ SATIŞ KANALLARI</div>
             <ul class="allops-list">
               <li><span class="ao-check">✓</span> Channel Manager</li>
               <li><span class="ao-check">✓</span> Qiymət İdarəetməsi</li>
@@ -593,7 +636,7 @@
             </ul>
           </div>
           <div class="allops-card" id="allops-rooms">
-            <div class="allops-cat">OTAQ XİDMƏTLƏRİ VƏ TEXNİKİ</div>
+            <div class="allops-cat" data-i18n="allops.c4">OTAQ XİDMƏTLƏRİ VƏ TEXNİKİ</div>
             <ul class="allops-list">
               <li><span class="ao-check">✓</span> Mərtəbə Xidmətləri</li>
               <li><span class="ao-check">✓</span> Texniki Xidmət</li>
@@ -602,7 +645,7 @@
             </ul>
           </div>
           <div class="allops-card" id="allops-fb">
-            <div class="allops-cat">F&amp;B, SPA VƏ CONCİERGE</div>
+            <div class="allops-cat" data-i18n="allops.c5">F&amp;B, SPA VƏ CONCİERGE</div>
             <ul class="allops-list">
               <li><span class="ao-check">✓</span> POS / Restoran</li>
               <li><span class="ao-check">✓</span> SPA</li>
@@ -610,7 +653,7 @@
             </ul>
           </div>
           <div class="allops-card" id="allops-guest">
-            <div class="allops-cat">QONAQ TƏCRÜBƏSİ</div>
+            <div class="allops-cat" data-i18n="allops.c6">QONAQ TƏCRÜBƏSİ</div>
             <ul class="allops-list">
               <li><span class="ao-check">✓</span> Sədaqət Proqramı</li>
               <li><span class="ao-check">✓</span> Nüfuz İdarəetməsi</li>
@@ -619,7 +662,7 @@
             </ul>
           </div>
           <div class="allops-card" id="allops-hr">
-            <div class="allops-cat">PERSONAL VƏ UYĞUNLUQ</div>
+            <div class="allops-cat" data-i18n="allops.c7">PERSONAL VƏ UYĞUNLUQ</div>
             <ul class="allops-list">
               <li><span class="ao-check">✓</span> Personal</li>
               <li><span class="ao-check">✓</span> Üz Tanıma Girişi</li>
@@ -628,11 +671,11 @@
             </ul>
           </div>
           <div class="allops-card" id="allops-reports">
-            <div class="allops-cat">HESABAT VƏ ANALİTİKA</div>
+            <div class="allops-cat" data-i18n="allops.c8">HESABAT VƏ ANALİTİKA</div>
             <ul class="allops-list">
               <li><span class="ao-check">✓</span> Ana Səhifə</li>
               <li><span class="ao-check">✓</span> Hesabatlar</li>
-              <li class="ao-note">18 hazır hesabat: doluluq, proqnoz, kassa, maliyyə, agentlik və daha çox</li>
+              <li class="ao-note" data-i18n="allops.note">18 hazır hesabat: doluluq, proqnoz, kassa, maliyyə, agentlik və daha çox</li>
             </ul>
           </div>
         </div>
@@ -643,12 +686,12 @@
     <!-- ═══════════════════════════════════════════
          HOTELLINIA CONNECT
     ═══════════════════════════════════════════ -->
-    <section class="automation" id="integrations">
+    <section class="automation" id="automation">
       <div class="container">
         <div class="section-header">
-          <div class="section-pill cyan">Hotellinia Connect</div>
-          <h2 class="section-title">Hotellinia Connect ilə kanallarınız<br/><span class="gradient-text">həmişə sinxron</span></h2>
-          <p class="section-sub">Qiymət və mövcudluq aparıcı satış kanalları ilə avtomatik sinxronizasiya olunur.</p>
+          <div class="section-pill cyan" data-i18n="connect.tag">Hotellinia Connect</div>
+          <h2 class="section-title" data-i18n="connect.title">Hotellinia Connect ilə kanallarınız<br/><span class="gradient-text">həmişə sinxron</span></h2>
+          <p class="section-sub" data-i18n="connect.sub">Qiymət və mövcudluq aparıcı satış kanalları ilə avtomatik sinxronizasiya olunur.</p>
         </div>
 
         <!-- OTA Logo Grid -->
@@ -670,7 +713,7 @@
           <div class="ota-logo-tile">Derbysoft</div>
           <div class="ota-logo-tile">traveloka</div>
           <div class="ota-logo-tile">klook</div>
-          <div class="ota-logo-tile ota-logo-more">20+ kanal daha</div>
+          <div class="ota-logo-tile ota-logo-more" data-i18n="connect.more_channels">20+ kanal daha</div>
         </div>
 
         <!-- 3 Feature Cards -->
@@ -679,22 +722,22 @@
             <div class="cf-icon">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M1 4v6h6M23 20v-6h-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M20.49 9A9 9 0 005.64 5.64L1 10M23 14l-4.64 4.36A9 9 0 013.51 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </div>
-            <h4 class="cf-title">İkitərəfli sinxronizasiya</h4>
-            <p class="cf-desc">Qiymət və mövcudluq kanallara avtomatik göndərilir; gələn rezervasiyalar panelinizə düşür.</p>
+            <h4 class="cf-title" data-i18n="connect.f1_title">İkitərəfli sinxronizasiya</h4>
+            <p class="cf-desc" data-i18n="connect.f1_desc">Qiymət və mövcudluq kanallara avtomatik göndərilir; gələn rezervasiyalar panelinizə düşür.</p>
           </div>
           <div class="connect-feat" id="cf-check">
             <div class="cf-icon">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><polyline points="12 6 12 12 16 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
             </div>
-            <h4 class="cf-title">Hər 5 dəqiqədə yoxlama</h4>
-            <p class="cf-desc">Yeni rezervasiya, dəyişiklik və ləğvlər beş dəqiqəlik aralıqlarla avtomatik ötürülür.</p>
+            <h4 class="cf-title" data-i18n="connect.f2_title">Hər 5 dəqiqədə yoxlama</h4>
+            <p class="cf-desc" data-i18n="connect.f2_desc">Yeni rezervasiya, dəyişiklik və ləğvlər beş dəqiqəlik aralıqlarla avtomatik ötürülür.</p>
           </div>
           <div class="connect-feat" id="cf-panel">
             <div class="cf-icon">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="2"/><path d="M3 9h18M9 21V9" stroke="currentColor" stroke-width="2"/></svg>
             </div>
-            <h4 class="cf-title">Vahid paneldən idarəetmə</h4>
-            <p class="cf-desc">Bütün kanalların qoşulma statusu, otaq-qiymət uyğunlaşdırmaları və qeydləri tək ekranda.</p>
+            <h4 class="cf-title" data-i18n="connect.f3_title">Vahid paneldən idarəetmə</h4>
+            <p class="cf-desc" data-i18n="connect.f3_desc">Bütün kanalların qoşulma statusu, otaq-qiymət uyğunlaşdırmaları və qeydləri tək ekranda.</p>
           </div>
         </div>
 
@@ -703,44 +746,92 @@
 
 
     <!-- ═══════════════════════════════════════════
-         FOOTER CTA
+         TEAM & LEADERSHIP SECTION
     ═══════════════════════════════════════════ -->
+    <section class="team-section" id="team">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-pill" style="background:rgba(139,92,246,0.12);border-color:rgba(139,92,246,0.2);color:var(--purple);" data-i18n="team.section_tag">Rəhbərlik və Komandamız</div>
+          <h2 class="section-title" data-i18n="team.section_title">Hotellinia-nın <span class="gradient-text">idarə heyəti</span></h2>
+          <p class="section-sub" data-i18n="team.section_sub">Platformanın texnoloji arxitekturası, biznesin inkişafı və satış strategiyalarına rəhbərlik edən komandamız.</p>
+        </div>
+        <div class="team-grid">
+
+          <!-- 1. Nizam Babayev -->
+          <div class="team-card">
+            <div class="team-avatar avatar-2">📈</div>
+            <div class="team-name" data-i18n="team.nizam_name">Nizam Babayev</div>
+            <div class="team-role" data-i18n="team.nizam_role">Biznesin İnkişafı Meneceri</div>
+            <div class="team-bio" data-i18n="team.nizam_bio">Yeni bazarların araşdırılması, strateji tərəfdaşlıqlar və Hotellinia-nın regional genişlənməsinə cavabdehdir. Mehmanxana texnologiyaları sektorunda illərlə dərin təcrübəyə malikdir.</div>
+            <div class="team-links">
+              <a href="#" onclick="return false" class="team-link-icon" title="LinkedIn">in</a>
+              <a href="contact.html" class="team-link-icon" title="Contact">✉</a>
+            </div>
+          </div>
+
+          <!-- 2. Fərid Vəliyev -->
+          <div class="team-card">
+            <div class="team-avatar avatar-3">🤝</div>
+            <div class="team-name" data-i18n="team.farid_name">Fərid Vəliyev</div>
+            <div class="team-role" data-i18n="team.farid_role">Satış Meneceri</div>
+            <div class="team-bio" data-i18n="team.farid_bio">Otellər və mehmanxana şəbəkələri ilə B2B tərəfdaşlıqların qurulması, müştəri portfelinin idarə edilməsi və satış strategiyalarının uğurla icrasına rəhbərlik edir.</div>
+            <div class="team-links">
+              <a href="#" onclick="return false" class="team-link-icon" title="LinkedIn">in</a>
+              <a href="contact.html" class="team-link-icon" title="Contact">✉</a>
+            </div>
+          </div>
+
+          <!-- 3. Cavidan Bayramlı -->
+          <div class="team-card">
+            <div class="team-avatar avatar-1">💻</div>
+            <div class="team-name" data-i18n="team.cavidan_name">Cavidan Bayramlı</div>
+            <div class="team-role" data-i18n="team.cavidan_role">Baş Texniki Direktor (CTO)</div>
+            <div class="team-bio" data-i18n="team.cavidan_bio">Hotellinia platformasının texnoloji arxitekturası, bulud infrastrukturu və kibertəhlükəsizlik sistemlərinə rəhbərlik edir. Yüksək yüklü paylanmış sistemlər və innovativ həllər üzrə mühəndis.</div>
+            <div class="team-links">
+              <a href="#" onclick="return false" class="team-link-icon" title="LinkedIn">in</a>
+              <a href="#" onclick="return false" class="team-link-icon" title="GitHub">GH</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
     <section class="footer-cta" id="cta">
       <div class="cta-aura"></div>
       <div class="container">
         <div class="cta-inner">
-          <div class="cta-badge">
+          <div class="cta-badge" data-i18n="cta.badge">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            Pulsuz Demo
+            İndi Başlayın
           </div>
-          <h2 class="cta-title">Qonaqpərvərlik sənayesində<br/><span class="gradient-text">rəqəmsal dövrə</span> qədəm<br/>qoymağa hazırsınız?</h2>
-          <p class="cta-sub">Bu gün demo tələb edin, sabah fərqini hissin edin. Kredit kartı tələb olunmur.</p>
+          <h2 class="cta-title" data-i18n="cta.title">Otelinizin İdarəçiliyini <br/><span class="gradient-text">Yeni Səviyyəyə Qaldırın</span></h2>
+          <p class="cta-sub" data-i18n="cta.sub">14 günlük pulsuz sınaq müddəti ilə tanış olun. Kredit kartı tələb olunmur, quraşdırma komandamız tərəfindən həyata keçirilir.</p>
 
           <form class="cta-form" id="ctaForm" onsubmit="handleFormSubmit(event)">
             <div class="cta-input-wrap">
               <svg class="cta-input-icon" width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="currentColor" stroke-width="2"/><path d="M22 6l-10 7L2 6" stroke="currentColor" stroke-width="2"/></svg>
-              <input type="email" id="ctaEmail" class="cta-input" placeholder="E-poçt ünvanınız" required />
+              <input type="email" id="ctaEmail" class="cta-input" placeholder="E-poçt ünvanınız" data-i18n-placeholder="cta.placeholder" required />
             </div>
-            <button type="submit" class="btn btn-primary btn-xl btn-cta" id="cta-submit-btn" type="button" onclick="window.location='contact.html#contactForm'">
+            <button type="submit" class="btn btn-primary btn-xl btn-cta" id="cta-submit-btn" type="button" onclick="window.location='contact.html#contactForm'" data-i18n="cta.btn">
               Demo Tələb Et
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
             </button>
           </form>
-          <div class="cta-success" id="ctaSuccess" style="display:none">
+          <div class="cta-success" id="ctaSuccess" style="display:none" data-i18n="cta.success">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#00C896" opacity="0.15"/><path d="M8 12l3 3 5-5" stroke="#00C896" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             Müraciətiniz qeydə alındı! Tezliklə sizinlə əlaqə saxlayacağıq.
           </div>
 
           <div class="cta-trust-row">
-            <div class="trust-item">
+            <div class="trust-item" data-i18n="cta.trust1">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="#00C896" stroke-width="2"/></svg>
               SSL Şifrələnmiş
             </div>
-            <div class="trust-item">
+            <div class="trust-item" data-i18n="cta.trust2">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#00C896" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="#00C896" stroke-width="2" stroke-linecap="round"/></svg>
               GDPR Uyğun
             </div>
-            <div class="trust-item">
+            <div class="trust-item" data-i18n="cta.trust3">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" stroke="#00C896" stroke-width="2"/><circle cx="9" cy="7" r="4" stroke="#00C896" stroke-width="2"/></svg>
               Kredit kartı tələb yox
             </div>
@@ -756,11 +847,11 @@
   ═══════════════════════════════════════════ -->
   <footer class="site-footer">
     <div class="container">
-      <div class="footer-inner">
-        <div class="footer-brand">
-          <a href="#" class="logo" id="footer-logo-link">
+      <div class="footer-inner-clean">
+        <div class="footer-brand-clean">
+          <a href="index.html" class="logo" id="footer-logo-link">
             <span class="logo-icon">
-              <svg width="24" height="24" viewBox="0 0 28 28" fill="none">
+              <svg width="26" height="26" viewBox="0 0 28 28" fill="none">
                 <rect width="28" height="28" rx="7" fill="url(#footerLogoGrad)"/>
                 <path d="M7 20V10l7-4 7 4v10" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
                 <path d="M11 20v-5h6v5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
@@ -774,42 +865,33 @@
             </span>
             <span class="logo-text">Hotellinia</span>
           </a>
-          <p class="footer-tagline">Növbəti nəsil otel idarəetmə platforması.</p>
+          <p class="footer-tagline-clean" data-i18n="footer.tagline">Növbəti nəsil bulud əsaslı otel idarəetmə platforması. Bütün əməliyyatlarınızı tək bir ağıllı mərkəzdən idarə edin.</p>
         </div>
 
-        <div class="footer-links-row">
-          <div class="footer-col">
-            <div class="footer-col-title">Məhsul</div>
-            <a href="#features" class="footer-link">Xüsusiyyətlər</a>
-            <a href="#modules" class="footer-link">Modullar</a>
-            <a href="#integrations" class="footer-link">İnteqrasiyalar</a>
-            <a href="pricing.html" class="footer-link">Qiymətlər</a>
-          </div>
-          <div class="footer-col">
-            <div class="footer-col-title">Şirkət</div>
-            <a href="about.html" class="footer-link">Haqqımızda</a>
-            <a href="/blog" class="footer-link">Blog</a>
-            <a href="/careers" class="footer-link">Karyera</a>
-          </div>
-          <div class="footer-col">
-            <div class="footer-col-title">Dəstək</div>
-            <a href="/docs" class="footer-link">Sənədlər</a>
-            <a href="contact.html" class="footer-link">Əlaqə</a>
-            <a href="/status" class="footer-link">Sistem Statusu</a>
-          </div>
-        </div>
+        <nav class="footer-nav-clean" aria-label="Footer naviqasiya">
+          <a href="index.html" class="footer-nav-link" data-i18n="nav.home">Ana səhifə</a>
+          <a href="#features" class="footer-nav-link" data-i18n="nav.features">Xüsusiyyətlər</a>
+          <a href="#modules" class="footer-nav-link" data-i18n="nav.modules">Modullar</a>
+          <a href="#integrations" class="footer-nav-link" data-i18n="nav.integrations">İnteqrasiyalar</a>
+          <a href="pricing.html" class="footer-nav-link" data-i18n="nav.pricing">Qiymətlər</a>
+          <a href="about.html" class="footer-nav-link" data-i18n="nav.about">Haqqımızda</a>
+          <a href="contact.html" class="footer-nav-link" data-i18n="nav.contact">Əlaqə</a>
+        </nav>
       </div>
 
-      <div class="footer-bottom">
-        <p class="footer-copy">© 2025 Hotellinia. Müəllif hüquqları qorunur.</p>
-        <div class="footer-legal">
-          <a href="/privacy" class="footer-legal-link">Məxfilik Siyasəti</a>
-          <a href="/terms" class="footer-legal-link">İstifadə Şərtləri</a>
+      <div class="footer-bottom-clean">
+        <p class="footer-copy" data-i18n="footer.copy">© 2025 Hotellinia. Bütün hüquqlar qorunur.</p>
+        <div class="footer-status-pill">
+          <span class="footer-status-dot"></span>
+          <span data-i18n="footer.status">Bütün sistemlər aktivdir</span>
+          <span>·</span>
+          <span data-i18n="footer.location">Bakı, Azərbaycan</span>
         </div>
       </div>
     </div>
   </footer>
 
-  <script src="app.js"></script>
+  <script src="translations.js?v=4"></script>
+  <script src="app.js?v=4"></script>
 </body>
 </html>

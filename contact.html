@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="style.css"/>
+  <link rel="stylesheet" href="style.css?v=4"/>
   <style>
     .contact-wrap {
       display: grid;
@@ -128,29 +128,61 @@
     /* Offices */
     .offices-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-      margin-top: 40px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+      margin: 40px auto 0;
+      max-width: 860px;
     }
     .office-card {
-      background: var(--bg-card);
+      position: relative; overflow: hidden;
+      display: flex; flex-direction: column;
+      background: linear-gradient(160deg, rgba(0,200,150,0.07), rgba(0,102,255,0.04) 55%, var(--bg-card));
       border: 1px solid var(--border-glass);
       border-radius: var(--radius-xl);
-      padding: 28px;
+      padding: 32px;
       backdrop-filter: blur(12px);
-      transition: border-color 0.25s;
+      transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
     }
-    .office-card:hover { border-color: var(--border-bright); }
-    .office-flag { font-size: 28px; margin-bottom: 12px; }
-    .office-city { font-family: var(--font-display); font-size: 18px; font-weight: 700; margin-bottom: 8px; }
-    .office-addr { font-size: 13px; color: var(--text-secondary); line-height: 1.65; }
+    .office-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, #00C896, #0066FF);
+      opacity: 0.7;
+    }
+    .office-card--hq::before { background: linear-gradient(90deg, #8B5CF6, #0066FF); }
+    .office-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(0,200,150,0.35);
+      box-shadow: 0 18px 40px rgba(0,0,0,0.35), 0 0 30px rgba(0,200,150,0.08);
+    }
+    .office-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 20px; flex-wrap: wrap; }
+    .office-flag {
+      width: 52px; height: 52px; border-radius: 14px; font-size: 28px;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(255,255,255,0.05); border: 1px solid var(--border-glass);
+    }
+    .office-city { font-family: var(--font-display); font-size: 22px; font-weight: 700; margin-bottom: 18px; }
+    .office-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.7; }
+    .office-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 14px; }
+    .office-list li { display: flex; align-items: flex-start; gap: 12px; font-size: 14px; color: var(--text-secondary); line-height: 1.55; }
+    .office-list a { color: var(--text-primary, #fff); font-weight: 600; text-decoration: none; transition: color 0.2s; }
+    .office-list a:hover { color: var(--green); }
+    .office-ico {
+      flex: 0 0 32px; width: 32px; height: 32px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(0,200,150,0.1); color: var(--green);
+    }
     .office-type {
-      display: inline-block; margin-top: 12px;
+      display: inline-block;
       font-size: 11px; font-weight: 700;
-      padding: 3px 10px; border-radius: 100px;
+      padding: 5px 12px; border-radius: 100px;
       background: rgba(0,200,150,0.1);
       border: 1px solid rgba(0,200,150,0.2);
       color: var(--green);
+    }
+    .office-type--hq { background: rgba(139,92,246,0.12); border-color: rgba(139,92,246,0.3); color: #A78BFA; }
+    @media (max-width: 720px) {
+      .offices-grid { grid-template-columns: 1fr; }
+      .office-card { padding: 24px; }
     }
 
     /* FAQ */
@@ -198,17 +230,45 @@
 
 
       <nav class="nav-links" id="navLinksDesktop">
-        <a href="index.html#features" class="nav-link">Xüsusiyyətlər</a>
-        <a href="index.html#modules" class="nav-link">Modullar</a>
-        <a href="index.html#integrations" class="nav-link">İnteqrasiyalar</a>
-        <a href="pricing.html" class="nav-link">Qiymətlər</a>
-        <a href="about.html" class="nav-link">Haqqımızda</a>
-        <a href="contact.html" class="nav-link nav-link--active">Əlaqə</a>
+        <a href="index.html#features" class="nav-link" data-i18n="nav.features">Xüsusiyyətlər</a>
+        <a href="index.html#modules" class="nav-link" data-i18n="nav.modules">Modullar</a>
+        <a href="index.html#integrations" class="nav-link" data-i18n="nav.integrations">İnteqrasiyalar</a>
+        <a href="pricing.html" class="nav-link" data-i18n="nav.pricing">Qiymətlər</a>
+        <a href="about.html" class="nav-link" data-i18n="nav.about">Haqqımızda</a>
+        <a href="contact.html" class="nav-link nav-link--active" data-i18n="nav.contact">Əlaqə</a>
       </nav>
 
       <div class="nav-actions">
-        <a href="#" class="nav-login">Daxil ol</a>
-        <a href="contact.html#contactForm" class="btn btn-glow" id="nav-demo-btn">Demo Tələb Et</a>
+        <!-- Cool Language Dropdown -->
+        <div class="lang-dropdown" id="langDropdown">
+          <button type="button" class="lang-dropdown-btn" id="langDropdownBtn" aria-expanded="false" aria-haspopup="true" aria-label="Dil seçimi">
+            <span class="lang-flag" id="langActiveFlag">🇦🇿</span>
+            <span class="lang-code" id="langActiveCode">AZ</span>
+            <svg class="lang-arrow" width="12" height="12" viewBox="0 0 12 12" fill="none">
+              <path d="M2.5 4.5L6 8L9.5 4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <div class="lang-dropdown-menu" id="langDropdownMenu" role="menu">
+            <button type="button" class="lang-dropdown-item active" data-lang="az" role="menuitem">
+              <span class="item-flag">🇦🇿</span>
+              <div class="item-text">
+                <span class="item-name">Azərbaycan</span>
+                <span class="item-sub">AZ · Əsas dil</span>
+              </div>
+              <span class="item-check">✓</span>
+            </button>
+            <button type="button" class="lang-dropdown-item" data-lang="ru" role="menuitem">
+              <span class="item-flag">🇷🇺</span>
+              <div class="item-text">
+                <span class="item-name">Русский</span>
+                <span class="item-sub">RU · Язык интерфейса</span>
+              </div>
+              <span class="item-check">✓</span>
+            </button>
+          </div>
+        </div>
+        <a href="#" onclick="return false" class="nav-login" data-i18n="nav.login">Daxil ol</a>
+        <a href="contact.html#contactForm" class="btn btn-glow" id="nav-demo-btn" data-i18n="nav.demo">Demo Tələb Et</a>
         <button class="hamburger" id="hamburgerBtn" aria-label="Menyu" aria-expanded="false">
           <span></span><span></span><span></span>
         </button>
@@ -224,18 +284,33 @@
     <div class="mob-logo">
       <span class="mob-logo-dot">🏨</span> Hotellinia
     </div>
+    <div class="mob-lang-wrapper">
+      <div class="mob-lang-label" data-i18n="nav.lang_label">Dil seçimi</div>
+      <div class="mob-lang-bar">
+        <button type="button" class="mob-lang-btn active" data-lang="az">
+          <span class="mob-lang-flag">🇦🇿</span>
+          <span>AZ</span>
+          <span class="mob-lang-check">✓</span>
+        </button>
+        <button type="button" class="mob-lang-btn" data-lang="ru">
+          <span class="mob-lang-flag">🇷🇺</span>
+          <span>RU</span>
+          <span class="mob-lang-check">✓</span>
+        </button>
+      </div>
+    </div>
     <nav class="mob-links">
-        <a href="index.html#features" class="mob-link" id="mob-link-0">Xüsusiyyətlər</a>
-        <a href="index.html#modules" class="mob-link" id="mob-link-1">Modullar</a>
-        <a href="index.html#integrations" class="mob-link" id="mob-link-2">İnteqrasiyalar</a>
-        <a href="pricing.html" class="mob-link" id="mob-link-3">Qiymətlər</a>
-        <a href="about.html" class="mob-link" id="mob-link-4">Haqqımızda</a>
-        <a href="contact.html" class="mob-link" id="mob-link-5">Əlaqə</a>
+        <a href="index.html#features" class="mob-link" id="mob-link-0" data-i18n="nav.features">Xüsusiyyətlər</a>
+        <a href="index.html#modules" class="mob-link" id="mob-link-1" data-i18n="nav.modules">Modullar</a>
+        <a href="index.html#integrations" class="mob-link" id="mob-link-2" data-i18n="nav.integrations">İnteqrasiyalar</a>
+        <a href="pricing.html" class="mob-link" id="mob-link-3" data-i18n="nav.pricing">Qiymətlər</a>
+        <a href="about.html" class="mob-link" id="mob-link-4" data-i18n="nav.about">Haqqımızda</a>
+        <a href="contact.html" class="mob-link" id="mob-link-5" data-i18n="nav.contact">Əlaqə</a>
     </nav>
     <div class="mob-actions">
-      <a href="contact.html#contactForm" class="btn btn-glow btn-block">⚡ Pulsuz Demo Tələb Et</a>
+      <a href="contact.html#contactForm" class="btn btn-glow btn-block" data-i18n="nav.free_demo">⚡ Pulsuz Demo Tələb Et</a>
     </div>
-    <div class="mob-footer-note">Azərbaycan · 500+ Otel Partnyor</div>
+    <div class="mob-footer-note" data-i18n="nav.partner_badge">Azərbaycan · 500+ Otel Partnyor</div>
   </div>
 
   <main>
@@ -243,12 +318,12 @@
     <section class="page-hero" style="padding-top:120px;padding-bottom:60px;">
       <div class="page-hero-aura"></div>
       <div class="container" style="text-align:center;">
-        <div class="section-pill" style="background:rgba(0,200,150,0.12);border-color:rgba(0,200,150,0.2);color:var(--green);display:inline-flex;">Əlaqə</div>
-        <h1 class="page-hero-title" style="margin:24px auto 20px;">
-          Bizimlə <span class="gradient-text">əlaqə</span> saxlayın
+        <div class="section-pill" style="background:rgba(0,200,150,0.12);border-color:rgba(0,200,150,0.2);color:var(--green);display:inline-flex;" data-i18n="contact.hero_tag">Bizimlə Əlaqə</div>
+        <h1 class="page-hero-title" style="margin:24px auto 20px;" data-i18n="contact.hero_title">
+          Suallarınız var? <br/><span class="gradient-text">Sizə kömək etməyə hazırıq</span>
         </h1>
-        <p class="page-hero-sub" style="max-width:540px;margin:0 auto;">
-          Demo tələb edin, suallarınızı soruşun və ya tərəfdaşlıq haqqında danışaq. Komandamız 24 saat ərzində cavab verir.
+        <p class="page-hero-sub" style="max-width:540px;margin:0 auto;" data-i18n="contact.hero_sub">
+          Demo tələb etmək, əməkdaşlıq və ya texniki suallar üçün bizimlə əlaqə saxlayın. Komandamız ən qısa zamanda cavab verəcəkdir.
         </p>
       </div>
     </section>
@@ -260,11 +335,11 @@
 
           <!-- Info side -->
           <div>
-            <h2 class="contact-info-title">
-              Sizə <span class="gradient-text">kömək etməyə</span><br/>hazırıq
+            <h2 class="contact-info-title" data-i18n="contact.info_title">
+              Əlaqə Məlumatları
             </h2>
-            <p class="contact-info-sub">
-              Kiçik boutique oteldən böyük otel şəbəkəsinə qədər — hər müştərimizə fərdi yanaşırıq. İlk demo tamamilə pulsuzdur.
+            <p class="contact-info-sub" data-i18n="contact.hero_sub">
+              Demo tələb etmək, əməkdaşlıq və ya texniki suallar üçün bizimlə əlaqə saxlayın. Komandamız ən qısa zamanda cavab verəcəkdir.
             </p>
             <div class="info-cards">
               <div class="info-card" id="ic-phone">
@@ -272,9 +347,9 @@
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 2h3a2 2 0 012 1.72c.127.96.36 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.34 1.85.573 2.81.7A2 2 0 0122 16.92z" stroke="currentColor" stroke-width="2"/></svg>
                 </div>
                 <div>
-                  <div class="info-card-label">Telefon</div>
-                  <div class="info-card-val">+994 12 555 00 00</div>
-                  <div class="info-card-sub">B.ertəsi – Cümə, 09:00–18:00</div>
+                  <div class="info-card-label" data-i18n="contact.phone_label">Telefon</div>
+                  <div class="info-card-val">+994 997 25 20 00</div>
+                  <div class="info-card-sub" data-i18n="contact.hours_val">Bazar ertəsi – Şənbə: 09:00 – 19:00 (Dəstək: 24/7)</div>
                 </div>
               </div>
               <div class="info-card" id="ic-email">
@@ -282,9 +357,9 @@
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="currentColor" stroke-width="2"/><polyline points="22,6 12,13 2,6" stroke="currentColor" stroke-width="2"/></svg>
                 </div>
                 <div>
-                  <div class="info-card-label">E-poçt</div>
-                  <div class="info-card-val">info@hotellinia.com</div>
-                  <div class="info-card-sub">24 saat ərzində cavab veririk</div>
+                  <div class="info-card-label" data-i18n="contact.email_label">E-poçt</div>
+                  <div class="info-card-val">info@hotellinia.az</div>
+                  <div class="info-card-sub" data-i18n="contact.email_sub">24 saat ərzində cavab veririk</div>
                 </div>
               </div>
               <div class="info-card" id="ic-demo">
@@ -292,9 +367,9 @@
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="2" y="3" width="20" height="14" rx="2" stroke="currentColor" stroke-width="2"/><path d="M8 21h8M12 17v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
                 </div>
                 <div>
-                  <div class="info-card-label">Canlı Demo</div>
-                  <div class="info-card-val">Pulsuz 30 dəqiqəlik demo</div>
-                  <div class="info-card-sub">Sistemi canlı görün, suallarınızı verin</div>
+                  <div class="info-card-label" data-i18n="contact.demo_title">Canlı Demo</div>
+                  <div class="info-card-val" data-i18n="contact.demo_val">Pulsuz 30 dəqiqəlik demo</div>
+                  <div class="info-card-sub" data-i18n="contact.demo_sub">Sistemi canlı görün, suallarınızı verin</div>
                 </div>
               </div>
               <div class="info-card" id="ic-addr">
@@ -302,9 +377,9 @@
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="2"/></svg>
                 </div>
                 <div>
-                  <div class="info-card-label">Ünvan</div>
-                  <div class="info-card-val">Bakı, Azərbaycan</div>
-                  <div class="info-card-sub">Nizami küçəsi 90, AZ1010</div>
+                  <div class="info-card-label" data-i18n="contact.address_label">Ünvan</div>
+                  <div class="info-card-val" data-i18n="contact.address_val">Gəncə Biznes Mərkəzi, Gəncə, Azərbaycan</div>
+                  <div class="info-card-sub" data-i18n="contact.addr_sub">Hotellinia Ofisi</div>
                 </div>
               </div>
             </div>
@@ -312,63 +387,72 @@
 
           <!-- Form side -->
           <div class="contact-form-side" id="contactForm-wrap">
-            <h2 class="cf-heading">Mesaj göndərin</h2>
-            <p class="cf-subheading">Formu doldurun, qısa müddətdə əlaqə saxlayacağıq.</p>
+            <h2 class="cf-heading" data-i18n="contact.form_title">Bizə Mesaj Göndərin</h2>
+            <p class="cf-subheading" data-i18n="contact.form_sub">Məlumatlarınızı qeyd edin, komandamız sizinlə əlaqə saxlasın.</p>
 
             <form id="contactForm" name="contactForm" onsubmit="handleContactSubmit(event)">
               <div class="form-row">
                 <div class="form-group">
-                  <label for="cf-name">Ad Soyad *</label>
-                  <input type="text" id="cf-name" placeholder="Əli Həsənov" required/>
+                  <label for="cf-company" data-i18n="contact.lbl_company">Otelin və ya müəssisənin adı *</label>
+                  <input type="text" id="cf-company" required/>
                 </div>
                 <div class="form-group">
-                  <label for="cf-company">Otel / Şirkət *</label>
-                  <input type="text" id="cf-company" placeholder="Grand Baku Hotel" required/>
+                  <label for="cf-city" data-i18n="contact.lbl_city">Şəhər *</label>
+                  <input type="text" id="cf-city" required/>
                 </div>
               </div>
               <div class="form-row">
                 <div class="form-group">
-                  <label for="cf-email">E-poçt *</label>
-                  <input type="email" id="cf-email" placeholder="ali@hotel.az" required/>
+                  <label for="cf-type" data-i18n="contact.lbl_type">Müəssisənin növü *</label>
+                  <select id="cf-type" required style="color:#e2e8f0;background:#0d1117;">
+                    <option value="" disabled selected data-i18n="contact.opt_select">Seçin...</option>
+                    <option data-i18n="contact.opt_type_hotel">Otel</option>
+                    <option data-i18n="contact.opt_type_hostel">Hostel</option>
+                    <option data-i18n="contact.opt_type_apart">Apart hotel / Residence</option>
+                    <option data-i18n="contact.opt_type_resort">Sanatoriya / Resort</option>
+                    <option data-i18n="contact.opt_type_other">Digər</option>
+                  </select>
                 </div>
                 <div class="form-group">
-                  <label for="cf-phone">Telefon</label>
-                  <input type="tel" id="cf-phone" placeholder="+994 50 000 00 00"/>
+                  <label for="cf-rooms" data-i18n="contact.lbl_rooms">Otaqların sayı *</label>
+                  <select id="cf-rooms" required style="color:#e2e8f0;background:#0d1117;">
+                    <option value="" disabled selected data-i18n="contact.opt_select">Seçin...</option>
+                    <option data-i18n="contact.opt_rooms_1">1–20 otaq</option>
+                    <option data-i18n="contact.opt_rooms_2">21–50 otaq</option>
+                    <option data-i18n="contact.opt_rooms_3">51–100 otaq</option>
+                    <option data-i18n="contact.opt_rooms_4">100-dən çox</option>
+                  </select>
                 </div>
               </div>
               <div class="form-group">
-                <label for="cf-rooms">Otaq sayı</label>
-                <select id="cf-rooms" style="color:#e2e8f0;background:#0d1117;">
-                  <option value="" disabled selected>Seçin...</option>
-                  <option>1 – 20 otaq</option>
-                  <option>21 – 50 otaq</option>
-                  <option>51 – 150 otaq</option>
-                  <option>150+ otaq</option>
-                  <option>Otel şəbəkəsi (2+ mülk)</option>
+                <label for="cf-name" data-i18n="contact.lbl_name">Əlaqədar şəxsin adı və soyadı *</label>
+                <input type="text" id="cf-name" required/>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="cf-phone" data-i18n="contact.lbl_phone">Telefon nömrəsi *</label>
+                  <input type="tel" id="cf-phone" required/>
+                </div>
+                <div class="form-group">
+                  <label for="cf-email" data-i18n="contact.lbl_email">E-poçt ünvanı *</label>
+                  <input type="email" id="cf-email" required/>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="cf-subject" data-i18n="contact.lbl_purpose">Müraciətin məqsədi *</label>
+                <select id="cf-subject" required style="color:#e2e8f0;background:#0d1117;">
+                  <option value="" disabled selected data-i18n="contact.opt_select">Seçin...</option>
+                  <option data-i18n="contact.opt_purp_demo">Demo təqdimatı</option>
+                  <option data-i18n="contact.opt_purp_price">Qiymət təklifi</option>
+                  <option data-i18n="contact.opt_purp_collab">Əməkdaşlıq haqqında məlumat</option>
                 </select>
               </div>
               <div class="form-group">
-                <label for="cf-subject">Müraciət növü</label>
-                <select id="cf-subject" style="color:#e2e8f0;background:#0d1117;">
-                  <option value="" disabled selected>Seçin...</option>
-                  <option>Demo tələbi</option>
-                  <option>Qiymət məlumatı</option>
-                  <option>İnteqrasiya sualı</option>
-                  <option>Texniki dəstək</option>
-                  <option>Tərəfdaşlıq</option>
-                  <option>Digər</option>
-                </select>
+                <label for="cf-message" data-i18n="contact.lbl_msg">Əlavə məlumat (istəyə bağlı)</label>
+                <textarea id="cf-message"></textarea>
               </div>
-              <div class="form-group">
-                <label for="cf-message">Mesajınız</label>
-                <textarea id="cf-message" placeholder="Sisteminiz haqqında ətraflı məlumat almaq istəyirəm..."></textarea>
-              </div>
-              <div class="checkbox-row">
-                <input type="checkbox" id="cf-agree" required/>
-                <label for="cf-agree"><a href="#">Məxfilik Siyasəti</a>ni oxudum və qəbul edirəm. Hotellinia-nın mənimlə əlaqə saxlamasına razıyam.</label>
-              </div>
-              <button type="submit" class="btn btn-primary btn-submit-full" id="contact-submit-btn">
-                Mesaj Göndər
+              <button type="submit" class="btn btn-primary btn-submit-full" id="contact-submit-btn" data-i18n="contact.btn_send">
+                Sorğu göndər
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
               </button>
             </form>
@@ -378,8 +462,8 @@
                 <circle cx="12" cy="12" r="10" fill="rgba(0,200,150,0.15)"/>
                 <path d="M8 12l3 3 5-5" stroke="#00C896" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
-              Mesajınız göndərildi! 🎉<br/>
-              <span style="font-size:14px;font-weight:400;color:var(--text-secondary);">Komandamız ən gec 24 saat ərzində sizinlə əlaqə saxlayacaq.</span>
+              <span data-i18n="contact.success_title">Sorğunuz göndərildi! 🎉</span><br/>
+              <span style="font-size:14px;font-weight:400;color:var(--text-secondary);" data-i18n="contact.success_sub">Komandamız ən gec 24 saat ərzində sizinlə əlaqə saxlayacaq.</span>
             </div>
           </div>
 
@@ -390,28 +474,39 @@
     <!-- OFFICES -->
     <section style="padding:0 0 80px;">
       <div class="container">
-        <div class="section-header">
-          <div class="section-pill">Ofislərimiz</div>
-          <h2 class="section-title">Bizi <span class="gradient-text">harada taparsınız</span></h2>
+        <div class="section-header" style="text-align:center;display:flex;flex-direction:column;align-items:center;">
+          <div class="section-pill" data-i18n="contact.offices_tag">Ofislərimiz</div>
+          <h2 class="section-title" style="text-align:center;" data-i18n="contact.offices_title">Bizi <span class="gradient-text">harada taparsınız</span></h2>
         </div>
         <div class="offices-grid">
           <div class="office-card" id="office-baku">
-            <div class="office-flag">🇦🇿</div>
-            <div class="office-city">Bakı, Azərbaycan</div>
-            <div class="office-addr">Nizami küçəsi 90, AZ1010<br/>Bakı, Azərbaycan<br/><strong>+994 12 555 00 00</strong></div>
-            <span class="office-type">Baş ofis</span>
+            <div class="office-top">
+              <div class="office-flag">🇦🇿</div>
+              <span class="office-type" data-i18n="contact.rep_az">Azərbaycan nümayəndəliyi</span>
+            </div>
+            <div class="office-city">Gəncə, Azərbaycan</div>
+            <ul class="office-list">
+              <li>
+                <span class="office-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="2"/></svg></span>
+                <span>Gəncə Biznes Mərkəzi<br/>Gəncə, Azərbaycan</span>
+              </li>
+              <li>
+                <span class="office-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 2h3a2 2 0 012 1.72c.127.96.36 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.34 1.85.573 2.81.7A2 2 0 0122 16.92z" stroke="currentColor" stroke-width="2"/></svg></span>
+                <a href="tel:+994997252000">+994 997 25 20 00</a>
+              </li>
+              <li>
+                <span class="office-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="currentColor" stroke-width="2"/><polyline points="22,6 12,13 2,6" stroke="currentColor" stroke-width="2"/></svg></span>
+                <a href="mailto:info@hotellinia.az">info@hotellinia.az</a>
+              </li>
+            </ul>
           </div>
-          <div class="office-card" id="office-istanbul">
-            <div class="office-flag">🇹🇷</div>
-            <div class="office-city">İstanbul, Türkiyə</div>
-            <div class="office-addr">Büyükdere Cad. No:123<br/>Beşiktaş, İstanbul<br/><strong>+90 212 555 00 00</strong></div>
-            <span class="office-type">Regional ofis</span>
-          </div>
-          <div class="office-card" id="office-dubai">
-            <div class="office-flag">🇦🇪</div>
-            <div class="office-city">Dubai, BAƏ</div>
-            <div class="office-addr">Dubai Internet City<br/>Building 17, Office 209<br/><strong>+971 4 555 00 00</strong></div>
-            <span class="office-type">Regional ofis</span>
+          <div class="office-card office-card--hq" id="office-istanbul">
+            <div class="office-top">
+              <div class="office-flag">🇹🇷</div>
+              <span class="office-type office-type--hq" data-i18n="contact.rep_hq">Baş ofis</span>
+            </div>
+            <div class="office-city" data-i18n="contact.hq_country">Türkiyə</div>
+            <p class="office-desc" data-i18n="contact.hq_desc">Hotellinia-nın Türkiyədəki baş ofisi.</p>
           </div>
         </div>
       </div>
@@ -421,39 +516,41 @@
     <section style="padding:0 0 100px;">
       <div class="container">
         <div class="section-header">
-          <div class="section-pill">FAQ</div>
-          <h2 class="section-title">Tez-tez soruşulan <span class="gradient-text">suallar</span></h2>
+          <div class="section-pill" data-i18n="contact.faq_tag">FAQ</div>
+          <h2 class="section-title" data-i18n="contact.faq_title">Tez-tez soruşulan <span class="gradient-text">suallar</span></h2>
         </div>
         <div class="cfaq-grid">
           <div class="cfaq-card" id="cfaq-1">
-            <div class="cfaq-q">Demo nə qədər davam edir?</div>
-            <div class="cfaq-a">Demo görüşü adətən 30–45 dəqiqə davam edir. Bu müddətdə sistemin bütün əsas modullarını canlı görər, suallarınızı verə bilərsiniz.</div>
+            <div class="cfaq-q" data-i18n="contact.faq1_q">Demo nə qədər davam edir?</div>
+            <div class="cfaq-a" data-i18n="contact.faq1_a">Demo görüşü adətən 30–45 dəqiqə davam edir. Bu müddətdə sistemin bütün əsas modullarını canlı görər, suallarınızı verə bilərsiniz.</div>
           </div>
           <div class="cfaq-card" id="cfaq-2">
-            <div class="cfaq-q">Pulsuz sınaq dövrü varmı?</div>
-            <div class="cfaq-a">Bəli. Demonu izlədikdən sonra 14 günlük pulsuz sınaq dövrü təqdim edirik. Kredit kartı tələb olunmur.</div>
+            <div class="cfaq-q" data-i18n="contact.faq2_q">Pulsuz sınaq dövrü varmı?</div>
+            <div class="cfaq-a" data-i18n="contact.faq2_a">Bəli. Demonu izlədikdən sonra 14 günlük pulsuz sınaq dövrü təqdim edirik. Kredit kartı tələb olunmur.</div>
           </div>
           <div class="cfaq-card" id="cfaq-3">
-            <div class="cfaq-q">Müqavilə imzalamaq lazımdırmı?</div>
-            <div class="cfaq-a">Xeyr. Aylıq planlarda uzunmüddətli öhdəlik yoxdur. İstənilən vaxt ləğv edə bilərsiniz.</div>
+            <div class="cfaq-q" data-i18n="contact.faq3_q">Müqavilə imzalamaq lazımdırmı?</div>
+            <div class="cfaq-a" data-i18n="contact.faq3_a">Xeyr. Aylıq planlarda uzunmüddətli öhdəlik yoxdur. İstənilən vaxt ləğv edə bilərsiniz.</div>
           </div>
           <div class="cfaq-card" id="cfaq-4">
-            <div class="cfaq-q">Mövcud sistemdən köçürmə mümkündürmü?</div>
-            <div class="cfaq-a">Bəli. Komandamız mövcud PMS-dən, Excel-dən və ya hər hansı sistemdən məlumatlarınızı köçürməkdə sizə kömək edir.</div>
+            <div class="cfaq-q" data-i18n="contact.faq4_q">Mövcud sistemdən köçürmə mümkündürmü?</div>
+            <div class="cfaq-a" data-i18n="contact.faq4_a">Bəli. Komandamız mövcud PMS-dən, Excel-dən və ya hər hansı sistemdən məlumatlarınızı köçürməkdə sizə kömək edir.</div>
           </div>
         </div>
       </div>
     </section>
   </main>
 
-  <!-- FOOTER -->
+  <!-- ═══════════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════════ -->
   <footer class="site-footer">
     <div class="container">
-      <div class="footer-inner">
-        <div class="footer-brand">
+      <div class="footer-inner-clean">
+        <div class="footer-brand-clean">
           <a href="index.html" class="logo" id="footer-logo">
             <span class="logo-icon">
-              <svg width="24" height="24" viewBox="0 0 28 28" fill="none">
+              <svg width="26" height="26" viewBox="0 0 28 28" fill="none">
                 <rect width="28" height="28" rx="7" fill="url(#fLG)"/>
                 <path d="M7 20V10l7-4 7 4v10" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
                 <path d="M11 20v-5h6v5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
@@ -466,38 +563,33 @@
             </span>
             <span class="logo-text">Hotellinia</span>
           </a>
-          <p class="footer-tagline">Otelçiliyin gələcəyi.<br/>Hər əməliyyat, bir platformada.</p>
+          <p class="footer-tagline-clean" data-i18n="footer.tagline">Növbəti nəsil bulud əsaslı otel idarəetmə platforması. Bütün əməliyyatlarınızı tək bir ağıllı mərkəzdən idarə edin.</p>
         </div>
-        <div class="footer-cols">
-          <div class="footer-col">
-            <div class="footer-col-title">Məhsul</div>
-            <a href="index.html#features" class="footer-link">Xüsusiyyətlər</a>
-            <a href="index.html#modules"  class="footer-link">Modullar</a>
-            <a href="pricing.html" class="footer-link">Qiymətlər</a>
-          </div>
-          <div class="footer-col">
-            <div class="footer-col-title">Şirkət</div>
-            <a href="about.html"   class="footer-link">Haqqımızda</a>
-            <a href="contact.html" class="footer-link">Əlaqə</a>
-          </div>
-        </div>
+
+        <nav class="footer-nav-clean" aria-label="Footer naviqasiya">
+          <a href="index.html" class="footer-nav-link" data-i18n="nav.home">Ana səhifə</a>
+          <a href="index.html#features" class="footer-nav-link" data-i18n="nav.features">Xüsusiyyətlər</a>
+          <a href="index.html#modules" class="footer-nav-link" data-i18n="nav.modules">Modullar</a>
+          <a href="index.html#integrations" class="footer-nav-link" data-i18n="nav.integrations">İnteqrasiyalar</a>
+          <a href="pricing.html" class="footer-nav-link" data-i18n="nav.pricing">Qiymətlər</a>
+          <a href="about.html" class="footer-nav-link" data-i18n="nav.about">Haqqımızda</a>
+          <a href="contact.html" class="footer-nav-link" data-i18n="nav.contact">Əlaqə</a>
+        </nav>
       </div>
-      <div class="footer-bottom">
-        <p class="footer-copy">© 2025 Hotellinia. Bütün hüquqlar qorunur.</p>
-        <div class="footer-legal">
-          <a href="#" class="footer-legal-link">Məxfilik Siyasəti</a>
-          <a href="#" class="footer-legal-link">İstifadə Şərtləri</a>
+
+      <div class="footer-bottom-clean">
+        <p class="footer-copy" data-i18n="footer.copy">© 2025 Hotellinia. Bütün hüquqlar qorunur.</p>
+        <div class="footer-status-pill">
+          <span class="footer-status-dot"></span>
+          <span data-i18n="footer.status">Bütün sistemlər aktivdir</span>
+          <span>·</span>
+          <span data-i18n="footer.location">Bakı, Azərbaycan</span>
         </div>
       </div>
     </div>
   </footer>
 
   <script>
-    const navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-      navbar.classList.toggle('scrolled', window.scrollY > 20);
-    });
-
     function handleContactSubmit(e) {
       e.preventDefault();
       const form = document.getElementById('contactForm');
@@ -511,5 +603,7 @@
       }, 800);
     }
   </script>
+  <script src="translations.js?v=4"></script>
+  <script src="app.js?v=4"></script>
 </body>
 </html>

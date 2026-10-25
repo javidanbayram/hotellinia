@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css?v=4" />
   <style>
     /* ── PAGE-SPECIFIC ── */
     .page-hero {
@@ -415,7 +415,7 @@
   <!-- NAVBAR -->
   <header class="navbar" id="navbar">
     <div class="nav-inner">
-      <a href="/" class="logo" id="logo-link">
+      <a href="index.html" class="logo" id="logo-link">
         <span class="logo-icon">
           <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
             <rect width="28" height="28" rx="7" fill="url(#logoGrad2)"/>
@@ -435,17 +435,45 @@
 
 
       <nav class="nav-links" id="navLinksDesktop">
-        <a href="index.html#features" class="nav-link">Xüsusiyyətlər</a>
-        <a href="index.html#modules" class="nav-link">Modullar</a>
-        <a href="index.html#integrations" class="nav-link">İnteqrasiyalar</a>
-        <a href="pricing.html" class="nav-link nav-link--active">Qiymətlər</a>
-        <a href="about.html" class="nav-link">Haqqımızda</a>
-        <a href="contact.html" class="nav-link">Əlaqə</a>
+        <a href="index.html#features" class="nav-link" data-i18n="nav.features">Xüsusiyyətlər</a>
+        <a href="index.html#modules" class="nav-link" data-i18n="nav.modules">Modullar</a>
+        <a href="index.html#integrations" class="nav-link" data-i18n="nav.integrations">İnteqrasiyalar</a>
+        <a href="pricing.html" class="nav-link nav-link--active" data-i18n="nav.pricing">Qiymətlər</a>
+        <a href="about.html" class="nav-link" data-i18n="nav.about">Haqqımızda</a>
+        <a href="contact.html" class="nav-link" data-i18n="nav.contact">Əlaqə</a>
       </nav>
 
       <div class="nav-actions">
-        <a href="#" class="nav-login">Daxil ol</a>
-        <a href="contact.html#contactForm" class="btn btn-glow" id="nav-demo-btn">Demo Tələb Et</a>
+        <!-- Cool Language Dropdown -->
+        <div class="lang-dropdown" id="langDropdown">
+          <button type="button" class="lang-dropdown-btn" id="langDropdownBtn" aria-expanded="false" aria-haspopup="true" aria-label="Dil seçimi">
+            <span class="lang-flag" id="langActiveFlag">🇦🇿</span>
+            <span class="lang-code" id="langActiveCode">AZ</span>
+            <svg class="lang-arrow" width="12" height="12" viewBox="0 0 12 12" fill="none">
+              <path d="M2.5 4.5L6 8L9.5 4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <div class="lang-dropdown-menu" id="langDropdownMenu" role="menu">
+            <button type="button" class="lang-dropdown-item active" data-lang="az" role="menuitem">
+              <span class="item-flag">🇦🇿</span>
+              <div class="item-text">
+                <span class="item-name">Azərbaycan</span>
+                <span class="item-sub">AZ · Əsas dil</span>
+              </div>
+              <span class="item-check">✓</span>
+            </button>
+            <button type="button" class="lang-dropdown-item" data-lang="ru" role="menuitem">
+              <span class="item-flag">🇷🇺</span>
+              <div class="item-text">
+                <span class="item-name">Русский</span>
+                <span class="item-sub">RU · Язык интерфейса</span>
+              </div>
+              <span class="item-check">✓</span>
+            </button>
+          </div>
+        </div>
+        <a href="#" onclick="return false" class="nav-login" data-i18n="nav.login">Daxil ol</a>
+        <a href="contact.html#contactForm" class="btn btn-glow" id="nav-demo-btn" data-i18n="nav.demo">Demo Tələb Et</a>
         <button class="hamburger" id="hamburgerBtn" aria-label="Menyu" aria-expanded="false">
           <span></span><span></span><span></span>
         </button>
@@ -461,18 +489,33 @@
     <div class="mob-logo">
       <span class="mob-logo-dot">🏨</span> Hotellinia
     </div>
+    <div class="mob-lang-wrapper">
+      <div class="mob-lang-label" data-i18n="nav.lang_label">Dil seçimi</div>
+      <div class="mob-lang-bar">
+        <button type="button" class="mob-lang-btn active" data-lang="az">
+          <span class="mob-lang-flag">🇦🇿</span>
+          <span>AZ</span>
+          <span class="mob-lang-check">✓</span>
+        </button>
+        <button type="button" class="mob-lang-btn" data-lang="ru">
+          <span class="mob-lang-flag">🇷🇺</span>
+          <span>RU</span>
+          <span class="mob-lang-check">✓</span>
+        </button>
+      </div>
+    </div>
     <nav class="mob-links">
-        <a href="index.html#features" class="mob-link" id="mob-link-0">Xüsusiyyətlər</a>
-        <a href="index.html#modules" class="mob-link" id="mob-link-1">Modullar</a>
-        <a href="index.html#integrations" class="mob-link" id="mob-link-2">İnteqrasiyalar</a>
-        <a href="pricing.html" class="mob-link" id="mob-link-3">Qiymətlər</a>
-        <a href="about.html" class="mob-link" id="mob-link-4">Haqqımızda</a>
-        <a href="contact.html" class="mob-link" id="mob-link-5">Əlaqə</a>
+        <a href="index.html#features" class="mob-link" id="mob-link-0" data-i18n="nav.features">Xüsusiyyətlər</a>
+        <a href="index.html#modules" class="mob-link" id="mob-link-1" data-i18n="nav.modules">Modullar</a>
+        <a href="index.html#integrations" class="mob-link" id="mob-link-2" data-i18n="nav.integrations">İnteqrasiyalar</a>
+        <a href="pricing.html" class="mob-link" id="mob-link-3" data-i18n="nav.pricing">Qiymətlər</a>
+        <a href="about.html" class="mob-link" id="mob-link-4" data-i18n="nav.about">Haqqımızda</a>
+        <a href="contact.html" class="mob-link" id="mob-link-5" data-i18n="nav.contact">Əlaqə</a>
     </nav>
     <div class="mob-actions">
-      <a href="contact.html#contactForm" class="btn btn-glow btn-block">⚡ Pulsuz Demo Tələb Et</a>
+      <a href="contact.html#contactForm" class="btn btn-glow btn-block" data-i18n="nav.free_demo">⚡ Pulsuz Demo Tələb Et</a>
     </div>
-    <div class="mob-footer-note">Azərbaycan · 500+ Otel Partnyor</div>
+    <div class="mob-footer-note" data-i18n="nav.partner_badge">Azərbaycan · 500+ Otel Partnyor</div>
   </div>
 
   <main>
@@ -481,22 +524,13 @@
     <section class="page-hero">
       <div class="page-hero-aura"></div>
       <div class="container">
-        <div class="section-pill">Qiymətlər</div>
-        <h1 class="page-hero-title">
-          Sizə Uyğun Planı Seçin
+        <div class="section-pill" data-i18n="pricing.hero_tag">Şəffaf Qiymətlər</div>
+        <h1 class="page-hero-title" data-i18n="pricing.hero_title">
+          Otelinizin miqyasına uyğun <br/><span class="gradient-text">çevik planlar</span>
         </h1>
-        <p class="page-hero-sub">
-          Otelinizin ölçüsünə və ehtiyacına uyğun çəvik planlar. Qiymət otaq sayınıza və seçdiyiniz modullara görə müyyən edilir — fərdi təklif üçün bizimle əlaqə saxlayın.
+        <p class="page-hero-sub" data-i18n="pricing.hero_sub">
+          Gizli komissiyalar yoxdur. Otelinizin otaq sayına və ehtiyaclarına ən uyğun paketi seçin.
         </p>
-
-        <!-- Billing Toggle -->
-        <div class="billing-toggle" id="billingToggle">
-          <span class="toggle-label active" id="toggleMonthly" onclick="setBilling('monthly')">Aylıq</span>
-          <span class="toggle-label" id="toggleAnnual" onclick="setBilling('annual')">
-            İllik
-          </span>
-          <span class="toggle-save">20% endirim</span>
-        </div>
       </div>
     </section>
 
@@ -508,127 +542,111 @@
           <!-- Başlanğıc -->
           <div class="plan-card" id="plan-starter">
             <div class="plan-card-glow"></div>
-            <div class="plan-name">Başlanğıc</div>
-            <p class="plan-desc">Kiçik butik otellər üçün ideal</p>
+            <div class="plan-name" data-i18n="pricing.p1_name">Başlanğıc (Starter)</div>
+            <p class="plan-desc" data-i18n="pricing.p1_desc">Kiçik butik otellər, qonaq evləri və hostellər üçün ideal seçim.</p>
+            <div class="plan-price plan-price--request" style="display:flex;flex-direction:column;align-items:flex-start;gap:4px;">
+              <span style="font-size:22px;font-weight:700;line-height:1.2;" data-i18n="pricing.price_on_request">Qiymət sorğu əsasında</span>
+            </div>
+            <p class="plan-price-note" data-i18n="pricing.price_note">Otaq sayınıza və seçdiyiniz modullara görə fərdi təklif hazırlanır.</p>
             <div class="plan-divider"></div>
             <ul class="plan-features">
               <li class="plan-feature">
                 <span class="plan-feature-check">✓</span>
-                <span><strong>20 otağa qədər</strong></span>
+                <span data-i18n="pricing.p1_feat1"><strong>20 otağa qədər</strong> tam dəstək</span>
               </li>
               <li class="plan-feature">
                 <span class="plan-feature-check">✓</span>
-                <span>Ön Büro (PMS)</span>
+                <span data-i18n="pricing.p1_feat2">Əsas PMS və Ön Büro idarəetməsi</span>
               </li>
               <li class="plan-feature">
                 <span class="plan-feature-check">✓</span>
-                <span>Həsabatlar və Analitika: Əsas</span>
+                <span data-i18n="pricing.p1_feat3">İnteraktiv otaq xəritəsi</span>
               </li>
               <li class="plan-feature">
                 <span class="plan-feature-check">✓</span>
-                <span>Dəstək: E-poçt</span>
+                <span data-i18n="pricing.p1_feat4">Standart analitika və hesabatlar</span>
+              </li>
+              <li class="plan-feature">
+                <span class="plan-feature-check">✓</span>
+                <span data-i18n="pricing.p1_feat5">E-poçt dəstəyi (İş saatlarında)</span>
               </li>
             </ul>
-            <a href="contact.html#contactForm" class="btn btn-ghost btn-plan-ghost" id="starter-btn">Təklif Alın →</a>
+            <a href="contact.html#contactForm" class="btn btn-ghost btn-plan-ghost" id="starter-btn" data-i18n="pricing.btn_choose">Planı Seçin →</a>
           </div>
 
           <!-- Professional (Featured) -->
           <div class="plan-card featured" id="plan-pro">
             <div class="plan-card-glow"></div>
-            <div class="plan-badge-popular">Ən Populyar</div>
-            <div class="plan-name">Peşəkar</div>
-            <p class="plan-desc">Orta ölçülü otellər üçün tam funksional PMS həlli. Əksər otellər bu planı seçir.</p>
-            <div class="plan-price">
-              <span class="plan-currency">₼</span>
-              <span class="plan-amount" id="price-pro">449</span>
-              <span class="plan-period">/ay</span>
+            <div class="plan-badge-popular" data-i18n="pricing.p2_badge">Ən Populyar</div>
+            <div class="plan-name" data-i18n="pricing.p2_name">Peşəkar (Pro)</div>
+            <p class="plan-desc" data-i18n="pricing.p2_desc">Orta və böyük həcmli otellər üçün tam avtomatlaşdırma paketi.</p>
+            <div class="plan-price plan-price--request" style="display:flex;flex-direction:column;align-items:flex-start;gap:4px;">
+              <span style="font-size:22px;font-weight:700;line-height:1.2;" data-i18n="pricing.price_on_request">Qiymət sorğu əsasında</span>
             </div>
-            <p class="plan-price-note" id="note-pro">Ayda ₼449, aylıq ödəniş</p>
+            <p class="plan-price-note" data-i18n="pricing.price_note">Otaq sayınıza və seçdiyiniz modullara görə fərdi təklif hazırlanır.</p>
             <div class="plan-divider"></div>
             <ul class="plan-features">
               <li class="plan-feature">
                 <span class="plan-feature-check">✓</span>
-                <span><strong>150 otağa qədər</strong> idarəetmə</span>
+                <span data-i18n="pricing.p2_feat1"><strong>150 otağa qədər</strong> geniş imkanlar</span>
               </li>
               <li class="plan-feature">
                 <span class="plan-feature-check">✓</span>
-                <span>Başlanğıc planının bütün imkanları</span>
+                <span data-i18n="pricing.p2_feat2">İkitərəfli Kanal Meneceri (OTA sync)</span>
               </li>
               <li class="plan-feature">
                 <span class="plan-feature-check">✓</span>
-                <span><strong>AI OCR</strong> Pasport/ŞV Skanlaması</span>
+                <span data-i18n="pricing.p2_feat3">Təmizlik və Xidmət heyəti modulu</span>
               </li>
               <li class="plan-feature">
                 <span class="plan-feature-check">✓</span>
-                <span>Üz tanıma check-in sistemi</span>
+                <span data-i18n="pricing.p2_feat4">Restoran və POS inteqrasiyası</span>
               </li>
               <li class="plan-feature">
                 <span class="plan-feature-check">✓</span>
-                <span><strong>Limitsiz</strong> OTA kanal inteqrasiyası</span>
+                <span data-i18n="pricing.p2_feat5">Dinamik qiymət və gəlir idarəetməsi</span>
               </li>
               <li class="plan-feature">
                 <span class="plan-feature-check">✓</span>
-                <span>Restoran & POS modulu</span>
-              </li>
-              <li class="plan-feature">
-                <span class="plan-feature-check">✓</span>
-                <span>Gəlir idarəetmə analitikası</span>
-              </li>
-              <li class="plan-feature">
-                <span class="plan-feature-check">✓</span>
-                <span>7/24 prioritet telefon dəstəyi</span>
+                <span data-i18n="pricing.p2_feat6">24/7 Prioritet Texniki Dəstək</span>
               </li>
             </ul>
-            <a href="contact.html#contactForm" class="btn btn-primary btn-plan-primary" id="pro-btn">Peşəkarla Başla →</a>
+            <a href="contact.html#contactForm" class="btn btn-primary btn-plan-primary" id="pro-btn" data-i18n="pricing.btn_popular">İndi Başlayın →</a>
           </div>
 
           <!-- Business -->
           <div class="plan-card" id="plan-business">
             <div class="plan-card-glow"></div>
-            <div class="plan-name">Biznes</div>
-            <p class="plan-desc">Böyük otellər və otel şəbəkələri üçün genişləndirilmiş həll.</p>
-            <div class="plan-price">
-              <span class="plan-currency">₼</span>
-              <span class="plan-amount" id="price-business">899</span>
-              <span class="plan-period">/ay</span>
+            <div class="plan-name" data-i18n="pricing.p3_name">Müəssisə (Enterprise)</div>
+            <p class="plan-desc" data-i18n="pricing.p3_desc">Böyük kurort kompleksləri və otel şəbəkələri üçün fərdi həllər.</p>
+            <div class="plan-price plan-price--request" style="display:flex;flex-direction:column;align-items:flex-start;gap:4px;">
+              <span style="font-size:22px;font-weight:700;line-height:1.2;" data-i18n="pricing.p3_price">Fərdi</span>
             </div>
-            <p class="plan-price-note" id="note-business">Ayda ₼899, aylıq ödəniş</p>
+            <p class="plan-price-note" data-i18n="pricing.price_note">Otaq sayınıza və seçdiyiniz modullara görə fərdi təklif hazırlanır.</p>
             <div class="plan-divider"></div>
             <ul class="plan-features">
               <li class="plan-feature">
                 <span class="plan-feature-check">✓</span>
-                <span><strong>Limitsiz</strong> otaq idarəetməsi</span>
+                <span data-i18n="pricing.p3_feat1"><strong>Limitsiz</strong> otaq və filial sayı</span>
               </li>
               <li class="plan-feature">
                 <span class="plan-feature-check">✓</span>
-                <span>Peşəkar planın bütün imkanları</span>
+                <span data-i18n="pricing.p3_feat2">Xüsusi API və ERP (1C, SAP) inteqrasiyaları</span>
               </li>
               <li class="plan-feature">
                 <span class="plan-feature-check">✓</span>
-                <span><strong>5 mülkə qədər</strong> mərkəzi idarəetmə</span>
+                <span data-i18n="pricing.p3_feat3">Fərdi elektron kilid sistemləri inteqrasiyası</span>
               </li>
               <li class="plan-feature">
                 <span class="plan-feature-check">✓</span>
-                <span>SPA & Wellness modulu</span>
+                <span data-i18n="pricing.p3_feat4">Şəxsi Müştəri Uğur Meneceri (SLA 99.99%)</span>
               </li>
               <li class="plan-feature">
                 <span class="plan-feature-check">✓</span>
-                <span>Xüsusi API inteqrasiyaları</span>
-              </li>
-              <li class="plan-feature">
-                <span class="plan-feature-check">✓</span>
-                <span>Rəqib qiymət izləmə sistemi</span>
-              </li>
-              <li class="plan-feature">
-                <span class="plan-feature-check">✓</span>
-                <span>Xüsusi hesabat & BI paneli</span>
-              </li>
-              <li class="plan-feature">
-                <span class="plan-feature-check">✓</span>
-                <span>Fərdi onboarding & tədris</span>
+                <span data-i18n="pricing.p3_feat5">Yerində təlim və xüsusi sazlama</span>
               </li>
             </ul>
-            <a href="contact.html#contactForm" class="btn btn-ghost btn-plan-ghost" id="business-btn">Biznesə Keç →</a>
+            <a href="contact.html#contactForm" class="btn btn-ghost btn-plan-ghost" id="business-btn" data-i18n="pricing.btn_contact">Bizimlə Əlaqə →</a>
           </div>
 
         </div>
@@ -641,32 +659,32 @@
         <div class="enterprise-left">
           <div class="enterprise-tag">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
-            Enterprise
+            <span data-i18n="pricing.ent_tag">Enterprise</span>
           </div>
-          <h2 class="enterprise-title">Böyük otel şəbəkəsi üçün<br/>fərdi həll</h2>
-          <p class="enterprise-desc">5-dən çox mülk, xüsusi tələblər, tam özəlləşdirilmiş inteqrasiyalar? Sizin üçün fərdi təklif hazırlayırıq.</p>
+          <h2 class="enterprise-title" data-i18n="pricing.ent_title">Böyük otel şəbəkəsi üçün<br/>fərdi həll</h2>
+          <p class="enterprise-desc" data-i18n="pricing.ent_desc">5-dən çox mülk, xüsusi tələblər, tam özəlləşdirilmiş inteqrasiyalar? Sizin üçün fərdi təklif hazırlayırıq.</p>
           <div class="enterprise-perks">
             <div class="enterprise-perk">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="2"/></svg>
-              SLA Zəmanəti
+              <span data-i18n="pricing.ent_p1">SLA Zəmanəti</span>
             </div>
             <div class="enterprise-perk">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-              Fərdi Onboarding
+              <span data-i18n="pricing.ent_p2">Fərdi Onboarding</span>
             </div>
             <div class="enterprise-perk">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" stroke="currentColor" stroke-width="2"/><circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="2"/></svg>
-              Xüsusi Hesab Meneceri
+              <span data-i18n="pricing.ent_p3">Xüsusi Hesab Meneceri</span>
             </div>
             <div class="enterprise-perk">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              99.9% Uptime SLA
+              <span data-i18n="pricing.ent_p4">99.9% Uptime SLA</span>
             </div>
           </div>
         </div>
         <div class="enterprise-actions">
-          <a href="contact.html#contactForm" class="btn btn-primary btn-xl" id="enterprise-btn">Satış İlə Əlaqə</a>
-          <span class="enterprise-note">Orta cavab vaxtı: 2 saat</span>
+          <a href="contact.html#contactForm" class="btn btn-primary btn-xl" id="enterprise-btn" data-i18n="pricing.ent_btn">Qiymət Sorğusu Göndər</a>
+          <span class="enterprise-note" data-i18n="pricing.ent_note">Orta cavab vaxtı: 2 saat</span>
         </div>
       </div>
     </div>
@@ -675,80 +693,82 @@
     <section class="compare-section">
       <div class="container">
         <div class="section-header">
-          <h2 class="section-title">Xüsusiyyətləri Müqayisə Edin</h2>
+          <h2 class="section-title" data-i18n="pricing.compare_title">Xüsusiyyətləri Müqayisə Edin</h2>
         </div>
-        <table class="compare-table" id="compare-table">
-          <thead>
-            <tr>
-              <th class="col-feature">Xüsusiyyət</th>
-              <th class="col-plan-name">Başlanğıc</th>
-              <th class="col-plan-name col-featured-plan">Peşəkar</th>
-              <th class="col-plan-name">Korporativ</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Otaq sayı</td>
-              <td class="center">20 otağa qədər</td>
-              <td class="center featured-col">50 otağa qədər</td>
-              <td class="center">Limitsiz</td>
-            </tr>
-            <tr>
-              <td>Ön Büro (PMS)</td>
-              <td class="center"><span class="check-green">✓</span></td>
-              <td class="center featured-col"><span class="check-green">✓</span></td>
-              <td class="center"><span class="check-green">✓</span></td>
-            </tr>
-            <tr>
-              <td>Hesabatlar və Analitika</td>
-              <td class="center"><span class="check-cyan">Əsas</span></td>
-              <td class="center featured-col"><span class="check-cyan">Genişləndirilmiş</span></td>
-              <td class="center"><span class="check-cyan">Genişləndirilmiş</span></td>
-            </tr>
-            <tr>
-              <td>Bütün modullar (F&amp;B, SPA, Otaq Xidmətləri...)</td>
-              <td class="center"><span class="check-muted">—</span></td>
-              <td class="center featured-col"><span class="check-green">✓</span></td>
-              <td class="center"><span class="check-green">✓</span></td>
-            </tr>
-            <tr>
-              <td>Channel Manager</td>
-              <td class="center"><span class="check-muted">—</span></td>
-              <td class="center featured-col"><span class="check-green">✓</span></td>
-              <td class="center"><span class="check-green">✓</span></td>
-            </tr>
-            <tr>
-              <td>API girişi</td>
-              <td class="center"><span class="check-muted">—</span></td>
-              <td class="center featured-col"><span class="check-green">✓</span></td>
-              <td class="center"><span class="check-green">✓</span></td>
-            </tr>
-            <tr>
-              <td>Çoxobyektli idarəetmə</td>
-              <td class="center"><span class="check-muted">—</span></td>
-              <td class="center featured-col"><span class="check-muted">—</span></td>
-              <td class="center"><span class="check-green">✓</span></td>
-            </tr>
-            <tr>
-              <td>Xüsusi inteqrasiyalar</td>
-              <td class="center"><span class="check-muted">—</span></td>
-              <td class="center featured-col"><span class="check-muted">—</span></td>
-              <td class="center"><span class="check-green">✓</span></td>
-            </tr>
-            <tr>
-              <td>Yerində talim</td>
-              <td class="center"><span class="check-muted">—</span></td>
-              <td class="center featured-col"><span class="check-muted">—</span></td>
-              <td class="center"><span class="check-green">✓</span></td>
-            </tr>
-            <tr>
-              <td>Dəstək</td>
-              <td class="center">E-poçt</td>
-              <td class="center featured-col">Prioritet</td>
-              <td class="center">7/24 prioritet</td>
-            </tr>
-          </tbody>
-        </table>
+        <div class="table-scroll-wrap">
+          <table class="compare-table" id="compare-table">
+            <thead>
+              <tr>
+                <th class="col-feature" data-i18n="pricing.th_feature">Xüsusiyyət</th>
+                <th class="col-plan-name" data-i18n="pricing.th_starter">Başlanğıc</th>
+                <th class="col-plan-name col-featured-plan" data-i18n="pricing.th_pro">Peşəkar</th>
+                <th class="col-plan-name" data-i18n="pricing.th_enterprise">Korporativ</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td data-i18n="pricing.row_rooms">Otaq sayı</td>
+                <td class="center" data-i18n="pricing.row_rooms_starter">20 otağa qədər</td>
+                <td class="center featured-col" data-i18n="pricing.row_rooms_pro">150 otağa qədər</td>
+                <td class="center" data-i18n="pricing.row_rooms_ent">Limitsiz</td>
+              </tr>
+              <tr>
+                <td data-i18n="pricing.row_pms">Ön Büro (PMS)</td>
+                <td class="center"><span class="check-green">✓</span></td>
+                <td class="center featured-col"><span class="check-green">✓</span></td>
+                <td class="center"><span class="check-green">✓</span></td>
+              </tr>
+              <tr>
+                <td data-i18n="pricing.row_reports">Hesabatlar və Analitika</td>
+                <td class="center"><span class="check-cyan" data-i18n="pricing.val_basic">Əsas</span></td>
+                <td class="center featured-col"><span class="check-cyan" data-i18n="pricing.val_adv">Genişləndirilmiş</span></td>
+                <td class="center"><span class="check-cyan" data-i18n="pricing.val_adv">Genişləndirilmiş</span></td>
+              </tr>
+              <tr>
+                <td data-i18n="pricing.row_modules">Bütün modullar (F&amp;B, SPA, Otaq Xidmətləri...)</td>
+                <td class="center"><span class="check-muted">—</span></td>
+                <td class="center featured-col"><span class="check-green">✓</span></td>
+                <td class="center"><span class="check-green">✓</span></td>
+              </tr>
+              <tr>
+                <td data-i18n="pricing.row_channel">Channel Manager</td>
+                <td class="center"><span class="check-muted">—</span></td>
+                <td class="center featured-col"><span class="check-green">✓</span></td>
+                <td class="center"><span class="check-green">✓</span></td>
+              </tr>
+              <tr>
+                <td data-i18n="pricing.row_api">API girişi</td>
+                <td class="center"><span class="check-muted">—</span></td>
+                <td class="center featured-col"><span class="check-green">✓</span></td>
+                <td class="center"><span class="check-green">✓</span></td>
+              </tr>
+              <tr>
+                <td data-i18n="pricing.row_multi">Çoxobyektli idarəetmə</td>
+                <td class="center"><span class="check-muted">—</span></td>
+                <td class="center featured-col"><span class="check-muted">—</span></td>
+                <td class="center"><span class="check-green">✓</span></td>
+              </tr>
+              <tr>
+                <td data-i18n="pricing.row_custom">Xüsusi inteqrasiyalar</td>
+                <td class="center"><span class="check-muted">—</span></td>
+                <td class="center featured-col"><span class="check-muted">—</span></td>
+                <td class="center"><span class="check-green">✓</span></td>
+              </tr>
+              <tr>
+                <td data-i18n="pricing.row_training">Yerində təlim</td>
+                <td class="center"><span class="check-muted">—</span></td>
+                <td class="center featured-col"><span class="check-muted">—</span></td>
+                <td class="center"><span class="check-green">✓</span></td>
+              </tr>
+              <tr>
+                <td data-i18n="pricing.row_support">Dəstək</td>
+                <td class="center" data-i18n="pricing.val_sup_starter">E-poçt</td>
+                <td class="center featured-col" data-i18n="pricing.val_sup_pro">Prioritet</td>
+                <td class="center" data-i18n="pricing.val_sup_ent">7/24 prioritet</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </section>
 
@@ -757,66 +777,66 @@
       <div class="container">
         <div class="section-header">
           <div class="section-pill">FAQ</div>
-          <h2 class="section-title">Tez-tez soruşulan suallar</h2>
+          <h2 class="section-title" data-i18n="pricing.faq_title">Tez-tez soruşulan suallar</h2>
         </div>
         <div class="faq-grid" id="faqGrid">
 
           <div class="faq-item" id="faq-1">
             <button class="faq-q" onclick="toggleFaq('faq-1')">
-              Pulsuz sınaq dövrü varmı?
+              <span data-i18n="pricing.faq1_q">Pulsuz sınaq dövrü varmı?</span>
               <span class="faq-icon">+</span>
             </button>
-            <div class="faq-a">
+            <div class="faq-a" data-i18n="pricing.faq1_a">
               Bəli! Bütün planlarda <strong>14 günlük pulsuz sınaq</strong> dövrü mövcuddur. Kredit kartı tələb edilmir. Sınaq müddətindən sonra planı seçib ödənişi aktivləşdirirsiniz.
             </div>
           </div>
 
           <div class="faq-item" id="faq-2">
             <button class="faq-q" onclick="toggleFaq('faq-2')">
-              Planı istənilən vaxt dəyişmək mümkündürmü?
+              <span data-i18n="pricing.faq2_q">Planı istənilən vaxt dəyişmək mümkündürmü?</span>
               <span class="faq-icon">+</span>
             </button>
-            <div class="faq-a">
+            <div class="faq-a" data-i18n="pricing.faq2_a">
               Bəli, hər zaman yuxarı və ya aşağı plana keçid edə bilərsiniz. Yuxarı keçiddə fərq o günün tarixindən hesablanır, aşağı keçiddə isə növbəti ödəniş dövrünüzdə tətbiq edilir.
             </div>
           </div>
 
           <div class="faq-item" id="faq-3">
             <button class="faq-q" onclick="toggleFaq('faq-3')">
-              Məlumatlarım köçürülür?
+              <span data-i18n="pricing.faq3_q">Məlumatlarım köçürülür?</span>
               <span class="faq-icon">+</span>
             </button>
-            <div class="faq-a">
+            <div class="faq-a" data-i18n="pricing.faq3_a">
               Bəli. Mövcud PMS sisteminizdən (Opera, Protel, SIHOT və s.) məlumatlarınızı tam şəkildə köçürürük. Bu xidmət bütün planlarda pulsuz daxildir.
             </div>
           </div>
 
           <div class="faq-item" id="faq-4">
             <button class="faq-q" onclick="toggleFaq('faq-4')">
-              Hansı ödəniş üsulları qəbul edilir?
+              <span data-i18n="pricing.faq4_q">Hansı ödəniş üsulları qəbul edilir?</span>
               <span class="faq-icon">+</span>
             </button>
-            <div class="faq-a">
+            <div class="faq-a" data-i18n="pricing.faq4_a">
               Visa, Mastercard, bank köçürməsi və Azərbaycan yerli bank kartları ilə ödəniş qəbul edilir. Enterprise planlarda bank köçürməsi ilə illik ödəniş seçeneği mövcuddur.
             </div>
           </div>
 
           <div class="faq-item" id="faq-5">
             <button class="faq-q" onclick="toggleFaq('faq-5')">
-              Əgər internet kəsilərsə nə baş verir?
+              <span data-i18n="pricing.faq5_q">Əgər internet kəsilərsə nə baş verir?</span>
               <span class="faq-icon">+</span>
             </button>
-            <div class="faq-a">
+            <div class="faq-a" data-i18n="pricing.faq5_a">
               Hotellinia-nın offline rejimi mövcuddur. İnternet bağlantısı olmadan da ön büro, housekeeping və POS funksiyaları işləməyə davam edir. Bağlantı bərpa olunduqda məlumatlar avtomatik sinxronlaşır.
             </div>
           </div>
 
           <div class="faq-item" id="faq-6">
             <button class="faq-q" onclick="toggleFaq('faq-6')">
-              Təlim və dəstək necə həyata keçirilir?
+              <span data-i18n="pricing.faq6_q">Təlim və dəstək necə həyata keçirilir?</span>
               <span class="faq-icon">+</span>
             </button>
-            <div class="faq-a">
+            <div class="faq-a" data-i18n="pricing.faq6_a">
               Bütün yeni müştərilər üçün Azərbaycan dilinde onlayn onboarding sessiyaları keçirilir. Bundan əlavə video dərslər kitabxanası, sənədlər bazası və 7/24 dəstək xidməti mövcuddur.
             </div>
           </div>
@@ -830,18 +850,18 @@
       <div class="cta-aura"></div>
       <div class="container">
         <div class="cta-inner">
-          <div class="cta-badge">
+          <div class="cta-badge" data-i18n="pricing.cta_badge">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             14 Gün Pulsuz
           </div>
-          <h2 class="cta-title">Bu gün <span class="gradient-text">pulsuz başlayın</span></h2>
-          <p class="cta-sub">Kredit kartı tələb olunmur. 14 günlük tam funksional sınaq.</p>
+          <h2 class="cta-title" data-i18n="pricing.cta_title">Bu gün <span class="gradient-text">pulsuz başlayın</span></h2>
+          <p class="cta-sub" data-i18n="pricing.cta_sub">Kredit kartı tələb olunmur. 14 günlük tam funksional sınaq.</p>
           <form class="cta-form" id="ctaForm" onsubmit="handleFormSubmit(event)">
             <div class="cta-input-wrap">
               <svg class="cta-input-icon" width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="currentColor" stroke-width="2"/><path d="M22 6l-10 7L2 6" stroke="currentColor" stroke-width="2"/></svg>
-              <input type="email" id="ctaEmail" class="cta-input" placeholder="E-poçt ünvanınız" required />
+              <input type="email" id="ctaEmail" class="cta-input" placeholder="E-poçt ünvanınız" data-i18n-placeholder="cta.placeholder" required />
             </div>
-            <button type="submit" class="btn btn-primary btn-xl btn-cta" id="cta-submit-btn">
+            <button type="submit" class="btn btn-primary btn-xl btn-cta" id="cta-submit-btn" data-i18n="cta.btn">
               Pulsuz Başla
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
             </button>
@@ -856,14 +876,16 @@
 
   </main>
 
-  <!-- FOOTER -->
+  <!-- ═══════════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════════ -->
   <footer class="site-footer">
     <div class="container">
-      <div class="footer-inner">
-        <div class="footer-brand">
-          <a href="/" class="logo">
+      <div class="footer-inner-clean">
+        <div class="footer-brand-clean">
+          <a href="index.html" class="logo">
             <span class="logo-icon">
-              <svg width="24" height="24" viewBox="0 0 28 28" fill="none">
+              <svg width="26" height="26" viewBox="0 0 28 28" fill="none">
                 <rect width="28" height="28" rx="7" fill="url(#footerLG2)"/>
                 <path d="M7 20V10l7-4 7 4v10" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
                 <path d="M11 20v-5h6v5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
@@ -872,77 +894,35 @@
             </span>
             <span class="logo-text">Hotellinia</span>
           </a>
-          <p class="footer-tagline">Növbəti nəsil otel idarəetmə platforması.</p>
+          <p class="footer-tagline-clean" data-i18n="footer.tagline">Növbəti nəsil bulud əsaslı otel idarəetmə platforması. Bütün əməliyyatlarınızı tək bir ağıllı mərkəzdən idarə edin.</p>
         </div>
-        <div class="footer-links-row">
-          <div class="footer-col">
-            <div class="footer-col-title">Məhsul</div>
-            <a href="/#features" class="footer-link">Xüsusiyyətlər</a>
-            <a href="/#modules" class="footer-link">Modullar</a>
-            <a href="pricing.html" class="footer-link">Qiymətlər</a>
-          </div>
-          <div class="footer-col">
-            <div class="footer-col-title">Şirkət</div>
-            <a href="about.html" class="footer-link">Haqqımızda</a>
-            <a href="/blog" class="footer-link">Blog</a>
-            <a href="/careers" class="footer-link">Karyera</a>
-          </div>
-          <div class="footer-col">
-            <div class="footer-col-title">Dəstək</div>
-            <a href="/docs" class="footer-link">Sənədlər</a>
-            <a href="contact.html" class="footer-link">Əlaqə</a>
-            <a href="/status" class="footer-link">Sistem Statusu</a>
-          </div>
-        </div>
+
+        <nav class="footer-nav-clean" aria-label="Footer naviqasiya">
+          <a href="index.html" class="footer-nav-link" data-i18n="nav.home">Ana səhifə</a>
+          <a href="index.html#features" class="footer-nav-link" data-i18n="nav.features">Xüsusiyyətlər</a>
+          <a href="index.html#modules" class="footer-nav-link" data-i18n="nav.modules">Modullar</a>
+          <a href="index.html#integrations" class="footer-nav-link" data-i18n="nav.integrations">İnteqrasiyalar</a>
+          <a href="pricing.html" class="footer-nav-link" data-i18n="nav.pricing">Qiymətlər</a>
+          <a href="about.html" class="footer-nav-link" data-i18n="nav.about">Haqqımızda</a>
+          <a href="contact.html" class="footer-nav-link" data-i18n="nav.contact">Əlaqə</a>
+        </nav>
       </div>
-      <div class="footer-bottom">
-        <p class="footer-copy">© 2025 Hotellinia. Müəllif hüquqları qorunur.</p>
-        <div class="footer-legal">
-          <a href="/privacy" class="footer-legal-link">Məxfilik Siyasəti</a>
-          <a href="/terms" class="footer-legal-link">İstifadə Şərtləri</a>
+
+      <div class="footer-bottom-clean">
+        <p class="footer-copy" data-i18n="footer.copy">© 2025 Hotellinia. Bütün hüquqlar qorunur.</p>
+        <div class="footer-status-pill">
+          <span class="footer-status-dot"></span>
+          <span data-i18n="footer.status">Bütün sistemlər aktivdir</span>
+          <span>·</span>
+          <span data-i18n="footer.location">Bakı, Azərbaycan</span>
         </div>
       </div>
     </div>
   </footer>
 
-  <script src="app.js"></script>
+  <script src="translations.js?v=4"></script>
+  <script src="app.js?v=4"></script>
   <script>
-    // Billing toggle
-    const prices = {
-      monthly: { starter: 199, pro: 449, business: 899 },
-      annual:  { starter: 159, pro: 359, business: 719 }
-    };
-    const notes = {
-      monthly: {
-        starter: 'Ayda ₼199, aylıq ödəniş',
-        pro:     'Ayda ₼449, aylıq ödəniş',
-        business:'Ayda ₼899, aylıq ödəniş'
-      },
-      annual: {
-        starter: 'İllik ₼1,908 — 20% qənaət (₼477)',
-        pro:     'İllik ₼4,308 — 20% qənaət (₼1,080)',
-        business:'İllik ₼8,628 — 20% qənaət (₼2,160)'
-      }
-    };
-
-    function setBilling(type) {
-      document.getElementById('toggleMonthly').classList.toggle('active', type === 'monthly');
-      document.getElementById('toggleAnnual').classList.toggle('active', type === 'annual');
-      ['starter','pro','business'].forEach(plan => {
-        const el = document.getElementById('price-' + plan);
-        const note = document.getElementById('note-' + plan);
-        if (el) {
-          el.style.transition = 'all 0.3s';
-          el.style.opacity = '0';
-          setTimeout(() => {
-            el.textContent = prices[type][plan];
-            el.style.opacity = '1';
-          }, 150);
-        }
-        if (note) note.textContent = notes[type][plan];
-      });
-    }
-
     // FAQ toggle
     function toggleFaq(id) {
       const item = document.getElementById(id);

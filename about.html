@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css?v=4" />
   <style>
     /* ── PAGE HERO ── */
     .page-hero {
@@ -262,14 +262,16 @@
     }
     .team-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      max-width: 1080px;
+      margin: 0 auto;
     }
     .team-card {
       background: var(--bg-card);
       border: 1px solid var(--border-glass);
       border-radius: var(--radius-xl);
-      padding: 32px 24px;
+      padding: 36px 28px;
       text-align: center;
       backdrop-filter: blur(12px);
       transition: all 0.35s var(--ease-smooth);
@@ -290,20 +292,20 @@
     }
     .team-name {
       font-family: var(--font-display);
-      font-size: 17px;
+      font-size: 19px;
       font-weight: 700;
-      margin-bottom: 4px;
+      margin-bottom: 6px;
     }
     .team-role {
       font-size: 13px;
       color: var(--green);
       font-weight: 600;
-      margin-bottom: 8px;
+      margin-bottom: 12px;
     }
     .team-bio {
-      font-size: 13px;
+      font-size: 13.5px;
       color: var(--text-secondary);
-      line-height: 1.6;
+      line-height: 1.65;
     }
     .team-links {
       display: flex;
@@ -327,11 +329,6 @@
     .avatar-1 { background: linear-gradient(135deg, rgba(0,200,150,0.2), rgba(0,102,255,0.15)); }
     .avatar-2 { background: linear-gradient(135deg, rgba(0,191,255,0.2), rgba(139,92,246,0.15)); }
     .avatar-3 { background: linear-gradient(135deg, rgba(139,92,246,0.2), rgba(255,138,0,0.12)); }
-    .avatar-4 { background: linear-gradient(135deg, rgba(255,138,0,0.2), rgba(0,200,150,0.12)); }
-    .avatar-5 { background: linear-gradient(135deg, rgba(20,184,166,0.2), rgba(0,191,255,0.15)); }
-    .avatar-6 { background: linear-gradient(135deg, rgba(0,102,255,0.2), rgba(139,92,246,0.15)); }
-    .avatar-7 { background: linear-gradient(135deg, rgba(239,68,68,0.15), rgba(255,138,0,0.15)); }
-    .avatar-8 { background: linear-gradient(135deg, rgba(0,200,150,0.15), rgba(20,184,166,0.2)); }
 
     /* ── PARTNERS / LOGOS ── */
     .partners-section {
@@ -372,9 +369,12 @@
       .team-grid     { grid-template-columns: repeat(2, 1fr); }
       .partners-grid { grid-template-columns: repeat(2, 1fr); }
     }
+    @media (max-width: 768px) {
+      .team-grid     { grid-template-columns: 1fr; max-width: 420px; }
+    }
     @media (max-width: 640px) {
       .page-hero { padding: 140px 0 60px; }
-      .mission-stats { grid-template-columns: 1fr 1fr; }
+      .mission-stats { grid-template-columns: 1fr; }
       .values-grid   { grid-template-columns: 1fr; }
       .team-grid     { grid-template-columns: 1fr; }
     }
@@ -393,7 +393,7 @@
   <!-- NAVBAR -->
   <header class="navbar" id="navbar">
     <div class="nav-inner">
-      <a href="/" class="logo" id="logo-link">
+      <a href="index.html" class="logo" id="logo-link">
         <span class="logo-icon">
           <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
             <rect width="28" height="28" rx="7" fill="url(#lgAbout)"/>
@@ -413,17 +413,45 @@
 
 
       <nav class="nav-links" id="navLinksDesktop">
-        <a href="index.html#features" class="nav-link">Xüsusiyyətlər</a>
-        <a href="index.html#modules" class="nav-link">Modullar</a>
-        <a href="index.html#integrations" class="nav-link">İnteqrasiyalar</a>
-        <a href="pricing.html" class="nav-link">Qiymətlər</a>
-        <a href="about.html" class="nav-link nav-link--active">Haqqımızda</a>
-        <a href="contact.html" class="nav-link">Əlaqə</a>
+        <a href="index.html#features" class="nav-link" data-i18n="nav.features">Xüsusiyyətlər</a>
+        <a href="index.html#modules" class="nav-link" data-i18n="nav.modules">Modullar</a>
+        <a href="index.html#integrations" class="nav-link" data-i18n="nav.integrations">İnteqrasiyalar</a>
+        <a href="pricing.html" class="nav-link" data-i18n="nav.pricing">Qiymətlər</a>
+        <a href="about.html" class="nav-link nav-link--active" data-i18n="nav.about">Haqqımızda</a>
+        <a href="contact.html" class="nav-link" data-i18n="nav.contact">Əlaqə</a>
       </nav>
 
       <div class="nav-actions">
-        <a href="#" class="nav-login">Daxil ol</a>
-        <a href="contact.html#contactForm" class="btn btn-glow" id="nav-demo-btn">Demo Tələb Et</a>
+        <!-- Cool Language Dropdown -->
+        <div class="lang-dropdown" id="langDropdown">
+          <button type="button" class="lang-dropdown-btn" id="langDropdownBtn" aria-expanded="false" aria-haspopup="true" aria-label="Dil seçimi">
+            <span class="lang-flag" id="langActiveFlag">🇦🇿</span>
+            <span class="lang-code" id="langActiveCode">AZ</span>
+            <svg class="lang-arrow" width="12" height="12" viewBox="0 0 12 12" fill="none">
+              <path d="M2.5 4.5L6 8L9.5 4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <div class="lang-dropdown-menu" id="langDropdownMenu" role="menu">
+            <button type="button" class="lang-dropdown-item active" data-lang="az" role="menuitem">
+              <span class="item-flag">🇦🇿</span>
+              <div class="item-text">
+                <span class="item-name">Azərbaycan</span>
+                <span class="item-sub">AZ · Əsas dil</span>
+              </div>
+              <span class="item-check">✓</span>
+            </button>
+            <button type="button" class="lang-dropdown-item" data-lang="ru" role="menuitem">
+              <span class="item-flag">🇷🇺</span>
+              <div class="item-text">
+                <span class="item-name">Русский</span>
+                <span class="item-sub">RU · Язык интерфейса</span>
+              </div>
+              <span class="item-check">✓</span>
+            </button>
+          </div>
+        </div>
+        <a href="#" onclick="return false" class="nav-login" data-i18n="nav.login">Daxil ol</a>
+        <a href="contact.html#contactForm" class="btn btn-glow" id="nav-demo-btn" data-i18n="nav.demo">Demo Tələb Et</a>
         <button class="hamburger" id="hamburgerBtn" aria-label="Menyu" aria-expanded="false">
           <span></span><span></span><span></span>
         </button>
@@ -439,18 +467,33 @@
     <div class="mob-logo">
       <span class="mob-logo-dot">🏨</span> Hotellinia
     </div>
+    <div class="mob-lang-wrapper">
+      <div class="mob-lang-label" data-i18n="nav.lang_label">Dil seçimi</div>
+      <div class="mob-lang-bar">
+        <button type="button" class="mob-lang-btn active" data-lang="az">
+          <span class="mob-lang-flag">🇦🇿</span>
+          <span>AZ</span>
+          <span class="mob-lang-check">✓</span>
+        </button>
+        <button type="button" class="mob-lang-btn" data-lang="ru">
+          <span class="mob-lang-flag">🇷🇺</span>
+          <span>RU</span>
+          <span class="mob-lang-check">✓</span>
+        </button>
+      </div>
+    </div>
     <nav class="mob-links">
-        <a href="index.html#features" class="mob-link" id="mob-link-0">Xüsusiyyətlər</a>
-        <a href="index.html#modules" class="mob-link" id="mob-link-1">Modullar</a>
-        <a href="index.html#integrations" class="mob-link" id="mob-link-2">İnteqrasiyalar</a>
-        <a href="pricing.html" class="mob-link" id="mob-link-3">Qiymətlər</a>
-        <a href="about.html" class="mob-link" id="mob-link-4">Haqqımızda</a>
-        <a href="contact.html" class="mob-link" id="mob-link-5">Əlaqə</a>
+        <a href="index.html#features" class="mob-link" id="mob-link-0" data-i18n="nav.features">Xüsusiyyətlər</a>
+        <a href="index.html#modules" class="mob-link" id="mob-link-1" data-i18n="nav.modules">Modullar</a>
+        <a href="index.html#integrations" class="mob-link" id="mob-link-2" data-i18n="nav.integrations">İnteqrasiyalar</a>
+        <a href="pricing.html" class="mob-link" id="mob-link-3" data-i18n="nav.pricing">Qiymətlər</a>
+        <a href="about.html" class="mob-link" id="mob-link-4" data-i18n="nav.about">Haqqımızda</a>
+        <a href="contact.html" class="mob-link" id="mob-link-5" data-i18n="nav.contact">Əlaqə</a>
     </nav>
     <div class="mob-actions">
-      <a href="contact.html#contactForm" class="btn btn-glow btn-block">⚡ Pulsuz Demo Tələb Et</a>
+      <a href="contact.html#contactForm" class="btn btn-glow btn-block" data-i18n="nav.free_demo">⚡ Pulsuz Demo Tələb Et</a>
     </div>
-    <div class="mob-footer-note">Azərbaycan · 500+ Otel Partnyor</div>
+    <div class="mob-footer-note" data-i18n="nav.partner_badge">Azərbaycan · 500+ Otel Partnyor</div>
   </div>
 
   <main>
@@ -459,13 +502,13 @@
     <section class="page-hero">
       <div class="page-hero-aura"></div>
       <div class="container">
-        <div class="section-pill" style="background:rgba(0,102,255,0.12);border-color:rgba(0,102,255,0.2);color:#6699FF;">Haqqımızda</div>
-        <h1 class="page-hero-title">
-          Qonaqpərvərliyi<br/>
-          <span class="gradient-text-2">texnologiya ilə</span> birləşdiririk
+        <div class="section-pill" style="background:rgba(0,102,255,0.12);border-color:rgba(0,102,255,0.2);color:#6699FF;" data-i18n="about.hero_tag">Haqqımızda</div>
+        <h1 class="page-hero-title" data-i18n="about.hero_title">
+          Mehmanxana texnologiyalarında <br/>
+          <span class="gradient-text-2">yeni standart</span> yaradırıq
         </h1>
-        <p class="page-hero-sub">
-          Hotellinia, otelçilik sənayesinin rəqəmsal çevrilişini sürətləndirmək üçün yaradılmış Azərbaycan texnologiya şirkətidir.
+        <p class="page-hero-sub" data-i18n="about.hero_sub">
+          Hotellinia — müasir otellərin iş yükünü yüngülləşdirmək, qonaq məmnuniyyətini zirvəyə çatdırmaq və gəlirləri artırmaq üçün yaradılmış qabaqcıl otel texnologiyasıdır.
         </p>
       </div>
     </section>
@@ -475,19 +518,19 @@
       <div class="mission-stats">
         <div class="mstat-card">
           <div class="mstat-num" style="background:linear-gradient(135deg,var(--green),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">500<span style="font-size:32px">+</span></div>
-          <div class="mstat-label">Aktiv otel müştərisi<br/>Azərbaycan, Türkiyə, UAE</div>
+          <div class="mstat-label" data-i18n="about.stat1_label">Aktiv Otel və İstirahət Mərkəzi</div>
         </div>
         <div class="mstat-card">
-          <div class="mstat-num" style="background:linear-gradient(135deg,var(--cyan),var(--blue));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">12M<span style="font-size:32px">+</span></div>
-          <div class="mstat-label">Platformadan keçən<br/>rezervasiya sayı</div>
+          <div class="mstat-num" style="background:linear-gradient(135deg,var(--cyan),var(--blue));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">1.2M<span style="font-size:32px">+</span></div>
+          <div class="mstat-label" data-i18n="about.stat2_label">Uğurla Emal Olunan Qonaq Girişi</div>
         </div>
         <div class="mstat-card">
-          <div class="mstat-num" style="background:linear-gradient(135deg,var(--purple),#C084FC);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">99.9<span style="font-size:24px">%</span></div>
-          <div class="mstat-label">Platformanın illik<br/>istifadəyə hazır olma faizi</div>
+          <div class="mstat-num" style="background:linear-gradient(135deg,var(--purple),#C084FC);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">99.98<span style="font-size:24px">%</span></div>
+          <div class="mstat-label" data-i18n="about.stat3_label">Bulud Xidməti Əlçatanlığı (Uptime)</div>
         </div>
         <div class="mstat-card">
-          <div class="mstat-num" style="background:linear-gradient(135deg,var(--orange),#FBBF24);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">40<span style="font-size:32px">%</span></div>
-          <div class="mstat-label">Müştərilərin əməliyyat<br/>xərclərindəki orta azalma</div>
+          <div class="mstat-num" style="background:linear-gradient(135deg,var(--orange),#FBBF24);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">24/7</div>
+          <div class="mstat-label" data-i18n="about.stat4_label">Fasiləsiz Texniki Dəstək</div>
         </div>
       </div>
     </div>
@@ -495,57 +538,20 @@
     <!-- STORY -->
     <section class="story-section">
       <div class="container">
-        <div class="story-grid">
+        <div class="story-grid" style="grid-template-columns:1fr;max-width:820px;margin-left:auto;margin-right:auto;">
           <div class="story-content">
-            <div class="story-tag">
+            <div class="story-tag" data-i18n="about.story_tag">
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
-              Haqqımızda
+              Hekayəmiz
             </div>
-            <h2 class="story-title">
-              Otellər üçün ağıllı proqram<br/>
-              <span class="gradient-text">təminatı</span>
+            <h2 class="story-title" data-i18n="about.story_title">
+              Otelçilik çətinliklərindən doğan <br/>
+              <span class="gradient-text">innovativ həll</span>
             </h2>
             <div class="story-body">
-              <p>Hotellinia rezervasiya və ön büro idarəetməsindən otaq xidmətlərinə, restoran POS-undan e-fakturaya qədər otel əməliyyatının hamısını bir dam altında birlaşdirir. Kiçik butik otelldən çoxobyektli strukturlara qədər miqyaslanır.</p>
-              <p>Sistem 35-dən çox inteqrasiyalı modul təqdim edir və 7 dildə istifadə oluna bilər. Bulud əsaslı arxitektura sayəsində quraşdırma tələb etmir; otelinizi istənilən yerdən, istənilən cihazdan idarə edirsiniz.</p>
-              <p>Hotellinia qlobal düşüncə ilə hazırlanıb: ölkəyə xas vergi və faktura qaydaları (məs. Türkiyə e-Faktura/GİB) adapterlərlə dəstəklənir, biznes qaydaları bölgəyə görə uyğunlaşdırılır. Dünyanın müxtəlif bölgələrindəki səlahiyyətli distribyutorlarımız vasətəsilə otellərə yerli dəstək göstəririk.</p>
-            </div>
-          </div>
-
-          <div class="story-visual">
-            <div class="story-img-card">
-              <div class="timeline">
-                <div class="tl-item">
-                  <div class="tl-dot"></div>
-                  <div class="tl-year">2020 — Bakı, Azərbaycan</div>
-                  <div class="tl-event">Hotellinia Quruldu</div>
-                  <div class="tl-desc">3 nəfərlik komanda ilə başladıq. İlk müştəri — Bakıda 30 otaqlı boutique hotel.</div>
-                </div>
-                <div class="tl-item">
-                  <div class="tl-dot"></div>
-                  <div class="tl-year">2021 — İlk böyük addım</div>
-                  <div class="tl-event">50 otel müştərisi</div>
-                  <div class="tl-desc">Kanal idarəedicisi modulu buraxıldı. Booking.com ilə rəsmi tərəfdaşlıq imzalandı.</div>
-                </div>
-                <div class="tl-item">
-                  <div class="tl-dot"></div>
-                  <div class="tl-year">2022 — Texnologiya</div>
-                  <div class="tl-event">AI OCR Skanlaması Buraxıldı</div>
-                  <div class="tl-desc">Pasport OCR və üz tanıma check-in sistemimiz ilk dəfə Azərbaycan bazarında təqdim edildi.</div>
-                </div>
-                <div class="tl-item">
-                  <div class="tl-dot"></div>
-                  <div class="tl-year">2023 — Regional genişlənmə</div>
-                  <div class="tl-event">Türkiyə və UAE-yə çıxış</div>
-                  <div class="tl-desc">Beynəlxalq bazara addım atdıq. İstanbul və Dubai ofisləri açıldı.</div>
-                </div>
-                <div class="tl-item">
-                  <div class="tl-dot"></div>
-                  <div class="tl-year">2025 — Bu gün</div>
-                  <div class="tl-event">500+ Otel, 3 ölkə</div>
-                  <div class="tl-desc">Platformadan 12M+ rezervasiya keçdi. Növbəti hədəf: Avropa bazarı.</div>
-                </div>
-              </div>
+              <p data-i18n="about.story_p1">Hotellinia ideyası illərlə köhnəlmiş, yavaş və bir-birindən təcrid olunmuş otel proqramları ilə mübarizə aparan peşəkarların təşəbbüsü ilə yarandı.</p>
+              <p data-i18n="about.story_p2">Biz qərara gəldik ki, müasir mehmanxana rəhbərləri və əməkdaşları üçün intuitiv, sürətli və bütün şöbələri vahid ekranda birləşdirən zərif bir bulud platforması quraq.</p>
+              <p data-i18n="about.story_p3">Bu gün Hotellinia regionun yüzlərlə otelində vaxt itkisini aradan qaldırır, əməliyyat səhvlərini minimuma endirir və biznesin böyüməsini sürətləndirir.</p>
             </div>
           </div>
         </div>
@@ -553,16 +559,16 @@
         <!-- 3 Feature Cards matching screenshot -->
         <div class="story-feat-cards">
           <div class="sfc-card" id="sfc-platform">
-            <h4 class="sfc-title">Vahid Platforma</h4>
-            <p class="sfc-desc">Ön büro, maliyyə, otaq xidmətləri, POS və hesabatlar — ayrı proqramlara ehtiyac olmadan vahid sistemdə.</p>
+            <h4 class="sfc-title" data-i18n="about.val1_title">Sürət və Sadəlik</h4>
+            <p class="sfc-desc" data-i18n="about.val1_desc">Ən mürəkkəb əməliyyatları belə bir neçə kliklə yerinə yetirmək üçün dizayn edilmiş sadə və aydın interfeys.</p>
           </div>
           <div class="sfc-card" id="sfc-global">
-            <h4 class="sfc-title">Qlobal Yanaşma</h4>
-            <p class="sfc-desc">7 dil, çoxvalyutalılıq və ölkəyə xas qanunvericillik adapterləri ilə hər bazara uyğunluq.</p>
+            <h4 class="sfc-title" data-i18n="about.val2_title">Maksimum Təhlükəsizlik</h4>
+            <p class="sfc-desc" data-i18n="about.val2_desc">Bank səviyyəsində şifrələmə, gündəlik avtomatik ehtiyat nüsxələri və beynəlxalq məlumat qorunması standartları.</p>
           </div>
           <div class="sfc-card" id="sfc-dev">
-            <h4 class="sfc-title">Davamlı İnkişaf</h4>
-            <p class="sfc-desc">Üz tanıma, pasport OCR kimi süni intellekt dəstəkli xüsusiyyətlərlə daim yenilənən məhsul.</p>
+            <h4 class="sfc-title" data-i18n="about.val3_title">Daimi İnkişaf</h4>
+            <p class="sfc-desc" data-i18n="about.val3_desc">Hər ay tərəfdaşlarımızın rəyləri əsasında buraxılan yeni funksiyalar və avtomatik sistem yeniləmələri.</p>
           </div>
         </div>
 
@@ -573,51 +579,37 @@
     <section class="values-section">
       <div class="container">
         <div class="section-header">
-          <div class="section-pill" style="background:rgba(0,102,255,0.12);border-color:rgba(0,102,255,0.2);color:#6699FF;">Dəyərlərimiz</div>
-          <h2 class="section-title">Bizi fərqli edən<br/><span class="gradient-text">prinsiplər</span></h2>
+          <div class="section-pill" style="background:rgba(0,102,255,0.12);border-color:rgba(0,102,255,0.2);color:#6699FF;" data-i18n="about.values_tag">Dəyərlərimiz</div>
+          <h2 class="section-title" data-i18n="about.values_title">Bizi irəli aparan <br/><span class="gradient-text">prinsiplər</span></h2>
         </div>
         <div class="values-grid">
 
           <div class="value-card">
             <div class="value-glow" style="background:var(--green)"></div>
             <div class="value-icon green">🎯</div>
-            <div class="value-name">Müştəri Mərkəzlilik</div>
-            <p class="value-desc">Hər qərarımızı müştərilərimizin uğurundan başlayaraq qururuq. Otelçilik sektorunun problemlərini içəridən anlayırıq çünki biz onları yaşamışıq.</p>
+            <div class="value-name" data-i18n="about.val1_title">Sürət və Sadəlik</div>
+            <p class="value-desc" data-i18n="about.val1_desc">Ən mürəkkəb əməliyyatları belə bir neçə kliklə yerinə yetirmək üçün dizayn edilmiş sadə və aydın interfeys.</p>
           </div>
 
           <div class="value-card">
             <div class="value-glow" style="background:var(--cyan)"></div>
             <div class="value-icon cyan">⚡</div>
-            <div class="value-name">Sürət və Etibarlılıq</div>
-            <p class="value-desc">Otelçilik heç vaxt dayanmır. Platformamız 99.9% uptime ilə işləyir. Kritik anlarda sizi yarı yolda qoymayırıq.</p>
+            <div class="value-name" data-i18n="about.val2_title">Maksimum Təhlükəsizlik</div>
+            <p class="value-desc" data-i18n="about.val2_desc">Bank səviyyəsində şifrələmə, gündəlik avtomatik ehtiyat nüsxələri və beynəlxalq məlumat qorunması standartları.</p>
           </div>
 
           <div class="value-card">
             <div class="value-glow" style="background:var(--purple)"></div>
             <div class="value-icon purple">🔒</div>
-            <div class="value-name">Məlumat Təhlükəsizliyi</div>
-            <p class="value-desc">Qonaq məlumatları bizim üçün müqəddəsdir. GDPR, PCI DSS və Azərbaycan Fərdi Məlumatlar Qanununa tam uyğunluq təmin edirik.</p>
+            <div class="value-name" data-i18n="about.val3_title">Daimi İnkişaf</div>
+            <p class="value-desc" data-i18n="about.val3_desc">Hər ay tərəfdaşlarımızın rəyləri əsasında buraxılan yeni funksiyalar və avtomatik sistem yeniləmələri.</p>
           </div>
 
           <div class="value-card">
             <div class="value-glow" style="background:var(--orange)"></div>
             <div class="value-icon orange">🚀</div>
-            <div class="value-name">Daimi İnnovasiya</div>
-            <p class="value-desc">Texnologiya dayanmadan irəliləyir. Biz AI, machine learning və cloud texnologiyalarını otelçilik sənayesinə tətbiq etməkdə öncül olduq.</p>
-          </div>
-
-          <div class="value-card">
-            <div class="value-glow" style="background:var(--teal)"></div>
-            <div class="value-icon teal">🌱</div>
-            <div class="value-name">Şəffaflıq</div>
-            <p class="value-desc">Gizli ücretlər, gizli şərtlər, gizli məhdudiyyətlər yoxdur. Qiymətlər, imkanlar, məhdudiyyətlər — hamısını açıq şəkildə bildiririk.</p>
-          </div>
-
-          <div class="value-card">
-            <div class="value-glow" style="background:var(--blue)"></div>
-            <div class="value-icon blue">🤝</div>
-            <div class="value-name">Uzunmüddətli Tərəfdaşlıq</div>
-            <p class="value-desc">Müştərimizi satış sonrası da dəstəkləyirik. Onboarding, tədris, davamlı texniki dəstək — biz hər addımda yanınızdayıq.</p>
+            <div class="value-name" data-i18n="about.val4_title">24/7 Canlı Dəstək</div>
+            <p class="value-desc" data-i18n="about.val4_desc">Problem yarandıqda robot yox, sahəni dərindən bilən canlı mütəxəssislərimiz dərhal köməyinizə çatır.</p>
           </div>
 
         </div>
@@ -628,95 +620,45 @@
     <section class="team-section">
       <div class="container">
         <div class="section-header">
-          <div class="section-pill" style="background:rgba(139,92,246,0.12);border-color:rgba(139,92,246,0.2);color:var(--purple);">Komanda</div>
-          <h2 class="section-title">Hotellinia-nın<br/><span class="gradient-text">arxasındakılar</span></h2>
-          <p class="section-sub">Otelçilik, texnologiya və məhsul dizaynı üzrə 50+ peşəkarlıq ilindən ibarət bir komanda.</p>
+          <div class="section-pill" style="background:rgba(139,92,246,0.12);border-color:rgba(139,92,246,0.2);color:var(--purple);" data-i18n="about.team_tag">Komandamız</div>
+          <h2 class="section-title" data-i18n="about.team_title">Hotellinia-nın <br/><span class="gradient-text">arxasındakı peşəkarlar</span></h2>
+          <p class="section-sub" data-i18n="about.team_sub">Məhsulumuzu inkişaf etdirən və otellərə dəyər qatan idarə heyətimiz.</p>
         </div>
         <div class="team-grid">
 
+          <!-- 1. Nizam Babayev -->
           <div class="team-card">
-            <div class="team-avatar avatar-1">👨‍💼</div>
-            <div class="team-name">Əli Hüseynov</div>
-            <div class="team-role">Baş İcraçı Direktor</div>
-            <div class="team-bio">Keçmiş otel meneceri. 12 il Marriott və Hilton şəbəkəsində çalışıb. Otelçilik sektorunun problemlərini içəridən anlayır.</div>
+            <div class="team-avatar avatar-2">📈</div>
+            <div class="team-name" data-i18n="team.nizam_name">Nizam Babayev</div>
+            <div class="team-role" data-i18n="team.nizam_role">Biznesin İnkişafı Meneceri</div>
+            <div class="team-bio" data-i18n="team.nizam_bio">Yeni bazarların araşdırılması, strateji tərəfdaşlıqlar və Hotellinia-nın regional genişlənməsinə cavabdehdir. Mehmanxana texnologiyaları sektorunda illərlə dərin təcrübəyə malikdir.</div>
             <div class="team-links">
-              <a href="#" class="team-link-icon">in</a>
-              <a href="#" class="team-link-icon">𝕏</a>
+              <a href="#" onclick="return false" class="team-link-icon" title="LinkedIn">in</a>
+              <a href="contact.html" class="team-link-icon" title="Contact">✉</a>
             </div>
           </div>
 
+          <!-- 2. Fərid Vəliyev -->
           <div class="team-card">
-            <div class="team-avatar avatar-2">👩‍💻</div>
-            <div class="team-name">Nigar Əliyeva</div>
-            <div class="team-role">Baş Texnologiya Direktoru</div>
-            <div class="team-bio">MIT Computer Science məzunu. Google-da 6 il cloud infrastructure mühəndisi kimi çalışıb. Platformanın arxitekturasının yaradıcısı.</div>
+            <div class="team-avatar avatar-3">🤝</div>
+            <div class="team-name" data-i18n="team.farid_name">Fərid Vəliyev</div>
+            <div class="team-role" data-i18n="team.farid_role">Satış Meneceri</div>
+            <div class="team-bio" data-i18n="team.farid_bio">Otellər və mehmanxana şəbəkələri ilə B2B tərəfdaşlıqların qurulması, müştəri portfelinin idarə edilməsi və satış strategiyalarının uğurla icrasına rəhbərlik edir.</div>
             <div class="team-links">
-              <a href="#" class="team-link-icon">in</a>
-              <a href="#" class="team-link-icon">GH</a>
+              <a href="#" onclick="return false" class="team-link-icon" title="LinkedIn">in</a>
+              <a href="contact.html" class="team-link-icon" title="Contact">✉</a>
             </div>
           </div>
 
+          <!-- 3. Cavidan Bayramlı -->
           <div class="team-card">
-            <div class="team-avatar avatar-3">👨‍🎨</div>
-            <div class="team-name">Rauf Məmmədov</div>
-            <div class="team-role">Baş Məhsul Direktoru</div>
-            <div class="team-bio">Ex-Stripe məhsul dizayneri. İstifadəçi təcrübəsi üzrə 10 il təcrübəsi. Hotellinia-nın vizual dilinin yaradıcısı.</div>
+            <div class="team-avatar avatar-1">💻</div>
+            <div class="team-name" data-i18n="team.cavidan_name">Cavidan Bayramlı</div>
+            <div class="team-role" data-i18n="team.cavidan_role">Baş Texniki Direktor (CTO)</div>
+            <div class="team-bio" data-i18n="team.cavidan_bio">Hotellinia platformasının texnoloji arxitekturası, bulud infrastrukturu və kibertəhlükəsizlik sistemlərinə rəhbərlik edir. Yüksək yüklü paylanmış sistemlər və innovativ həllər üzrə mühəndis.</div>
             <div class="team-links">
-              <a href="#" class="team-link-icon">in</a>
-              <a href="#" class="team-link-icon">Dr</a>
-            </div>
-          </div>
-
-          <div class="team-card">
-            <div class="team-avatar avatar-4">👩‍💼</div>
-            <div class="team-name">Sevinc İbrahimova</div>
-            <div class="team-role">Satış Direktoru</div>
-            <div class="team-bio">Azərbaycan və Türkiyə otelçilik bazarında 8 il B2B satış təcrübəsi. 200+ otel partnyorluğu qurub.</div>
-            <div class="team-links">
-              <a href="#" class="team-link-icon">in</a>
-            </div>
-          </div>
-
-          <div class="team-card">
-            <div class="team-avatar avatar-5">👨‍🔬</div>
-            <div class="team-name">Tural Qasımov</div>
-            <div class="team-role">AI & ML Mühəndisi</div>
-            <div class="team-bio">Pasport OCR və üz tanıma sistemlərinin arxasındakı mühəndis. PhD in Computer Vision, Bilkent Universiteti.</div>
-            <div class="team-links">
-              <a href="#" class="team-link-icon">GH</a>
-              <a href="#" class="team-link-icon">in</a>
-            </div>
-          </div>
-
-          <div class="team-card">
-            <div class="team-avatar avatar-6">👩‍🔧</div>
-            <div class="team-name">Aytən Nəsirovа</div>
-            <div class="team-role">Baş Mühəndis</div>
-            <div class="team-bio">Distributed systems üzrə mütəxəssis. Bakı Dövlət Universiteti, Kompüter Elmləri. 100K+ müştəriyə xidmət edən platformanın qurucusu.</div>
-            <div class="team-links">
-              <a href="#" class="team-link-icon">GH</a>
-              <a href="#" class="team-link-icon">in</a>
-            </div>
-          </div>
-
-          <div class="team-card">
-            <div class="team-avatar avatar-7">👨‍🏫</div>
-            <div class="team-name">Kamran Əsgərov</div>
-            <div class="team-role">Müştəri Uğuru Direktoru</div>
-            <div class="team-bio">Hər yeni müştərinin onboarding prosesini şəxsən rəhbərlik edir. Müştəri məmnuniyyəti reytinqimiz: 4.9/5.</div>
-            <div class="team-links">
-              <a href="#" class="team-link-icon">in</a>
-            </div>
-          </div>
-
-          <div class="team-card">
-            <div class="team-avatar avatar-8">👩‍🎯</div>
-            <div class="team-name">Laman Sultanova</div>
-            <div class="team-role">Marketinq Direktoru</div>
-            <div class="team-bio">Regional otelçilik marka strategiyası üzrə 7 il təcrübə. Azərbaycan, Türkiyə və UAE bazarlarında Hotellinia-nın tanınmasını artırıb.</div>
-            <div class="team-links">
-              <a href="#" class="team-link-icon">in</a>
-              <a href="#" class="team-link-icon">𝕏</a>
+              <a href="#" onclick="return false" class="team-link-icon" title="LinkedIn">in</a>
+              <a href="#" onclick="return false" class="team-link-icon" title="GitHub">GH</a>
             </div>
           </div>
 
@@ -728,8 +670,8 @@
     <section class="partners-section">
       <div class="container">
         <div class="section-header">
-          <div class="section-pill" style="background:rgba(20,184,166,0.12);border-color:rgba(20,184,166,0.2);color:var(--teal);">Tərəfdaşlar</div>
-          <h2 class="section-title">Qlobal <span class="gradient-text">tərəfdaşlarımız</span></h2>
+          <div class="section-pill" style="background:rgba(20,184,166,0.12);border-color:rgba(20,184,166,0.2);color:var(--teal);" data-i18n="about.partners_tag">Tərəfdaşlar</div>
+          <h2 class="section-title" data-i18n="about.partners_title">Qlobal <span class="gradient-text">tərəfdaşlarımız</span></h2>
         </div>
         <div class="partners-grid">
           <div class="partner-card"><span class="partner-name">Booking.com</span></div>
@@ -749,21 +691,21 @@
       <div class="cta-aura"></div>
       <div class="container">
         <div class="cta-inner">
-          <div class="cta-badge">
+          <div class="cta-badge" data-i18n="about.cta_badge">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" stroke="currentColor" stroke-width="2"/><circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="2"/></svg>
             Komandamıza qoşulun
           </div>
-          <h2 class="cta-title">
+          <h2 class="cta-title" data-i18n="about.cta_title">
             Otelçilik sənayesini<br/>
             <span class="gradient-text">birlikdə dəyişək</span>
           </h2>
-          <p class="cta-sub">Demo sınayın, fərqi özünüz görün. 14 gün pulsuz, kredit kartı lazım deyil.</p>
+          <p class="cta-sub" data-i18n="about.cta_sub">Demo sınayın, fərqi özünüz görün. 14 gün pulsuz, kredit kartı lazım deyil.</p>
           <div class="hero-ctas" style="justify-content:center; margin-bottom: 0;">
-            <a href="contact.html#contactForm" class="btn btn-primary btn-xl" id="about-cta-btn">
+            <a href="contact.html#contactForm" class="btn btn-primary btn-xl" id="about-cta-btn" data-i18n="about.cta_btn">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
               Pulsuz Demo Başla
             </a>
-            <a href="mailto:info@hotellinia.az" class="btn btn-ghost btn-xl" id="about-contact-btn">
+            <a href="contact.html" class="btn btn-ghost btn-xl" id="about-contact-btn" data-i18n="about.cta_contact">
               Bizimlə Əlaqə
             </a>
           </div>
@@ -773,55 +715,56 @@
 
   </main>
 
-  <!-- FOOTER -->
+  <!-- ═══════════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════════ -->
   <footer class="site-footer">
     <div class="container">
-      <div class="footer-inner">
-        <div class="footer-brand">
-          <a href="/" class="logo">
+      <div class="footer-inner-clean">
+        <div class="footer-brand-clean">
+          <a href="index.html" class="logo">
             <span class="logo-icon">
-              <svg width="24" height="24" viewBox="0 0 28 28" fill="none">
-                <rect width="28" height="28" rx="7" fill="url(#ftrAbout)"/>
+              <svg width="26" height="26" viewBox="0 0 28 28" fill="none">
+                <rect width="28" height="28" rx="7" fill="url(#footerLogoGrad)"/>
                 <path d="M7 20V10l7-4 7 4v10" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
                 <path d="M11 20v-5h6v5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-                <defs><linearGradient id="ftrAbout" x1="0" y1="0" x2="28" y2="28" gradientUnits="userSpaceOnUse"><stop stop-color="#00C896"/><stop offset="1" stop-color="#0066FF"/></linearGradient></defs>
+                <defs>
+                  <linearGradient id="footerLogoGrad" x1="0" y1="0" x2="28" y2="28" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#00C896"/>
+                    <stop offset="1" stop-color="#0066FF"/>
+                  </linearGradient>
+                </defs>
               </svg>
             </span>
             <span class="logo-text">Hotellinia</span>
           </a>
-          <p class="footer-tagline">Növbəti nəsil otel idarəetmə platforması.</p>
+          <p class="footer-tagline-clean" data-i18n="footer.tagline">Növbəti nəsil bulud əsaslı otel idarəetmə platforması. Bütün əməliyyatlarınızı tək bir ağıllı mərkəzdən idarə edin.</p>
         </div>
-        <div class="footer-links-row">
-          <div class="footer-col">
-            <div class="footer-col-title">Məhsul</div>
-            <a href="/#features" class="footer-link">Xüsusiyyətlər</a>
-            <a href="/#modules" class="footer-link">Modullar</a>
-            <a href="pricing.html" class="footer-link">Qiymətlər</a>
-          </div>
-          <div class="footer-col">
-            <div class="footer-col-title">Şirkət</div>
-            <a href="about.html" class="footer-link">Haqqımızda</a>
-            <a href="/blog" class="footer-link">Blog</a>
-            <a href="/careers" class="footer-link">Karyera</a>
-          </div>
-          <div class="footer-col">
-            <div class="footer-col-title">Dəstək</div>
-            <a href="/docs" class="footer-link">Sənədlər</a>
-            <a href="contact.html" class="footer-link">Əlaqə</a>
-            <a href="/status" class="footer-link">Sistem Statusu</a>
-          </div>
-        </div>
+
+        <nav class="footer-nav-clean" aria-label="Footer naviqasiya">
+          <a href="index.html" class="footer-nav-link" data-i18n="nav.home">Ana səhifə</a>
+          <a href="index.html#features" class="footer-nav-link" data-i18n="nav.features">Xüsusiyyətlər</a>
+          <a href="index.html#modules" class="footer-nav-link" data-i18n="nav.modules">Modullar</a>
+          <a href="index.html#integrations" class="footer-nav-link" data-i18n="nav.integrations">İnteqrasiyalar</a>
+          <a href="pricing.html" class="footer-nav-link" data-i18n="nav.pricing">Qiymətlər</a>
+          <a href="about.html" class="footer-nav-link" data-i18n="nav.about">Haqqımızda</a>
+          <a href="contact.html" class="footer-nav-link" data-i18n="nav.contact">Əlaqə</a>
+        </nav>
       </div>
-      <div class="footer-bottom">
-        <p class="footer-copy">© 2025 Hotellinia. Müəllif hüquqları qorunur.</p>
-        <div class="footer-legal">
-          <a href="/privacy" class="footer-legal-link">Məxfilik Siyasəti</a>
-          <a href="/terms" class="footer-legal-link">İstifadə Şərtləri</a>
+
+      <div class="footer-bottom-clean">
+        <p class="footer-copy" data-i18n="footer.copy">© 2025 Hotellinia. Bütün hüquqlar qorunur.</p>
+        <div class="footer-status-pill">
+          <span class="footer-status-dot"></span>
+          <span data-i18n="footer.status">Bütün sistemlər aktivdir</span>
+          <span>·</span>
+          <span data-i18n="footer.location">Bakı, Azərbaycan</span>
         </div>
       </div>
     </div>
   </footer>
 
-  <script src="app.js"></script>
+  <script src="translations.js?v=4"></script>
+  <script src="app.js?v=4"></script>
 </body>
 </html>

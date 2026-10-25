@@ -6,31 +6,25 @@
 
 // ─── CURSOR GLOW ───────────────────────────────────
 const cursorGlow = document.getElementById('cursorGlow');
-document.addEventListener('mousemove', (e) => {
-  cursorGlow.style.left = e.clientX + 'px';
-  cursorGlow.style.top  = e.clientY + 'px';
-});
+if (cursorGlow) {
+  document.addEventListener('mousemove', (e) => {
+    cursorGlow.style.left = e.clientX + 'px';
+    cursorGlow.style.top  = e.clientY + 'px';
+  });
+}
 
 // ─── NAVBAR SCROLL ─────────────────────────────────
 const navbar = document.getElementById('navbar');
-window.addEventListener('scroll', () => {
-  if (window.scrollY > 40) {
-    navbar.classList.add('scrolled');
-  } else {
-    navbar.classList.remove('scrolled');
-  }
-}, { passive: true });
-
-// ─── HAMBURGER MENU ────────────────────────────────
-const navHamburger = document.getElementById('navHamburger');
-const navLinks = document.getElementById('navLinks');
-
-if (navHamburger) {
-  navHamburger.addEventListener('click', () => {
-    navLinks.classList.toggle('mobile-open');
-    navHamburger.classList.toggle('open');
-  });
+if (navbar) {
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 40) {
+      navbar.classList.add('scrolled');
+    } else {
+      navbar.classList.remove('scrolled');
+    }
+  }, { passive: true });
 }
+
 
 // ─── SMOOTH SCROLL FOR ANCHOR LINKS ────────────────
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -44,7 +38,8 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       const top = target.getBoundingClientRect().top + window.scrollY - offset;
       window.scrollTo({ top, behavior: 'smooth' });
       // Close mobile menu if open
-      navLinks.classList.remove('mobile-open');
+      const mobileMenu = document.getElementById('mobileMenu');
+      if (mobileMenu) mobileMenu.classList.remove('is-open');
     }
   });
 });
@@ -555,3 +550,137 @@ animateWorkflow();
     if (e.key === 'Escape') closeMenu();
   });
 })();
+
+// ─── BILINGUAL TRANSLATION ENGINE & COOL DROPDOWN (AZ / RU) ─────────
+let currentLang = 'az';
+try {
+  currentLang = localStorage.getItem('hotellinia_lang') || 'az';
+} catch (e) {
+  currentLang = 'az';
+}
+
+function applyLanguage(lang) {
+  if (typeof HOTELLINIA_TRANSLATIONS === 'undefined') {
+    return;
+  }
+  const dict = HOTELLINIA_TRANSLATIONS[lang];
+  if (!dict) return;
+
+  currentLang = lang;
+  try {
+    localStorage.setItem('hotellinia_lang', lang);
+  } catch (e) {}
+  document.documentElement.lang = lang;
+
+  // 1. Update text / innerHTML across all pages
+  document.querySelectorAll('[data-i18n]').forEach((el) => {
+    const key = el.getAttribute('data-i18n');
+    if (dict[key] !== undefined) {
+      el.innerHTML = dict[key];
+    }
+  });
+
+  // 2. Update input placeholders
+  document.querySelectorAll('[data-i18n-placeholder]').forEach((el) => {
+    const key = el.getAttribute('data-i18n-placeholder');
+    if (dict[key] !== undefined) {
+      el.setAttribute('placeholder', dict[key]);
+    }
+  });
+
+  // 3. Update Dropdown trigger flag & code
+  const flagEl = document.getElementById('langActiveFlag');
+  const codeEl = document.getElementById('langActiveCode');
+  if (flagEl) flagEl.textContent = lang === 'ru' ? '🇷🇺' : '🇦🇿';
+  if (codeEl) codeEl.textContent = lang === 'ru' ? 'RU' : 'AZ';
+
+  // 4. Update dropdown menu items active state
+  document.querySelectorAll('.lang-dropdown-item').forEach((item) => {
+    const itemLang = item.getAttribute('data-lang');
+    if (itemLang === lang) {
+      item.classList.add('active');
+    } else {
+      item.classList.remove('active');
+    }
+  });
+
+  // 5. Update mobile language switcher buttons
+  document.querySelectorAll('.mob-lang-btn').forEach((btn) => {
+    const btnLang = btn.getAttribute('data-lang');
+    if (btnLang === lang) {
+      btn.classList.add('active');
+    } else {
+      btn.classList.remove('active');
+    }
+  });
+}
+
+function initLanguage() {
+  applyLanguage(currentLang);
+
+  // Setup dropdown toggle & outside click
+  const dropdown = document.getElementById('langDropdown');
+  const dropdownBtn = document.getElementById('langDropdownBtn');
+
+  if (dropdown && dropdownBtn) {
+    dropdownBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      const isOpen = dropdown.classList.toggle('is-open');
+      dropdownBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!dropdown.contains(e.target)) {
+        dropdown.classList.remove('is-open');
+        dropdownBtn.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && dropdown.classList.contains('is-open')) {
+        dropdown.classList.remove('is-open');
+        dropdownBtn.setAttribute('aria-expanded', 'false');
+        dropdownBtn.focus();
+      }
+    });
+  }
+
+  // Handle click on dropdown options
+  document.querySelectorAll('.lang-dropdown-item').forEach((item) => {
+    item.addEventListener('click', (e) => {
+      e.preventDefault();
+      const targetLang = item.getAttribute('data-lang');
+      if (targetLang) {
+        applyLanguage(targetLang);
+      }
+      if (dropdown && dropdownBtn) {
+        dropdown.classList.remove('is-open');
+        dropdownBtn.setAttribute('aria-expanded', 'false');
+      }
+    });
+  });
+
+  // Handle click on mobile buttons
+  document.querySelectorAll('.mob-lang-btn').forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const targetLang = btn.getAttribute('data-lang');
+      if (targetLang) {
+        applyLanguage(targetLang);
+      }
+    });
+  });
+}
+
+// Execute immediately and on DOM readiness
+if (typeof HOTELLINIA_TRANSLATIONS !== 'undefined') {
+  applyLanguage(currentLang);
+}
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initLanguage);
+} else {
+  initLanguage();
+}
+
+
