@@ -391,21 +391,21 @@
             <h2 class="cf-heading" data-i18n="contact.form_title">Bizə Mesaj Göndərin</h2>
             <p class="cf-subheading" data-i18n="contact.form_sub">Məlumatlarınızı qeyd edin, komandamız sizinlə əlaqə saxlasın.</p>
 
-            <form id="contactForm" name="contactForm" onsubmit="handleContactSubmit(event)">
+            <form id="contactForm" name="contactForm" method="POST" action="" onsubmit="handleContactSubmit(event)">
               <div class="form-row">
                 <div class="form-group">
                   <label for="cf-company" data-i18n="contact.lbl_company">Otelin və ya müəssisənin adı *</label>
-                  <input type="text" id="cf-company" required/>
+                  <input type="text" id="cf-company" name="otel_adi" required/>
                 </div>
                 <div class="form-group">
                   <label for="cf-city" data-i18n="contact.lbl_city">Şəhər *</label>
-                  <input type="text" id="cf-city" required/>
+                  <input type="text" id="cf-city" name="seher" required/>
                 </div>
               </div>
               <div class="form-row">
                 <div class="form-group">
                   <label for="cf-type" data-i18n="contact.lbl_type">Müəssisənin növü *</label>
-                  <select id="cf-type" required style="color:#e2e8f0;background:#0d1117;">
+                  <select id="cf-type" name="muessise_novu" required>
                     <option value="" disabled selected data-i18n="contact.opt_select">Seçin...</option>
                     <option data-i18n="contact.opt_type_hotel">Otel</option>
                     <option data-i18n="contact.opt_type_hostel">Hostel</option>
@@ -416,7 +416,7 @@
                 </div>
                 <div class="form-group">
                   <label for="cf-rooms" data-i18n="contact.lbl_rooms">Otaqların sayı *</label>
-                  <select id="cf-rooms" required style="color:#e2e8f0;background:#0d1117;">
+                  <select id="cf-rooms" name="otaq_sayi" required>
                     <option value="" disabled selected data-i18n="contact.opt_select">Seçin...</option>
                     <option data-i18n="contact.opt_rooms_1">1–20 otaq</option>
                     <option data-i18n="contact.opt_rooms_2">21–50 otaq</option>
@@ -427,21 +427,21 @@
               </div>
               <div class="form-group">
                 <label for="cf-name" data-i18n="contact.lbl_name">Əlaqədar şəxsin adı və soyadı *</label>
-                <input type="text" id="cf-name" required/>
+                <input type="text" id="cf-name" name="elaqedar_sexs" required/>
               </div>
               <div class="form-row">
                 <div class="form-group">
                   <label for="cf-phone" data-i18n="contact.lbl_phone">Telefon nömrəsi *</label>
-                  <input type="tel" id="cf-phone" required/>
+                  <input type="tel" id="cf-phone" name="telefon" required/>
                 </div>
                 <div class="form-group">
                   <label for="cf-email" data-i18n="contact.lbl_email">E-poçt ünvanı *</label>
-                  <input type="email" id="cf-email" required/>
+                  <input type="email" id="cf-email" name="email" required/>
                 </div>
               </div>
               <div class="form-group">
                 <label for="cf-subject" data-i18n="contact.lbl_purpose">Müraciətin məqsədi *</label>
-                <select id="cf-subject" required style="color:#e2e8f0;background:#0d1117;">
+                <select id="cf-subject" name="muraciet_meqsedi" required>
                   <option value="" disabled selected data-i18n="contact.opt_select">Seçin...</option>
                   <option data-i18n="contact.opt_purp_demo">Demo təqdimatı</option>
                   <option data-i18n="contact.opt_purp_price">Qiymət təklifi</option>
@@ -450,7 +450,7 @@
               </div>
               <div class="form-group">
                 <label for="cf-message" data-i18n="contact.lbl_msg">Əlavə məlumat (istəyə bağlı)</label>
-                <textarea id="cf-message"></textarea>
+                <textarea id="cf-message" name="elave_melumat"></textarea>
               </div>
               <button type="submit" class="btn btn-primary btn-submit-full" id="contact-submit-btn" data-i18n="contact.btn_send">
                 Sorğu göndər
@@ -592,10 +592,29 @@
 
   <script>
     function handleContactSubmit(e) {
-      e.preventDefault();
       const form = document.getElementById('contactForm');
+      const action = form.getAttribute('action');
       const success = document.getElementById('contactSuccess');
       const btn = document.getElementById('contact-submit-btn');
+
+      if (action && action.trim() !== '' && action.trim() !== '#') {
+        e.preventDefault();
+        btn.disabled = true;
+        btn.innerHTML = 'Göndərilir...';
+        const formData = new FormData(form);
+        fetch(action, {
+          method: 'POST',
+          body: formData
+        }).then(function() {
+          form.style.display = 'none';
+          success.style.display = 'block';
+        }).catch(function() {
+          form.submit();
+        });
+        return;
+      }
+
+      e.preventDefault();
       btn.disabled = true;
       btn.innerHTML = 'Göndərilir...';
       setTimeout(() => {
