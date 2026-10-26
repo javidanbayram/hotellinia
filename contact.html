@@ -391,7 +391,7 @@
             <h2 class="cf-heading" data-i18n="contact.form_title">Bizə Mesaj Göndərin</h2>
             <p class="cf-subheading" data-i18n="contact.form_sub">Məlumatlarınızı qeyd edin, komandamız sizinlə əlaqə saxlasın.</p>
 
-            <form id="contactForm" name="contactForm" method="POST" action="" onsubmit="handleContactSubmit(event)">
+            <form id="contactForm" name="contactForm" method="POST" action="https://api.sheetmonkey.io/form/pJ9EqouUwRLrfzMozJjLTk" onsubmit="handleContactSubmit(event)">
               <div class="form-row">
                 <div class="form-group">
                   <label for="cf-company" data-i18n="contact.lbl_company">Otelin və ya müəssisənin adı *</label>
@@ -602,9 +602,15 @@
         btn.disabled = true;
         btn.innerHTML = 'Göndərilir...';
         const formData = new FormData(form);
+        const data = Object.fromEntries(formData.entries());
+        data['created'] = new Date().toISOString();
         fetch(action, {
           method: 'POST',
-          body: formData
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify(data)
         }).then(function() {
           form.style.display = 'none';
           success.style.display = 'block';
