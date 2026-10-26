@@ -372,7 +372,7 @@ const HOTELLINIA_TRANSLATIONS = {
     "contact.addr_sub": "Hotellinia Ofisi",
 
     "contact.offices_tag": "Ofislərimiz",
-    "contact.offices_title": "Bizi <span class=\"gradient-text\">harada taparsınız</span>",
+    "contact.offices_title": "Harada <span class=\"gradient-text\">fəaliyyət göstəririk</span>",
     "contact.rep_az": "Azərbaycan nümayəndəliyi",
     "contact.rep_hq": "Baş ofis",
     "contact.hq_country": "Türkiyə",
@@ -759,7 +759,7 @@ const HOTELLINIA_TRANSLATIONS = {
     "contact.addr_sub": "Офис Hotellinia",
 
     "contact.offices_tag": "Наши офисы",
-    "contact.offices_title": "Где нас <span class=\"gradient-text\">найти</span>",
+    "contact.offices_title": "Где мы <span class=\"gradient-text\">работаем</span>",
     "contact.rep_az": "Представительство в Азербайджане",
     "contact.rep_hq": "Главный офис",
     "contact.hq_country": "Турция",
