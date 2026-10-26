@@ -3400,6 +3400,56 @@ body.preloader-locked {
   animation: pulse 2s infinite;
 }
 
+/* ─── FOOTER SOCIAL MEDIA LINKS ─── */
+.footer-socials {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+.footer-social-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  color: #64748B;
+  background: rgba(11, 16, 32, 0.04);
+  border: 1px solid rgba(11, 16, 32, 0.08);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  text-decoration: none;
+  cursor: pointer;
+}
+.footer-social-btn svg {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), color 0.3s ease;
+}
+.footer-social-btn:hover {
+  background: #FFFFFF;
+  transform: translateY(-2px) scale(1.08);
+}
+.footer-social-btn--linkedin:hover {
+  color: #2563EB;
+  border-color: rgba(37, 99, 235, 0.45);
+  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.25), 0 0 12px rgba(37, 99, 235, 0.18);
+}
+.footer-social-btn--instagram:hover {
+  color: #00C896;
+  border-color: rgba(0, 200, 150, 0.45);
+  box-shadow: 0 6px 20px rgba(0, 200, 150, 0.25), 0 0 12px rgba(37, 99, 235, 0.18);
+}
+.footer-social-btn--facebook:hover {
+  color: #2563EB;
+  border-color: rgba(37, 99, 235, 0.45);
+  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.25), 0 0 12px rgba(37, 99, 235, 0.18);
+}
+.footer-social-btn--x:hover {
+  color: #00C896;
+  border-color: rgba(0, 200, 150, 0.45);
+  box-shadow: 0 6px 20px rgba(0, 200, 150, 0.25), 0 0 12px rgba(37, 99, 235, 0.18);
+}
+
 @media (max-width: 768px) {
   .footer-inner-clean {
     flex-direction: column;
