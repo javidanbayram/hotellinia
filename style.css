@@ -248,14 +248,26 @@ a { text-decoration: none; color: inherit; }
 .logo {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   flex-shrink: 0;
+  text-decoration: none;
 }
 .logo-icon { display: flex; align-items: center; }
+.logo-img {
+  height: 40px;
+  width: auto;
+  max-width: 60px;
+  object-fit: contain;
+  display: block;
+  transition: transform 0.25s ease;
+}
+.logo:hover .logo-img {
+  transform: scale(1.05);
+}
 .logo-text {
   font-family: var(--font-display);
   font-weight: 800;
-  font-size: 19px;
+  font-size: 20px;
   letter-spacing: -0.5px;
   background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
   -webkit-background-clip: text;
@@ -2479,13 +2491,18 @@ a { text-decoration: none; color: inherit; }
 
 /* Logo inside menu */
 .mob-logo {
-  font-size: 1rem;
-  font-weight: 700;
+  font-size: 1.15rem;
+  font-weight: 800;
   color: #0F172A;
   margin-bottom: 32px;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
+}
+.mob-logo-img {
+  height: 38px;
+  width: auto;
+  object-fit: contain;
 }
 
 /* Links wrapper */
