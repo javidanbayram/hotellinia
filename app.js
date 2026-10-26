@@ -4,6 +4,68 @@
 
 'use strict';
 
+// ─── FULL-SCREEN ONBOARDING PRE-LOADER ───────────────
+(function initHotelliniaPreloader() {
+  const preloader = document.getElementById('hotelliniaPreloader');
+  if (!preloader) return;
+
+  const pathname = window.location.pathname;
+  const isHomepage = pathname.endsWith('index.html') || pathname === '/' || pathname.endsWith('/') || pathname === '';
+  const alreadySeen = sessionStorage.getItem('hotellinia_preloader_seen');
+
+  // Skip on subpages if already seen in current session
+  if (!isHomepage && alreadySeen === 'true') {
+    preloader.classList.add('is-hidden');
+    return;
+  }
+
+  // Lock scrolling while preloader sequence plays
+  document.body.classList.add('preloader-locked');
+
+  let isDismissed = false;
+
+  const dismissPreloader = () => {
+    if (isDismissed) return;
+    isDismissed = true;
+    preloader.classList.add('is-exiting');
+    document.body.classList.remove('preloader-locked');
+
+    setTimeout(() => {
+      preloader.classList.add('is-hidden');
+      try {
+        sessionStorage.setItem('hotellinia_preloader_seen', 'true');
+      } catch (e) {}
+    }, 850);
+  };
+
+  // Full sequence completes automatically after ~5.3s
+  const timer = setTimeout(dismissPreloader, 5300);
+
+  // Skip button handler
+  const skipBtn = document.getElementById('preloaderSkip');
+  if (skipBtn) {
+    skipBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      clearTimeout(timer);
+      dismissPreloader();
+    });
+  }
+
+  // Fast-exit on screen click
+  preloader.addEventListener('click', () => {
+    clearTimeout(timer);
+    dismissPreloader();
+  });
+
+  // Fast-exit on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !isDismissed) {
+      clearTimeout(timer);
+      dismissPreloader();
+    }
+  });
+})();
+
 // ─── CURSOR GLOW ───────────────────────────────────
 const cursorGlow = document.getElementById('cursorGlow');
 if (cursorGlow) {
