@@ -3444,11 +3444,6 @@ body.preloader-locked {
   border-color: rgba(37, 99, 235, 0.45);
   box-shadow: 0 6px 20px rgba(37, 99, 235, 0.25), 0 0 12px rgba(37, 99, 235, 0.18);
 }
-.footer-social-btn--x:hover {
-  color: #00C896;
-  border-color: rgba(0, 200, 150, 0.45);
-  box-shadow: 0 6px 20px rgba(0, 200, 150, 0.25), 0 0 12px rgba(37, 99, 235, 0.18);
-}
 
 @media (max-width: 768px) {
   .footer-inner-clean {
