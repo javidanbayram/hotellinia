@@ -3,15 +3,124 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hotellinia — Ağıllı Otel İdarəetmə Sistemi</title>
-  <meta name="description" content="Hotellinia — Növbəti nəsil bulud əsaslı otel idarəetmə sistemi (PMS). Bütün otel əməliyyatlarınızı tək bir ağıllı platformadan idarə edin." />
-  <meta property="og:title" content="Hotellinia — Ağıllı Otel İdarəetmə Sistemi" />
-  <meta property="og:description" content="Ön bürodan otaq təmizliyinə qədər bütün prosesləri avtomatlaşdırın." />
+  
+  <!-- Technical SEO: Canonical & Multi-language Alternate Hreflang Tags -->
+  <link rel="canonical" href="https://hotellinia.com/" />
+  <link rel="alternate" hreflang="az" href="https://hotellinia.com/" />
+  <link rel="alternate" hreflang="ru" href="https://hotellinia.com/?lang=ru" />
+  <link rel="alternate" hreflang="x-default" href="https://hotellinia.com/" />
+
+  <!-- Primary Meta Tags -->
+  <title>Hotellinia — Növbəti Nəsil Bulud Əsaslı Otel İdarəetmə Sistemi (PMS)</title>
+  <meta name="title" content="Hotellinia — Növbəti Nəsil Bulud Əsaslı Otel İdarəetmə Sistemi (PMS)" />
+  <meta name="description" content="Hotellinia — Azərbaycan və region otelləri üçün müasir bulud əsaslı PMS, Kanal Meneceri və AI OCR qeydiyyat sistemi. Rezervasiyaları vahid mərkəzdən idarə edin." />
+  <meta name="keywords" content="otel idarəetmə sistemi, PMS Azərbaycan, hotel software Baku, bulud PMS, channel manager, otel proqramı, Hotellinia, система управления отелем, гостиничный софт Баку" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+
+  <!-- Local GEO Targeting (Azerbaijan / Baku) -->
+  <meta name="geo.region" content="AZ-BA" />
+  <meta name="geo.placename" content="Baku, Azerbaijan" />
+  <meta name="geo.position" content="40.4093;49.8671" />
+  <meta name="ICBM" content="40.4093, 49.8671" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Hotellinia" />
+  <meta property="og:url" content="https://hotellinia.com/" />
+  <meta property="og:title" content="Hotellinia — Növbəti Nəsil Bulud Əsaslı Otel İdarəetmə Sistemi (PMS)" />
+  <meta property="og:description" content="Ön bürodan otaq təmizliyinə qədər bütün prosesləri avtomatlaşdırın və rezervasiyalarınızı vahid mərkəzdən sinxronlaşdırın." />
+  <meta property="og:image" content="https://hotellinia.com/hotellinia-logo.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="az_AZ" />
+  <meta property="og:locale:alternate" content="ru_RU" />
+
+  <!-- Twitter Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://hotellinia.com/" />
+  <meta name="twitter:title" content="Hotellinia — Növbəti Nəsil Bulud Əsaslı Otel İdarəetmə Sistemi" />
+  <meta name="twitter:description" content="Ön bürodan otaq təmizliyinə qədər bütün prosesləri avtomatlaşdırın." />
+  <meta name="twitter:image" content="https://hotellinia.com/hotellinia-logo.png" />
+
+  <!-- Fonts & Core Stylesheet -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css?v=5" />
+  <link rel="stylesheet" href="style.css?v=6" />
   <link rel="icon" type="image/png" href="hotellinia-logo.png" />
+
+  <!-- JSON-LD Structured Data Schema (SoftwareApplication & LocalBusiness for GEO visibility) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://hotellinia.com/#software",
+        "name": "Hotellinia",
+        "url": "https://hotellinia.com",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Cloud, Web Browser, iOS, Android",
+        "description": "Növbəti nəsil bulud əsaslı otel idarəetmə sistemi (PMS), Kanal Meneceri (Channel Manager), AI sənəd skaneri və vahid rezervasiya mərkəzi.",
+        "inLanguage": ["az", "ru", "en"],
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "AZN",
+          "availability": "https://schema.org/InStock"
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.9",
+          "reviewCount": "128",
+          "bestRating": "5",
+          "worstRating": "1"
+        },
+        "featureList": [
+          "Bulud Əsaslı PMS (Property Management System)",
+          "2-Tərəfli Real-vaxt Kanal Meneceri (Booking.com, Airbnb, Expedia)",
+          "AI Pasport və Şəxsiyyət Vəsiqəsi OCR Skaneri",
+          "Avtomatlaşdırılmış Housekeeping və Otaq Xidmətləri",
+          "F&B və Restoran POS İnteqrasiyası",
+          "Avtomatlaşdırılmış Faktura və Maliyyə Hesabatları"
+        ]
+      },
+      {
+        "@type": "LocalBusiness",
+        "@id": "https://hotellinia.com/#organization",
+        "name": "Hotellinia",
+        "legalName": "Hotellinia Hospitality Technologies LLC",
+        "url": "https://hotellinia.com",
+        "logo": "https://hotellinia.com/hotellinia-logo.png",
+        "image": "https://hotellinia.com/hotellinia-logo.png",
+        "description": "Azərbaycan və region üzrə otellər üçün innovativ bulud texnologiyaları və idarəetmə sistemləri.",
+        "telephone": "+994 50 000 00 00",
+        "priceRange": "$$",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Nizami küçəsi",
+          "addressLocality": "Bakı",
+          "addressRegion": "Bakı",
+          "postalCode": "AZ1000",
+          "addressCountry": "AZ"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 40.409264,
+          "longitude": 49.867092
+        },
+        "areaServed": [
+          { "@type": "Country", "name": "Azerbaijan" },
+          { "@type": "City", "name": "Baku" },
+          { "@type": "Country", "name": "Kazakhstan" },
+          { "@type": "Country", "name": "Uzbekistan" },
+          { "@type": "Country", "name": "Georgia" }
+        ],
+        "knowsLanguage": ["az", "ru", "en"]
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
 
@@ -24,16 +133,16 @@
     <div class="preloader-content">
       <div class="preloader-logo-wrap">
         <div class="preloader-logo-aura"></div>
-        <img src="hotellinia-logo.png" alt="Hotellinia" class="preloader-logo-img" />
+        <img src="hotellinia-logo.png" alt="Hotellinia — Bulud Əsaslı Ağıllı Otel İdarəetmə Sistemi Logosu" data-i18n-alt="alt.logo" class="preloader-logo-img" />
       </div>
       <div class="preloader-slogan-wrap">
-        <p class="preloader-slogan">
+        <p class="preloader-slogan" data-i18n="preloader.slogan">
           Mükəmməl qonaqpərvərlik sizdən, <br class="preloader-br" /><span class="preloader-slogan-accent">gələcəyin texnologiyası bizdən!</span>
         </p>
         <div class="preloader-glow-bar"></div>
       </div>
     </div>
-    <button type="button" class="preloader-skip" id="preloaderSkip" aria-label="Keç">Keçid ✕</button>
+    <button type="button" class="preloader-skip" id="preloaderSkip" aria-label="Keç" data-i18n="preloader.skip">Keçid ✕</button>
   </div>
 
   <!-- ─── CURSOR GLOW ─── -->
@@ -52,8 +161,8 @@
   ═══════════════════════════════════════════ -->
   <header class="navbar" id="navbar">
     <div class="nav-inner">
-      <a href="index.html" class="logo" id="logo-link">
-        <img src="hotellinia-logo.png" alt="Hotellinia Logo" class="logo-img" />
+      <a href="index.html" class="logo" id="logo-link" aria-label="Hotellinia Ana Səhifə">
+        <img src="hotellinia-logo.png" alt="Hotellinia — Bulud Əsaslı Ağıllı Otel İdarəetmə Sistemi Logosu" data-i18n-alt="alt.logo" class="logo-img" />
         <span class="logo-text">Hotellinia</span>
       </a>
 
@@ -114,7 +223,7 @@
       <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M2 2L18 18M18 2L2 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
     </button>
     <div class="mob-logo">
-      <img src="hotellinia-logo.png" alt="Hotellinia Logo" class="mob-logo-img" />
+      <img src="hotellinia-logo.png" alt="Hotellinia — Bulud Əsaslı Ağıllı Otel İdarəetmə Sistemi Logosu" data-i18n-alt="alt.logo" class="mob-logo-img" />
       <span>Hotellinia</span>
     </div>
     <div class="mob-lang-wrapper">
@@ -151,86 +260,322 @@
     <!-- ═══════════════════════════════════════════
          HERO SECTION
     ═══════════════════════════════════════════ -->
+    <!-- ═══════════════════════════════════════════
+         HERO SECTION — ULTRA-PREMIUM B2B SAAS
+    ═══════════════════════════════════════════ -->
     <section class="hero" id="hero">
-      <div class="hero-content">
+      <!-- Ambient light mode geometric grid & luminous glowing light orbs -->
+      <div class="hero-grid-bg" aria-hidden="true"></div>
+      <div class="hero-orb hero-orb-1" aria-hidden="true"></div>
+      <div class="hero-orb hero-orb-2" aria-hidden="true"></div>
+      <div class="hero-orb hero-orb-3" aria-hidden="true"></div>
 
+      <!-- LEFT COLUMN: Content & CTAs -->
+      <div class="hero-content">
+        <!-- Massive Tightly Tracked Headline with Emerald-to-Cyan Gradient -->
         <h1 class="hero-headline" data-i18n="hero.headline">
           Otelinizin Bütün Əməliyyatlarını
           <span class="gradient-text">Tək Bir Bulud Platformasından</span> İdarə Edin.
         </h1>
 
+        <!-- Sleek Slate Gray Sub-headline -->
         <p class="hero-sub" data-i18n="hero.sub">
           Ön bürodan otaq təmizliyinə qədər bütün prosesləri avtomatlaşdırın
           və rezervasiyalarınızı vahid mərkəzdən sinxronlaşdırın.
         </p>
 
+        <!-- Elevated CTAs -->
         <div class="hero-ctas">
           <a href="contact.html#contactForm" class="btn btn-primary btn-xl" id="hero-cta-btn" data-i18n="hero.cta_demo">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             Pulsuz Demo Tələb Et
           </a>
           <a href="#features" class="btn btn-ghost btn-xl" id="hero-features-link" data-i18n="hero.cta_features">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="M10 8l6 4-6 4V8z" fill="currentColor"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><polygon points="10 8 16 12 10 16 10 8" fill="currentColor"/></svg>
             Xüsusiyyətlərə Bax
           </a>
         </div>
 
+        <!-- Minimalist Glassmorphic Micro-Stat Cards -->
         <div class="hero-stats">
-          <div class="stat-item">
-            <span class="stat-num">500<span class="stat-plus">+</span></span>
+          <div class="stat-card">
+            <div class="stat-card-glow"></div>
+            <div class="stat-top">
+              <span class="stat-icon green">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              </span>
+              <span class="stat-num">500<span class="stat-plus">+</span></span>
+            </div>
             <span class="stat-label" data-i18n="hero.stat1_label">Otel Partnyor</span>
           </div>
-          <div class="stat-divider"></div>
-          <div class="stat-item">
-            <span class="stat-num">98<span class="stat-plus">%</span></span>
+
+          <div class="stat-card">
+            <div class="stat-card-glow"></div>
+            <div class="stat-top">
+              <span class="stat-icon cyan">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              <span class="stat-num">98<span class="stat-plus">%</span></span>
+            </div>
             <span class="stat-label" data-i18n="hero.stat2_label">Müştəri Məmnuniyyəti</span>
           </div>
-          <div class="stat-divider"></div>
-          <div class="stat-item">
-            <span class="stat-num">40<span class="stat-plus">%</span></span>
+
+          <div class="stat-card">
+            <div class="stat-card-glow"></div>
+            <div class="stat-top">
+              <span class="stat-icon teal">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M13 17l5-5-5-5M6 17l5-5-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              <span class="stat-num">40<span class="stat-plus">%</span></span>
+            </div>
             <span class="stat-label" data-i18n="hero.stat3_label">Əməliyyat Xərclərinin Azalması</span>
           </div>
         </div>
       </div>
 
+      <!-- RIGHT COLUMN: Hyper-Realistic Isometric 3D Glassmorphism SaaS Stage -->
       <div class="hero-visual">
-        <div class="hero-img-wrap">
-          <img src="hero_dashboard.jpg" alt="Hotellinia Dashboard" class="hero-img" id="hero-dashboard-img" />
-          <div class="hero-img-glow"></div>
+        <div class="hero-stage-aura" aria-hidden="true"></div>
 
-          <!-- Floating metric cards -->
-          <div class="float-card float-card-1" id="float-card-revenue">
-            <div class="float-card-icon green">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 100 7h5a3.5 3.5 0 110 7H6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <div class="hero-isometric-scene">
+          <!-- Primary Obsidian Glassmorphism Dashboard Window -->
+          <div class="hero-dashboard-window">
+            <!-- Mac OS Window Titlebar -->
+            <div class="dash-window-header">
+              <div class="dash-window-dots">
+                <span class="dot dot-red"></span>
+                <span class="dot dot-yellow"></span>
+                <span class="dot dot-green"></span>
+              </div>
+              <div class="dash-window-pill">
+                <span class="dash-pulse-dot"></span>
+                <span class="dash-pill-text" data-i18n="hero.dash_title">Hotellinia Core PMS · Canlı Sinxronizasiya</span>
+              </div>
+              <div class="dash-window-meta">
+                <span class="dash-time-badge">
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><polyline points="12 6 12 12 16 14" stroke="currentColor" stroke-width="2"/></svg>
+                  <span data-i18n="hero.dash_active">24/7 Aktiv</span>
+                </span>
+              </div>
             </div>
-            <div>
+
+            <!-- Dashboard Body -->
+            <div class="dash-window-body">
+              <!-- Search & Realtime OTA Status Bar -->
+              <div class="dash-toolbar">
+                <div class="dash-search-mock">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="2"/><path d="M21 21l-4.35-4.35" stroke="currentColor" stroke-width="2"/></svg>
+                  <span data-i18n="hero.dash_search">Qonaq, otaq və ya rezervasiya axtarın...</span>
+                  <kbd class="dash-kbd">⌘K</kbd>
+                </div>
+                <div class="dash-sync-badge">
+                  <span class="sync-dot-live"></span>
+                  <span class="sync-txt" data-i18n="hero.dash_ota_status">OTA Tam Aktiv</span>
+                </div>
+              </div>
+
+              <!-- Quick Room Metrics Chips -->
+              <div class="dash-quick-stats">
+                <div class="dash-stat-chip active">
+                  <span class="chip-num">142</span>
+                  <span class="chip-label" data-i18n="hero.dash_chip_total">Cəmi Otaq</span>
+                </div>
+                <div class="dash-stat-chip chip-occupied">
+                  <span class="chip-dot"></span>
+                  <span class="chip-num">124</span>
+                  <span class="chip-label" data-i18n="hero.dash_chip_occ">Dolu (87%)</span>
+                </div>
+                <div class="dash-stat-chip chip-clean">
+                  <span class="chip-dot"></span>
+                  <span class="chip-num">12</span>
+                  <span class="chip-label" data-i18n="hero.dash_chip_clean">Təmizlənir</span>
+                </div>
+                <div class="dash-stat-chip chip-free">
+                  <span class="chip-dot"></span>
+                  <span class="chip-num">6</span>
+                  <span class="chip-label" data-i18n="hero.dash_chip_free">Boş</span>
+                </div>
+              </div>
+
+              <!-- Live Room Matrix List -->
+              <div class="dash-rooms-table">
+                <div class="dash-row">
+                  <div class="room-col-badge">
+                    <span class="room-pill">101</span>
+                    <div class="room-meta">
+                      <span class="room-name">Deluxe King Suite</span>
+                      <span class="room-channel">Booking.com</span>
+                    </div>
+                  </div>
+                  <div class="room-guest">
+                    <span class="guest-avatar av-1">RA</span>
+                    <span class="guest-name" data-i18n="hero.dash_guest1">Rəşad Əliyev</span>
+                  </div>
+                  <div class="room-stay" data-i18n="hero.dash_stay1">3 Gecə · 12-15 May</div>
+                  <div class="room-status status-occupied" data-i18n="hero.dash_status_occ">Məşğul</div>
+                </div>
+
+                <div class="dash-row">
+                  <div class="room-col-badge">
+                    <span class="room-pill">102</span>
+                    <div class="room-meta">
+                      <span class="room-name">Ocean View Executive</span>
+                      <span class="room-channel" data-i18n="hero.dash_channel_direct">Birbaşa Rezerv</span>
+                    </div>
+                  </div>
+                  <div class="room-guest">
+                    <span class="guest-avatar av-2">LM</span>
+                    <span class="guest-name" data-i18n="hero.dash_guest2">Leyla Məmmədova</span>
+                  </div>
+                  <div class="room-stay" data-i18n="hero.dash_stay2">Check-in 14:00</div>
+                  <div class="room-status status-checkin" data-i18n="hero.dash_status_wait">Gözləmədə</div>
+                </div>
+
+                <div class="dash-row">
+                  <div class="room-col-badge">
+                    <span class="room-pill">103</span>
+                    <div class="room-meta">
+                      <span class="room-name">Junior Penthouse</span>
+                      <span class="room-channel">Airbnb</span>
+                    </div>
+                  </div>
+                  <div class="room-guest">
+                    <span class="guest-avatar av-3">HK</span>
+                    <span class="guest-name" data-i18n="hero.dash_guest3">Housekeeping #4</span>
+                  </div>
+                  <div class="room-stay" data-i18n="hero.dash_stay3">Təmizlik gedir</div>
+                  <div class="room-status status-clean" data-i18n="hero.dash_status_clean">Təmizlənir</div>
+                </div>
+              </div>
+
+              <!-- Live Revenue Sparkline Chart Area -->
+              <div class="dash-chart-footer">
+                <div class="chart-footer-label">
+                  <span class="chart-spark-title" data-i18n="hero.dash_chart_title">Real Vaxtda Rezervasiya Axını</span>
+                  <span class="chart-spark-badge" data-i18n="hero.dash_chart_badge">Canlı Rejim</span>
+                </div>
+                <div class="dash-sparkline-svg">
+                  <svg viewBox="0 0 340 46" fill="none" class="chart-svg" preserveAspectRatio="none">
+                    <defs>
+                      <linearGradient id="chartGrad" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="#00C896" stop-opacity="0.38"/>
+                        <stop offset="100%" stop-color="#00C896" stop-opacity="0"/>
+                      </linearGradient>
+                      <linearGradient id="chartLineGrad" x1="0" y1="0" x2="1" y2="0">
+                        <stop offset="0%" stop-color="#00C896"/>
+                        <stop offset="45%" stop-color="#06B6D4"/>
+                        <stop offset="100%" stop-color="#0284C7"/>
+                      </linearGradient>
+                    </defs>
+                    <path d="M0,38 Q40,28 75,32 T150,18 T225,24 T300,8 L340,12 L340,46 L0,46 Z" fill="url(#chartGrad)"/>
+                    <path d="M0,38 Q40,28 75,32 T150,18 T225,24 T300,8 L340,12" stroke="url(#chartLineGrad)" stroke-width="2.5" stroke-linecap="round"/>
+                    <circle cx="300" cy="8" r="4" fill="#00C896" filter="drop-shadow(0 0 6px #00C896)"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ════ FLOATING DATA CARDS IN 3D SPACE ════ -->
+
+          <!-- CARD 1: $18,450 Bugünkü Gəlir (with a green upward trend) -->
+          <div class="float-card float-card-1 float-card-revenue" id="float-card-revenue">
+            <div class="float-card-glow"></div>
+            <div class="float-card-header">
+              <div class="float-icon-box green">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 100 7h5a3.5 3.5 0 110 7H6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+              </div>
+              <div class="float-trend-pill green">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><polyline points="18 15 12 9 6 15" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span>↑ 28.4%</span>
+              </div>
+            </div>
+            <div class="float-card-main">
               <div class="float-card-val">$18,450</div>
               <div class="float-card-label" data-i18n="hero.float_rev">Bugünkü Gəlir</div>
             </div>
-            <div class="float-card-badge green">↑ 28%</div>
+            <div class="float-card-foot">
+              <span class="float-foot-muted" data-i18n="hero.float_rev_sub">Dünənə nisbətən</span>
+              <span class="float-foot-tag green">+$4,120</span>
+            </div>
           </div>
 
-          <div class="float-card float-card-2" id="float-card-occupancy">
-            <div class="float-card-icon cyan">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" stroke="currentColor" stroke-width="2"/><path d="M9 22V12h6v10" stroke="currentColor" stroke-width="2"/></svg>
+          <!-- CARD 2: 87% Doluluq Dərəcəsi -->
+          <div class="float-card float-card-2 float-card-occupancy" id="float-card-occupancy">
+            <div class="float-card-glow"></div>
+            <div class="float-card-header">
+              <div class="float-icon-box cyan">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" stroke="currentColor" stroke-width="2.2"/><path d="M9 22V12h6v10" stroke="currentColor" stroke-width="2.2"/></svg>
+              </div>
+              <div class="float-trend-pill cyan">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><polyline points="18 15 12 9 6 15" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span>↑ 12%</span>
+              </div>
             </div>
-            <div>
-              <div class="float-card-val">87%</div>
-              <div class="float-card-label" data-i18n="hero.float_occ">Doluluq Dərəcəsi</div>
+            <div class="float-card-main occ-main">
+              <div>
+                <div class="float-card-val">87%</div>
+                <div class="float-card-label" data-i18n="hero.float_occ">Doluluq Dərəcəsi</div>
+              </div>
+              <div class="occ-ring-wrap">
+                <svg width="42" height="42" viewBox="0 0 42 42">
+                  <circle cx="21" cy="21" r="16" fill="none" stroke="rgba(2, 132, 199, 0.12)" stroke-width="4.5"/>
+                  <circle cx="21" cy="21" r="16" fill="none" stroke="url(#occGrad)" stroke-width="4.5" stroke-dasharray="100.5" stroke-dashoffset="13" stroke-linecap="round" transform="rotate(-90 21 21)"/>
+                  <defs>
+                    <linearGradient id="occGrad" x1="0" y1="0" x2="1" y2="1">
+                      <stop offset="0%" stop-color="#00C896"/>
+                      <stop offset="100%" stop-color="#0284C7"/>
+                    </linearGradient>
+                  </defs>
+                </svg>
+              </div>
             </div>
-            <div class="float-card-badge cyan">↑ 12%</div>
+            <div class="float-card-foot">
+              <div class="occ-progress-track">
+                <div class="occ-progress-fill" style="width: 87%;"></div>
+              </div>
+              <div class="occ-legend">
+                <span data-i18n="hero.float_occ_filled">124 Otaq Dolu</span>
+                <span class="occ-legend-sub" data-i18n="hero.float_occ_empty">18 Boş</span>
+              </div>
+            </div>
           </div>
 
-          <div class="float-card float-card-3" id="float-card-checkin">
-            <div class="float-card-icon purple">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="2"/></svg>
+          <!-- CARD 3: 24 Check-in Bu Gün -->
+          <div class="float-card float-card-3 float-card-checkin" id="float-card-checkin">
+            <div class="float-card-glow"></div>
+            <div class="float-card-header">
+              <div class="float-icon-box purple">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2" stroke="currentColor" stroke-width="2.2"/><circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="2.2"/></svg>
+              </div>
+              <div class="float-trend-pill purple" data-i18n="hero.float_active">
+                <span class="pulse-live-dot"></span>
+                Aktiv
+              </div>
             </div>
-            <div>
+            <div class="float-card-main">
               <div class="float-card-val">24</div>
               <div class="float-card-label" data-i18n="hero.float_checkin">Check-in Bu Gün</div>
             </div>
-            <div class="float-card-badge purple" data-i18n="hero.float_active">Aktiv</div>
+            <div class="float-card-foot checkin-foot">
+              <div class="avatar-stack">
+                <span class="av-mini av-a">EL</span>
+                <span class="av-mini av-b">OR</span>
+                <span class="av-mini av-c">NM</span>
+                <span class="av-mini-plus">+21</span>
+              </div>
+              <span class="checkin-note" data-i18n="hero.float_checkin_note">16 qəbul · 8 gözləyir</span>
+            </div>
           </div>
+
+          <!-- FLOATING DIRECT SYNC ACCENT PILL -->
+          <div class="float-sync-pill">
+            <span class="sync-ping-ring"></span>
+            <span class="sync-ping-dot"></span>
+            <span class="sync-pill-text" data-i18n="hero.float_sync">Kanal Sinxronizasiyası: <b>0.2 san</b></span>
+            <span class="sync-check-badge">✓</span>
+          </div>
+
         </div>
       </div>
     </section>
@@ -318,14 +663,14 @@
                   </div>
                   <div class="ocr-doc">
                     <div class="ocr-scan-line"></div>
-                    <div class="ocr-field"><span class="ocr-label">Ad:</span><span class="ocr-val typing-1">Əli Həsənov</span></div>
-                    <div class="ocr-field"><span class="ocr-label">D.T.:</span><span class="ocr-val typing-2">12.04.1988</span></div>
-                    <div class="ocr-field"><span class="ocr-label">Pasport:</span><span class="ocr-val typing-3">AA1234567</span></div>
-                    <div class="ocr-field"><span class="ocr-label">Ölkə:</span><span class="ocr-val typing-4">Azərbaycan</span></div>
+                    <div class="ocr-field"><span class="ocr-label" data-i18n="bento.ocr_name_label">Ad:</span><span class="ocr-val typing-1" data-i18n="bento.ocr_name_val">Əli Həsənov</span></div>
+                    <div class="ocr-field"><span class="ocr-label" data-i18n="bento.ocr_dob_label">D.T.:</span><span class="ocr-val typing-2">12.04.1988</span></div>
+                    <div class="ocr-field"><span class="ocr-label" data-i18n="bento.ocr_pass_label">Pasport:</span><span class="ocr-val typing-3">AA1234567</span></div>
+                    <div class="ocr-field"><span class="ocr-label" data-i18n="bento.ocr_country_label">Ölkə:</span><span class="ocr-val typing-4" data-i18n="bento.ocr_country_val">Azərbaycan</span></div>
                   </div>
                   <div class="ocr-footer">
                     <div class="ocr-check" data-i18n="bento.ocr_verified">✓ Məlumatlar doğrulandı</div>
-                    <div class="ocr-time">0.8 san</div>
+                    <div class="ocr-time" data-i18n="bento.ocr_speed">0.8 san</div>
                   </div>
                 </div>
                 <div class="ocr-result-card">
@@ -614,74 +959,74 @@
           <div class="allops-card" id="allops-frontdesk">
             <div class="allops-cat" data-i18n="allops.c1">ÖN BÜRO VƏ RESERVASİYA</div>
             <ul class="allops-list">
-              <li><span class="ao-check">✓</span> Otaq Panosu</li>
-              <li><span class="ao-check">✓</span> Girişlər</li>
-              <li><span class="ao-check">✓</span> Çıxışlar</li>
-              <li><span class="ao-check">✓</span> Rezervasiyalar</li>
-              <li><span class="ao-check">✓</span> Qrup Rezervasiyaları</li>
-              <li><span class="ao-check">✓</span> Qonaqlar</li>
+              <li><span class="ao-check">✓</span> <span data-i18n="allops.item_room_board">Otaq Panosu</span></li>
+              <li><span class="ao-check">✓</span> <span data-i18n="allops.item_checkins">Girişlər</span></li>
+              <li><span class="ao-check">✓</span> <span data-i18n="allops.item_checkouts">Çıxışlar</span></li>
+              <li><span class="ao-check">✓</span> <span data-i18n="allops.item_reservations">Rezervasiyalar</span></li>
+              <li><span class="ao-check">✓</span> <span data-i18n="allops.item_group_res">Qrup Rezervasiyaları</span></li>
+              <li><span class="ao-check">✓</span> <span data-i18n="allops.item_guests">Qonaqlar</span></li>
             </ul>
           </div>
           <div class="allops-card" id="allops-finance">
             <div class="allops-cat" data-i18n="allops.c2">MALİYYƏ VƏ FAKTURA</div>
             <ul class="allops-list">
-              <li><span class="ao-check">✓</span> Folio</li>
-              <li><span class="ao-check">✓</span> Kassa</li>
-              <li><span class="ao-check">✓</span> Ödəniş İdarəetməsi</li>
-              <li><span class="ao-check">✓</span> Fakturalar</li>
-              <li><span class="ao-check">✓</span> Şirkət Hesabları</li>
-              <li><span class="ao-check">✓</span> Agentlik İdarəetməsi</li>
+              <li><span class="ao-check">✓</span> <span data-i18n="allops.item_folio">Folio</span></li>
+              <li><span class="ao-check">✓</span> <span data-i18n="allops.item_cash">Kassa</span></li>
+              <li><span class="ao-check">✓</span> <span data-i18n="allops.item_payments">Ödəniş İdarəetməsi</span></li>
+              <li><span class="ao-check">✓</span> <span data-i18n="allops.item_invoices">Fakturalar</span></li>
+              <li><span class="ao-check">✓</span> <span data-i18n="allops.item_corporate">Şirkət Hesabları</span></li>
+              <li><span class="ao-check">✓</span> <span data-i18n="allops.item_agency">Agentlik İdarəetməsi</span></li>
             </ul>
           </div>
           <div class="allops-card" id="allops-revenue">
             <div class="allops-cat" data-i18n="allops.c3">GƏLİR VƏ SATIŞ KANALLARI</div>
             <ul class="allops-list">
-              <li><span class="ao-check">✓</span> Channel Manager</li>
-              <li><span class="ao-check">✓</span> Qiymət İdarəetməsi</li>
-              <li><span class="ao-check">✓</span> Mövcudluq</li>
-              <li><span class="ao-check">✓</span> Gəlir İdarəetməsi</li>
+              <li><span class="ao-check">✓</span> <span data-i18n="allops.item_channel_mgr">Channel Manager</span></li>
+              <li><span class="ao-check">✓</span> <span data-i18n="allops.item_pricing">Qiymət İdarəetməsi</span></li>
+              <li><span class="ao-check">✓</span> <span data-i18n="allops.item_availability">Mövcudluq</span></li>
+              <li><span class="ao-check">✓</span> <span data-i18n="allops.item_rev_mgr">Gəlir İdarəetməsi</span></li>
             </ul>
           </div>
           <div class="allops-card" id="allops-rooms">
             <div class="allops-cat" data-i18n="allops.c4">OTAQ XİDMƏTLƏRİ VƏ TEXNİKİ</div>
             <ul class="allops-list">
-              <li><span class="ao-check">✓</span> Mərtəbə Xidmətləri</li>
-              <li><span class="ao-check">✓</span> Texniki Xidmət</li>
-              <li><span class="ao-check">✓</span> İtirilmiş Əşya</li>
-              <li><span class="ao-check">✓</span> Gün Sonu</li>
+              <li><span class="ao-check">✓</span> <span data-i18n="allops.item_housekeeping">Mərtəbə Xidmətləri</span></li>
+              <li><span class="ao-check">✓</span> <span data-i18n="allops.item_maintenance">Texniki Xidmət</span></li>
+              <li><span class="ao-check">✓</span> <span data-i18n="allops.item_lost_found">İtirilmiş Əşya</span></li>
+              <li><span class="ao-check">✓</span> <span data-i18n="allops.item_night_audit">Gün Sonu</span></li>
             </ul>
           </div>
           <div class="allops-card" id="allops-fb">
             <div class="allops-cat" data-i18n="allops.c5">F&amp;B, SPA VƏ CONCİERGE</div>
             <ul class="allops-list">
-              <li><span class="ao-check">✓</span> POS / Restoran</li>
-              <li><span class="ao-check">✓</span> SPA</li>
-              <li><span class="ao-check">✓</span> Concierge</li>
+              <li><span class="ao-check">✓</span> <span data-i18n="allops.item_pos">POS / Restoran</span></li>
+              <li><span class="ao-check">✓</span> <span data-i18n="allops.item_spa">SPA</span></li>
+              <li><span class="ao-check">✓</span> <span data-i18n="allops.item_concierge">Concierge</span></li>
             </ul>
           </div>
           <div class="allops-card" id="allops-guest">
             <div class="allops-cat" data-i18n="allops.c6">QONAQ TƏCRÜBƏSİ</div>
             <ul class="allops-list">
-              <li><span class="ao-check">✓</span> Sədaqət Proqramı</li>
-              <li><span class="ao-check">✓</span> Nüfuz İdarəetməsi</li>
-              <li><span class="ao-check">✓</span> Onlayn Check-in</li>
-              <li><span class="ao-check">✓</span> Müştəri Mobil Tətbiqi</li>
+              <li><span class="ao-check">✓</span> <span data-i18n="allops.item_loyalty">Sədaqət Proqramı</span></li>
+              <li><span class="ao-check">✓</span> <span data-i18n="allops.item_reputation">Nüfuz İdarəetməsi</span></li>
+              <li><span class="ao-check">✓</span> <span data-i18n="allops.item_online_ci">Onlayn Check-in</span></li>
+              <li><span class="ao-check">✓</span> <span data-i18n="allops.item_guest_app">Müştəri Mobil Tətbiqi</span></li>
             </ul>
           </div>
           <div class="allops-card" id="allops-hr">
             <div class="allops-cat" data-i18n="allops.c7">PERSONAL VƏ UYĞUNLUQ</div>
             <ul class="allops-list">
-              <li><span class="ao-check">✓</span> Personal</li>
-              <li><span class="ao-check">✓</span> Üz Tanıma Girişi</li>
-              <li><span class="ao-check">✓</span> Qonaq Bildirişi</li>
-              <li><span class="ao-check">✓</span> Məxfilik (KVKK/GDPR)</li>
+              <li><span class="ao-check">✓</span> <span data-i18n="allops.item_staff">Personal</span></li>
+              <li><span class="ao-check">✓</span> <span data-i18n="allops.item_face_id">Üz Tanıma Girişi</span></li>
+              <li><span class="ao-check">✓</span> <span data-i18n="allops.item_guest_notify">Qonaq Bildirişi</span></li>
+              <li><span class="ao-check">✓</span> <span data-i18n="allops.item_gdpr">Məxfilik (KVKK/GDPR)</span></li>
             </ul>
           </div>
           <div class="allops-card" id="allops-reports">
             <div class="allops-cat" data-i18n="allops.c8">HESABAT VƏ ANALİTİKA</div>
             <ul class="allops-list">
-              <li><span class="ao-check">✓</span> Ana Səhifə</li>
-              <li><span class="ao-check">✓</span> Hesabatlar</li>
+              <li><span class="ao-check">✓</span> <span data-i18n="allops.item_dashboard">Ana Səhifə</span></li>
+              <li><span class="ao-check">✓</span> <span data-i18n="allops.item_reports">Hesabatlar</span></li>
               <li class="ao-note" data-i18n="allops.note">18 hazır hesabat: doluluq, proqnoz, kassa, maliyyə, agentlik və daha çox</li>
             </ul>
           </div>
@@ -729,21 +1074,21 @@
             <div class="cf-icon">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M1 4v6h6M23 20v-6h-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M20.49 9A9 9 0 005.64 5.64L1 10M23 14l-4.64 4.36A9 9 0 013.51 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </div>
-            <h4 class="cf-title" data-i18n="connect.f1_title">İkitərəfli sinxronizasiya</h4>
+            <h3 class="cf-title" data-i18n="connect.f1_title">İkitərəfli sinxronizasiya</h3>
             <p class="cf-desc" data-i18n="connect.f1_desc">Qiymət və mövcudluq kanallara avtomatik göndərilir; gələn rezervasiyalar panelinizə düşür.</p>
           </div>
           <div class="connect-feat" id="cf-check">
             <div class="cf-icon">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><polyline points="12 6 12 12 16 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
             </div>
-            <h4 class="cf-title" data-i18n="connect.f2_title">Hər 5 dəqiqədə yoxlama</h4>
+            <h3 class="cf-title" data-i18n="connect.f2_title">Hər 5 dəqiqədə yoxlama</h3>
             <p class="cf-desc" data-i18n="connect.f2_desc">Yeni rezervasiya, dəyişiklik və ləğvlər beş dəqiqəlik aralıqlarla avtomatik ötürülür.</p>
           </div>
           <div class="connect-feat" id="cf-panel">
             <div class="cf-icon">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="2"/><path d="M3 9h18M9 21V9" stroke="currentColor" stroke-width="2"/></svg>
             </div>
-            <h4 class="cf-title" data-i18n="connect.f3_title">Vahid paneldən idarəetmə</h4>
+            <h3 class="cf-title" data-i18n="connect.f3_title">Vahid paneldən idarəetmə</h3>
             <p class="cf-desc" data-i18n="connect.f3_desc">Bütün kanalların qoşulma statusu, otaq-qiymət uyğunlaşdırmaları və qeydləri tək ekranda.</p>
           </div>
         </div>
@@ -766,7 +1111,16 @@
 
           <!-- 1. Nizam Babayev -->
           <div class="team-card">
-            <div class="team-avatar avatar-2">📈</div>
+            <div class="team-avatar avatar-2">
+              <!-- Şəkil əlavə etmək üçün: src="..." daxil edin (məs: images/nizam.jpg) -->
+              <img src="" alt="Nizam Babayev" class="team-img" onerror="this.style.display='none'">
+              <div class="team-avatar-placeholder" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                  <circle cx="12" cy="7" r="4"/>
+                </svg>
+              </div>
+            </div>
             <div class="team-name" data-i18n="team.nizam_name">Nizam Babayev</div>
             <div class="team-role" data-i18n="team.nizam_role">Biznesin İnkişafı Meneceri</div>
             <div class="team-bio" data-i18n="team.nizam_bio">Yeni bazarların araşdırılması, strateji tərəfdaşlıqlar və Hotellinia-nın regional genişlənməsinə cavabdehdir. Mehmanxana texnologiyaları sektorunda illərlə dərin təcrübəyə malikdir.</div>
@@ -776,21 +1130,18 @@
             </div>
           </div>
 
-          <!-- 2. Fərid Vəliyev -->
+          <!-- 2. Cavidan Bayramlı -->
           <div class="team-card">
-            <div class="team-avatar avatar-3">🤝</div>
-            <div class="team-name" data-i18n="team.farid_name">Fərid Vəliyev</div>
-            <div class="team-role" data-i18n="team.farid_role">Satış Meneceri</div>
-            <div class="team-bio" data-i18n="team.farid_bio">Otellər və mehmanxana şəbəkələri ilə B2B tərəfdaşlıqların qurulması, müştəri portfelinin idarə edilməsi və satış strategiyalarının uğurla icrasına rəhbərlik edir.</div>
-            <div class="team-links">
-              <a href="#" onclick="return false" class="team-link-icon" title="LinkedIn">in</a>
-              <a href="contact.html" class="team-link-icon" title="Contact">✉</a>
+            <div class="team-avatar avatar-1">
+              <!-- Şəkil əlavə etmək üçün: src="..." daxil edin (məs: images/cavidan.jpg) -->
+              <img src="" alt="Cavidan Bayramlı" class="team-img" onerror="this.style.display='none'">
+              <div class="team-avatar-placeholder" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                  <circle cx="12" cy="7" r="4"/>
+                </svg>
+              </div>
             </div>
-          </div>
-
-          <!-- 3. Cavidan Bayramlı -->
-          <div class="team-card">
-            <div class="team-avatar avatar-1">💻</div>
             <div class="team-name" data-i18n="team.cavidan_name">Cavidan Bayramlı</div>
             <div class="team-role" data-i18n="team.cavidan_role">Baş Texniki Direktor (CTO)</div>
             <div class="team-bio" data-i18n="team.cavidan_bio">Hotellinia platformasının texnoloji arxitekturası, bulud infrastrukturu və kibertəhlükəsizlik sistemlərinə rəhbərlik edir. Yüksək yüklü paylanmış sistemlər və innovativ həllər üzrə mühəndis.</div>
@@ -856,8 +1207,8 @@
     <div class="container">
       <div class="footer-inner-clean">
         <div class="footer-brand-clean">
-          <a href="index.html" class="logo" id="footer-logo-link">
-            <img src="hotellinia-logo.png" alt="Hotellinia Logo" class="logo-img" />
+          <a href="index.html" class="logo" id="footer-logo-link" aria-label="Hotellinia Ana Səhifə">
+            <img src="hotellinia-logo.png" alt="Hotellinia — Bulud Əsaslı Ağıllı Otel İdarəetmə Sistemi Logosu" data-i18n-alt="alt.logo" class="logo-img" />
             <span class="logo-text">Hotellinia</span>
           </a>
           <p class="footer-tagline-clean" data-i18n="footer.tagline">Növbəti nəsil bulud əsaslı otel idarəetmə platforması. Bütün əməliyyatlarınızı tək bir ağıllı mərkəzdən idarə edin.</p>

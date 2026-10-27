@@ -616,7 +616,13 @@ animateWorkflow();
 // ─── BILINGUAL TRANSLATION ENGINE & COOL DROPDOWN (AZ / RU) ─────────
 let currentLang = 'az';
 try {
-  currentLang = localStorage.getItem('hotellinia_lang') || 'az';
+  const urlParams = new URLSearchParams(window.location.search);
+  const langParam = urlParams.get('lang');
+  if (langParam === 'ru' || langParam === 'az') {
+    currentLang = langParam;
+  } else {
+    currentLang = localStorage.getItem('hotellinia_lang') || 'az';
+  }
 } catch (e) {
   currentLang = 'az';
 }
@@ -650,13 +656,42 @@ function applyLanguage(lang) {
     }
   });
 
-  // 3. Update Dropdown trigger flag & code
+  // 3. Update Dynamic SEO Meta Title and Descriptions
+  if (dict["meta.title"]) {
+    document.title = dict["meta.title"];
+  }
+  const metaDesc = document.querySelector('meta[name="description"]');
+  if (metaDesc && dict["meta.description"]) {
+    metaDesc.setAttribute('content', dict["meta.description"]);
+  }
+  const ogTitle = document.querySelector('meta[property="og:title"]');
+  if (ogTitle && dict["meta.og_title"]) {
+    ogTitle.setAttribute('content', dict["meta.og_title"]);
+  }
+  const ogDesc = document.querySelector('meta[property="og:description"]');
+  if (ogDesc && dict["meta.og_desc"]) {
+    ogDesc.setAttribute('content', dict["meta.og_desc"]);
+  }
+  const ogLocale = document.querySelector('meta[property="og:locale"]');
+  if (ogLocale) {
+    ogLocale.setAttribute('content', lang === 'ru' ? 'ru_RU' : 'az_AZ');
+  }
+
+  // 4. Update image & icon alt attributes for accessibility & SEO
+  document.querySelectorAll('[data-i18n-alt]').forEach((el) => {
+    const key = el.getAttribute('data-i18n-alt');
+    if (dict[key] !== undefined) {
+      el.setAttribute('alt', dict[key]);
+    }
+  });
+
+  // 5. Update Dropdown trigger flag & code
   const flagEl = document.getElementById('langActiveFlag');
   const codeEl = document.getElementById('langActiveCode');
   if (flagEl) flagEl.textContent = lang === 'ru' ? '🇷🇺' : '🇦🇿';
   if (codeEl) codeEl.textContent = lang === 'ru' ? 'RU' : 'AZ';
 
-  // 4. Update dropdown menu items active state
+  // 6. Update dropdown menu items active state
   document.querySelectorAll('.lang-dropdown-item').forEach((item) => {
     const itemLang = item.getAttribute('data-lang');
     if (itemLang === lang) {
@@ -666,7 +701,7 @@ function applyLanguage(lang) {
     }
   });
 
-  // 5. Update mobile language switcher buttons
+  // 7. Update mobile language switcher buttons
   document.querySelectorAll('.mob-lang-btn').forEach((btn) => {
     const btnLang = btn.getAttribute('data-lang');
     if (btnLang === lang) {
