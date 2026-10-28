@@ -12,12 +12,10 @@
     return;
   }
 
-  const pathname = window.location.pathname;
-  const isHomepage = pathname.endsWith('index.html') || pathname === '/' || pathname.endsWith('/') || pathname === '';
   const alreadySeen = sessionStorage.getItem('hotellinia_preloader_seen');
 
-  // Skip on subpages if already seen in current session
-  if (!isHomepage && alreadySeen === 'true') {
+  // Skip entirely if already seen in current session
+  if (alreadySeen === 'true') {
     preloader.classList.add('is-hidden');
     document.body.classList.remove('preloader-locked');
     return;
@@ -39,17 +37,17 @@
       try {
         sessionStorage.setItem('hotellinia_preloader_seen', 'true');
       } catch (e) {}
-    }, 450);
+    }, 350);
   };
 
-  // Snappy sequence: 1.2s on mobile, 2.0s on desktop
+  // Ultra-snappy sequence: 0.9s on mobile, 1.4s on desktop
   const isMobile = window.innerWidth <= 768;
-  const timer = setTimeout(dismissPreloader, isMobile ? 1200 : 2000);
+  const timer = setTimeout(dismissPreloader, isMobile ? 900 : 1400);
 
   // Unconditional fail-safe unlock so scrolling is NEVER locked
   setTimeout(() => {
     document.body.classList.remove('preloader-locked');
-  }, isMobile ? 1400 : 2300);
+  }, isMobile ? 1100 : 1600);
 
   // Skip button handler
   const skipBtn = document.getElementById('preloaderSkip');
@@ -80,23 +78,41 @@
   });
 })();
 
-// ─── CURSOR GLOW ───────────────────────────────────
+// ─── CURSOR GLOW (Hardware Accelerated & Desktop Only) ─
 const cursorGlow = document.getElementById('cursorGlow');
-if (cursorGlow) {
-  document.addEventListener('mousemove', (e) => {
-    cursorGlow.style.left = e.clientX + 'px';
-    cursorGlow.style.top  = e.clientY + 'px';
-  });
+if (cursorGlow && window.matchMedia && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+  let glowTicking = false;
+  let mouseX = 0, mouseY = 0;
+  window.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    if (!glowTicking) {
+      requestAnimationFrame(() => {
+        cursorGlow.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
+        glowTicking = false;
+      });
+      glowTicking = true;
+    }
+  }, { passive: true });
+} else if (cursorGlow) {
+  cursorGlow.style.display = 'none';
 }
 
-// ─── NAVBAR SCROLL ─────────────────────────────────
+// ─── NAVBAR SCROLL (Throttled with rAF) ───────────────
 const navbar = document.getElementById('navbar');
 if (navbar) {
+  let scrollTicking = false;
   window.addEventListener('scroll', () => {
-    if (window.scrollY > 40) {
-      navbar.classList.add('scrolled');
-    } else {
-      navbar.classList.remove('scrolled');
+    if (!scrollTicking) {
+      requestAnimationFrame(() => {
+        if (window.scrollY > 40) {
+          navbar.classList.add('scrolled');
+        } else {
+          navbar.classList.remove('scrolled');
+        }
+        scrollTicking = false;
+      });
+      scrollTicking = true;
     }
   }, { passive: true });
 }
@@ -361,16 +377,9 @@ function drawChannelWidget(ctx, x, y, w, h) {
   });
 }
 
-let animFrame = 0;
 function animateCanvas(canvas, ctx) {
-  // Subtle glow animation on the canvas edge
-  let t = 0;
-  function frame() {
-    t += 0.02;
-    canvas.style.boxShadow = `0 0 ${30 + 15 * Math.sin(t)}px rgba(0,102,255,${0.1 + 0.06 * Math.sin(t)})`;
-    animFrame = requestAnimationFrame(frame);
-  }
-  frame();
+  // Static elegant box shadow - avoids continuous style recalculation
+  canvas.style.boxShadow = '0 0 32px rgba(0,102,255,0.15)';
 }
 
 // ─── BENTO CARDS — HOVER PARALLAX (Desktop fine pointer only) ──
@@ -561,33 +570,56 @@ if (counterRooms) {
   bentoCo.observe(counterRooms);
 }
 
-// ─── BENTO POS — rotating new order badge ─────────────
-function rotatePosOrders() {
-  const items = document.querySelectorAll('.pos-order-item');
-  if (!items.length) return;
-  let idx = 0;
-  setInterval(() => {
-    items.forEach(i => i.classList.remove('pos-new'));
-    items[idx % items.length].classList.add('pos-new');
-    idx++;
-  }, 3000);
-}
-rotatePosOrders();
+// ─── BENTO POS & WORKFLOW ANIMATIONS (Intersection Observed) ──
+let posInterval = null;
+let wfInterval = null;
 
-// ─── WORKFLOW NODE HIGHLIGHT ───────────────────────────
-function animateWorkflow() {
+function startBentoTimers() {
+  const items = document.querySelectorAll('.pos-order-item');
+  if (items.length && !posInterval) {
+    let pIdx = 0;
+    posInterval = setInterval(() => {
+      items.forEach(i => i.classList.remove('pos-new'));
+      items[pIdx % items.length].classList.add('pos-new');
+      pIdx++;
+    }, 3000);
+  }
+
   const nodes = document.querySelectorAll('.wf-node');
-  if (!nodes.length) return;
-  let idx = 0;
-  setInterval(() => {
-    nodes.forEach(n => { n.style.borderColor = ''; n.style.background = ''; });
-    const active = nodes[idx % nodes.length];
-    active.style.borderColor = 'rgba(0,200,150,0.6)';
-    active.style.background  = 'rgba(0,200,150,0.08)';
-    idx++;
-  }, 1200);
+  if (nodes.length && !wfInterval) {
+    let wIdx = 0;
+    wfInterval = setInterval(() => {
+      nodes.forEach(n => { n.style.borderColor = ''; n.style.background = ''; });
+      const active = nodes[wIdx % nodes.length];
+      if (active) {
+        active.style.borderColor = 'rgba(0,200,150,0.6)';
+        active.style.background  = 'rgba(0,200,150,0.08)';
+      }
+      wIdx++;
+    }, 1400);
+  }
 }
-animateWorkflow();
+
+function stopBentoTimers() {
+  if (posInterval) { clearInterval(posInterval); posInterval = null; }
+  if (wfInterval)  { clearInterval(wfInterval);  wfInterval = null; }
+}
+
+const featuresSec = document.getElementById('features');
+if (featuresSec && 'IntersectionObserver' in window) {
+  const featObs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        startBentoTimers();
+      } else {
+        stopBentoTimers();
+      }
+    });
+  }, { threshold: 0.05 });
+  featObs.observe(featuresSec);
+} else {
+  startBentoTimers();
+}
 
 
 
