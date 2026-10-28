@@ -20,6 +20,11 @@ const HOTELLINIA_TRANSLATIONS = {
     "team.section_tag": "Rəhbərlik və Komandamız",
     "team.section_title": "Hotellinia-nın <span class=\"gradient-text\">idarə heyəti</span>",
     "team.section_sub": "Platformanın texnoloji arxitekturası, biznesin inkişafı və satış strategiyalarına rəhbərlik edən komandamız.",
+    "hotel_partners.tag": "Tərəfdaşlarımız",
+    "hotel_partners.title": "Hotellinia-ya güvənən <span class=\"gradient-text\">otellər və komplekslər</span>",
+    "hotel_partners.sub": "Ölkə daxilində və regionda qonaqpərvərlik əməliyyatlarını və rezervasiyalarını Hotellinia platformasına həvalə edən tərəfdaş otellərimiz.",
+    "hotel_partners.cta_text": "Siz də otelinizi Hotellinia ailəsinə qoşun, əməliyyatlarınızı tam avtomatlaşdırın.",
+    "hotel_partners.cta_btn": "Bizə Qoşulun →",
 
     // Preloader
     "preloader.slogan": "Mükəmməl qonaqpərvərlik sizdən, <br class=\"preloader-br\" /><span class=\"preloader-slogan-accent\">gələcəyin texnologiyası bizdən!</span>",
@@ -490,6 +495,11 @@ const HOTELLINIA_TRANSLATIONS = {
     "team.section_tag": "Руководство и Команда",
     "team.section_title": "Руководство и ключевая команда <span class=\"gradient-text\">Hotellinia</span>",
     "team.section_sub": "Команда профессионалов, руководящих технологической архитектурой, развитием бизнеса и коммерческой стратегией платформы.",
+    "hotel_partners.tag": "Наши партнеры",
+    "hotel_partners.title": "Отели и комплексы, <span class=\"gradient-text\">доверяющие Hotellinia</span>",
+    "hotel_partners.sub": "Отели, курорты и бутик-гостиницы по всей стране и в регионе, доверяющие управление бронированием и гостеприимством платформе Hotellinia.",
+    "hotel_partners.cta_text": "Присоединяйте свой отель к семье Hotellinia и автоматизируйте все процессы.",
+    "hotel_partners.cta_btn": "Присоединиться →",
 
     // Preloader
     "preloader.slogan": "Безупречное гостеприимство от вас, <br class=\"preloader-br\" /><span class=\"preloader-slogan-accent\">технологии будущего от нас!</span>",
