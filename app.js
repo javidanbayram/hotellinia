@@ -7,7 +7,10 @@
 // ─── FULL-SCREEN ONBOARDING PRE-LOADER ───────────────
 (function initHotelliniaPreloader() {
   const preloader = document.getElementById('hotelliniaPreloader');
-  if (!preloader) return;
+  if (!preloader) {
+    document.body.classList.remove('preloader-locked');
+    return;
+  }
 
   const pathname = window.location.pathname;
   const isHomepage = pathname.endsWith('index.html') || pathname === '/' || pathname.endsWith('/') || pathname === '';
@@ -16,10 +19,11 @@
   // Skip on subpages if already seen in current session
   if (!isHomepage && alreadySeen === 'true') {
     preloader.classList.add('is-hidden');
+    document.body.classList.remove('preloader-locked');
     return;
   }
 
-  // Lock scrolling while preloader sequence plays
+  // Lock scrolling while preloader sequence plays (with short timeout)
   document.body.classList.add('preloader-locked');
 
   let isDismissed = false;
@@ -27,19 +31,25 @@
   const dismissPreloader = () => {
     if (isDismissed) return;
     isDismissed = true;
-    preloader.classList.add('is-exiting');
     document.body.classList.remove('preloader-locked');
+    preloader.classList.add('is-exiting');
 
     setTimeout(() => {
       preloader.classList.add('is-hidden');
       try {
         sessionStorage.setItem('hotellinia_preloader_seen', 'true');
       } catch (e) {}
-    }, 850);
+    }, 450);
   };
 
-  // Full sequence completes automatically after ~5.3s
-  const timer = setTimeout(dismissPreloader, 5300);
+  // Snappy sequence: 1.2s on mobile, 2.0s on desktop
+  const isMobile = window.innerWidth <= 768;
+  const timer = setTimeout(dismissPreloader, isMobile ? 1200 : 2000);
+
+  // Unconditional fail-safe unlock so scrolling is NEVER locked
+  setTimeout(() => {
+    document.body.classList.remove('preloader-locked');
+  }, isMobile ? 1400 : 2300);
 
   // Skip button handler
   const skipBtn = document.getElementById('preloaderSkip');
@@ -51,11 +61,15 @@
     });
   }
 
-  // Fast-exit on screen click
+  // Fast-exit on screen click or touch
   preloader.addEventListener('click', () => {
     clearTimeout(timer);
     dismissPreloader();
   });
+  preloader.addEventListener('touchstart', () => {
+    clearTimeout(timer);
+    dismissPreloader();
+  }, { passive: true });
 
   // Fast-exit on Escape key
   document.addEventListener('keydown', (e) => {
@@ -107,24 +121,38 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 // ─── SCROLL REVEAL OBSERVER ─────────────────────────
-const revealObserver = new IntersectionObserver((entries) => {
-  entries.forEach((entry, i) => {
-    if (entry.isIntersecting) {
-      setTimeout(() => {
-        entry.target.classList.add('visible');
-      }, i * 80);
-      revealObserver.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+(function initScrollReveal() {
+  const isMobile = window.innerWidth <= 768;
+  const revealElements = document.querySelectorAll(
+    '.bento-card, .wf-node, .stat-item, .integrations-bar, .section-header, .hotel-partner-card'
+  );
 
-// Observe sections and cards
-document.querySelectorAll(
-  '.bento-card, .wf-node, .stat-item, .integrations-bar, .section-header'
-).forEach(el => {
-  el.classList.add('reveal');
-  revealObserver.observe(el);
-});
+  if (!isMobile && 'IntersectionObserver' in window) {
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.05, rootMargin: '100px 0px 100px 0px' });
+
+    revealElements.forEach(el => {
+      el.classList.add('reveal');
+      revealObserver.observe(el);
+    });
+
+    // Safety fallback: ensure nothing stays hidden after 1.2s
+    setTimeout(() => {
+      revealElements.forEach(el => el.classList.add('visible'));
+    }, 1200);
+  } else {
+    // On mobile: immediately reveal everything so sections NEVER disappear
+    revealElements.forEach(el => {
+      el.classList.add('visible');
+    });
+  }
+})();
 
 // ─── HERO IMAGE FALLBACK ────────────────────────────
 const heroImg = document.getElementById('hero-dashboard-img');
@@ -345,19 +373,22 @@ function animateCanvas(canvas, ctx) {
   frame();
 }
 
-// ─── BENTO CARDS — HOVER PARALLAX ──────────────────
-document.querySelectorAll('.bento-card').forEach(card => {
-  card.addEventListener('mousemove', (e) => {
-    const rect = card.getBoundingClientRect();
-    const x = (e.clientX - rect.left) / rect.width  - 0.5;
-    const y = (e.clientY - rect.top)  / rect.height - 0.5;
-    card.style.transform = `translateY(-4px) rotateX(${-y * 4}deg) rotateY(${x * 4}deg)`;
-    card.style.perspective = '800px';
+// ─── BENTO CARDS — HOVER PARALLAX (Desktop fine pointer only) ──
+if (window.matchMedia && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+  document.querySelectorAll('.bento-card').forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width  - 0.5;
+      const y = (e.clientY - rect.top)  / rect.height - 0.5;
+      card.style.transform = `translateY(-4px) rotateX(${-y * 4}deg) rotateY(${x * 4}deg)`;
+      card.style.perspective = '800px';
+    });
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = '';
+      card.style.perspective = '';
+    });
   });
-  card.addEventListener('mouseleave', () => {
-    card.style.transform = 'translateY(0) rotateX(0) rotateY(0)';
-  });
-});
+}
 
 // ─── CTA FORM SUBMISSION ────────────────────────────
 function handleFormSubmit(e) {

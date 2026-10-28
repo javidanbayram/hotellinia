@@ -4048,6 +4048,17 @@ body.preloader-locked {
   /* ─ Global ─ */
   .container { padding: 0 16px; }
   .wf-stats { flex-wrap: wrap; gap: 8px; justify-content: center; }
+
+  /* ─ Mobile stability: prevent hidden/disappearing sections and stuck scroll ─ */
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  body.preloader-locked {
+    overflow: visible !important;
+    height: auto !important;
+  }
 }
 
 /* ══════════════════════════════════════════════════════════════
