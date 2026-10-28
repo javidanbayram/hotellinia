@@ -4225,6 +4225,7 @@ body.preloader-locked {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center 20%;
   border-radius: 50%;
   display: block;
   position: absolute;
@@ -4310,9 +4311,9 @@ body.preloader-locked {
 }
 
 .team-link-icon:hover {
-  border-color: var(--green);
-  color: var(--green);
-  background: rgba(0, 200, 150, 0.1);
+  border-color: #0A66C2;
+  color: #0A66C2;
+  background: rgba(10, 102, 194, 0.1);
   transform: translateY(-2px);
 }
 
