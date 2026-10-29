@@ -105,4 +105,11 @@ All tasks and feature implementations completed during this development session,
 - [x] **Eliminate duplicate values/features block** — Removed the redundant `.story-feat-cards` that was placed at the bottom of the story section repeating the exact same titles ("Sürət və Sadəlik", "Maksimum Təhlükəsizlik", "Daimi İnkişaf") right above the official "Dəyərlərimiz" section.
 - [x] **Consolidate into single Values section** — Merged and enhanced `.values-section` ("Dəyərlərimiz — Bizi irəli aparan prinsiplər") as the single, authoritative section featuring all 4 principles with custom glowing icons (🎯 Sürət və Sadəlik, ⚡ Maksimum Təhlükəsizlik, 🔒 Daimi İnkişaf, 🚀 24/7 Canlı Dəstək) in a balanced 4-column desktop layout.
 
+---
+
+## 11. Mobile Bento Grid Vertical Stacking Optimization
+- [x] **Stack AI OCR & Face Recognition cards on mobile** — Changed `#bento-ai-checkin` and `#bento-face` from being cramped side-by-side in 2 columns on screens `<= 768px` to full-width vertically stacked containers (`alt-alta`).
+- [x] **Restore spacious mobile typography & dimensions** — Replaced tiny 9–10px micro-fonts and compressed paddings with clean, readable mobile typography (18px titles, 13.5px descriptions, 12px document fields, 140px face recognition cam frame, spacious 24px/20px card padding).
+
+
 
