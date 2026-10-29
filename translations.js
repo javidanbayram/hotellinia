@@ -36,10 +36,10 @@ const HOTELLINIA_TRANSLATIONS = {
     "preloader.skip": "Keçid ✕",
 
     // SEO & Meta Tags
-    "meta.title": "Hotellinia — Növbəti Nəsil Bulud Əsaslı Otel İdarəetmə Sistemi (PMS)",
-    "meta.description": "Hotellinia — Azərbaycan və region otelləri üçün müasir bulud əsaslı PMS, Kanal Meneceri və AI OCR qeydiyyat sistemi. Rezervasiyaları vahid mərkəzdən idarə edin.",
-    "meta.og_title": "Hotellinia — Növbəti Nəsil Bulud Əsaslı Otel İdarəetmə Sistemi (PMS)",
-    "meta.og_desc": "Ön bürodan otaq təmizliyinə qədər bütün prosesləri avtomatlaşdırın və rezervasiyalarınızı vahid mərkəzdən sinxronlaşdırın.",
+    "meta.title": "Hotellinia — Bulud Əsaslı Otel İdarəetmə Sistemi (PMS)",
+    "meta.description": "Hotellinia — Azərbaycan otelləri üçün müasir bulud PMS, Kanal Meneceri və qeydiyyat sistemi. Rezervasiyaları vahid mərkəzdən asanlıqla idarə edin.",
+    "meta.og_title": "Hotellinia — Bulud Əsaslı Otel İdarəetmə Sistemi (PMS)",
+    "meta.og_desc": "Ön bürodan otaq təmizliyinə qədər bütün əməliyyatları tək mərkəzdən idarə edin və rezervasiyaları avtomatlaşdırın.",
     "alt.logo": "Hotellinia — Bulud Əsaslı Ağıllı Otel İdarəetmə Sistemi Logosu",
 
     // Footer
@@ -51,7 +51,7 @@ const HOTELLINIA_TRANSLATIONS = {
     // Index - Hero
     "hero.badge": "Yeni Nəsil PMS Platforması",
     "hero.headline": "Otelinizin Bütün Əməliyyatlarını <span class=\"gradient-text\">Tək Bir Bulud Platformasından</span> İdarə Edin.",
-    "hero.sub": "Ön bürodan otaq təmizliyinə qədər bütün prosesləri avtomatlaşdırın və rezervasiyalarınızı vahid mərkəzdən sinxronlaşdırın.",
+    "hero.sub": "Bulud əsaslı otel idarəetmə sistemi (PMS) ilə ön bürodan otaq təmizliyinə qədər bütün əməliyyatları tək bir platformadan asanlıqla idarə edin və rezervasiyalarınızı vahid mərkəzdən sinxronlaşdırın.",
     "hero.cta_demo": "Pulsuz Demo Tələb Et",
     "hero.cta_features": "Xüsusiyyətlərə Bax",
     "hero.stat1_label": "Otel Partnyor",
@@ -528,9 +528,9 @@ const HOTELLINIA_TRANSLATIONS = {
 
     // SEO & Meta Tags
     "meta.title": "Hotellinia — Облачная система управления отелями (PMS)",
-    "meta.description": "Hotellinia — Современная облачная PMS, менеджер каналов и AI-сканирование документов для отелей Азербайджана и СНГ. Управляйте гостиницей из единого центра.",
+    "meta.description": "Hotellinia — Облачная PMS, менеджер каналов и сканирование документов для отелей Азербайджана и СНГ. Управляйте гостиницей из единого центра.",
     "meta.og_title": "Hotellinia — Облачная система управления отелями (PMS)",
-    "meta.og_desc": "Автоматизируйте всё от ресепшена до уборки номеров и синхронизируйте бронирования по всему миру из единого центра.",
+    "meta.og_desc": "Управляйте всеми операциями отеля от ресепшена до уборки номеров из единого центра и синхронизируйте бронирования.",
     "alt.logo": "Hotellinia — Облачная система управления отелями Логотип",
 
     // Footer
@@ -542,7 +542,7 @@ const HOTELLINIA_TRANSLATIONS = {
     // Index - Hero
     "hero.badge": "PMS-платформа Нового Поколения",
     "hero.headline": "Управляйте всеми операциями отеля <span class=\"gradient-text\">из единой облачной системы</span>.",
-    "hero.sub": "Автоматизируйте процессы от стойки регистрации до уборки номеров и синхронизируйте бронирования по всему миру.",
+    "hero.sub": "Облачная система управления отелями (PMS): автоматизируйте всё от ресепшена до уборки номеров и управляйте всеми операциями отеля из единого центра.",
     "hero.cta_demo": "Запросить демо",
     "hero.cta_features": "Посмотреть функции",
     "hero.stat1_label": "Отелей-партнеров",

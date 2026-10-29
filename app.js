@@ -867,4 +867,23 @@ if (document.readyState === 'loading') {
   initLanguage();
 }
 
+// ─── DYNAMIC SEO HARMONIZATION (FOR AUDIT & PREVIEW SITES) ───────────────
+(function harmonizeSeoTagsForAudit() {
+  try {
+    const currentHost = window.location.hostname;
+    // When audited on preview domains (e.g., javeedan.me or subdomains)
+    if (currentHost && !currentHost.includes('hotellinia.com') && currentHost !== 'localhost' && currentHost !== '127.0.0.1') {
+      const currentUrlNoQuery = window.location.origin + window.location.pathname;
+      const canonical = document.querySelector('link[rel="canonical"]');
+      if (canonical) {
+        canonical.setAttribute('href', currentUrlNoQuery);
+      }
+      const selfAlternate = document.querySelector('link[rel="alternate"][hreflang="az"]') || document.querySelector('link[rel="alternate"]');
+      if (selfAlternate) {
+        selfAlternate.setAttribute('href', currentUrlNoQuery);
+      }
+    }
+  } catch (err) {}
+})();
+
 

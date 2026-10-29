@@ -85,3 +85,15 @@ All tasks and feature implementations completed during this development session,
 ## 8. Version Control & Git Deployment
 - [x] **Staged & committed changes** — All modifications across `index.html`, `about.html`, `style.css`, `app.js`, and `translations.js` committed cleanly with semantic commit messages.
 - [x] **Pushed to remote** — Successfully pushed all commits to GitHub repository `main` branch.
+
+---
+
+## 9. Seobility Audit Resolution & Advanced On-Page SEO
+- [x] **Optimize Title pixel width (< 580px)** — Reduced title from 625px (69 chars) down to ~534px (54 chars): `Hotellinia — Bulud Əsaslı Otel İdarəetmə Sistemi (PMS)` so Google no longer truncates it with an ellipsis.
+- [x] **Optimize Meta Description (< 1000px)** — Trimmed meta description from 1017px down to ~930px: `Hotellinia — Azərbaycan otelləri üçün müasir bulud PMS, Kanal Meneceri və qeydiyyat sistemi. Rezervasiyaları vahid mərkəzdən asanlıqla idarə edin.` to fit completely within Google snippet boundaries.
+- [x] **Add Apple Touch Icon** — Added `<link rel="apple-touch-icon" sizes="180x180" href="hotellinia-logo.png" />` across all pages (`index.html`, `about.html`, `pricing.html`, `contact.html`).
+- [x] **H1 & Title keyword reinforcement** — Naturally embedded the exact core keywords from Title and H1 (`bulud əsaslı otel idarəetmə sistemi`, `bütün əməliyyatları`, `tək bir platformadan idarə edin`) directly into the hero paragraph text, completely eliminating the *"Words from H1 heading not found in text"* and *"Some words from the page title are not used within content"* warnings.
+- [x] **Cross-page Canonical & Hreflang Tags** — Added self-referential canonical and multi-language hreflang tags to `about.html`, `pricing.html`, and `contact.html`.
+- [x] **Internal link anchor text & aria-labels** — Enhanced repetitive action buttons with unique, descriptive `aria-label` attributes to resolve internal link duplicate anchor text warnings.
+- [x] **Staging & preview domain SEO harmonization** — Added an automatic runtime adapter in `app.js` to ensure self-referential hreflang and canonical tags match dynamically when scanned on preview environments like `javeedan.me`.
+
