@@ -867,6 +867,33 @@ if (document.readyState === 'loading') {
   initLanguage();
 }
 
+// ─── FLOATING WHATSAPP BUTTON INJECTION ───────────────
+(function initWhatsAppFloat() {
+  function ensureWhatsApp() {
+    if (document.getElementById('whatsappButton')) return;
+    const wa = document.createElement('a');
+    wa.id = 'whatsappButton';
+    wa.className = 'whatsapp-float';
+    wa.href = 'https://wa.me/994997252000?text=Salam,%20Hotellinia%20haqq%C4%B1nda%20m%C9%99lumat%20almaq%20ist%C9%99yir%C9%99m.';
+    wa.target = '_blank';
+    wa.rel = 'noopener noreferrer';
+    wa.setAttribute('aria-label', 'Hotellinia WhatsApp Dəstək Xətti');
+    wa.innerHTML = `
+      <span class="whatsapp-tooltip">WhatsApp ilə əlaqə</span>
+      <span class="whatsapp-pulse"></span>
+      <svg class="whatsapp-icon" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.96.57 3.87 1.66 5.51L2 22l4.75-1.74c1.58.93 3.39 1.43 5.29 1.43 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm5.78 14.13c-.24.68-1.4 1.25-1.94 1.33-.51.08-1.18.11-3.41-.81-2.85-1.18-4.68-4.08-4.82-4.27-.14-.19-1.16-1.54-1.16-2.94 0-1.4.73-2.09 1-2.37.26-.28.58-.35.78-.35.2 0 .39.002.56.01.18.01.42-.07.66.5.24.58.83 2.02.9 2.17.07.15.12.33.02.53-.1.2-.15.32-.3.5-.15.17-.32.39-.46.52-.15.15-.31.32-.13.63.18.31.79 1.3 1.7 2.11 1.17 1.04 2.15 1.37 2.46 1.52.31.15.49.13.67-.08.19-.21.78-.91.99-1.22.21-.31.42-.26.7-.16.29.11 1.83.86 2.15 1.02.31.16.52.24.6.37.07.13.07.76-.17 1.44z"/>
+      </svg>
+    `;
+    document.body.appendChild(wa);
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', ensureWhatsApp);
+  } else {
+    ensureWhatsApp();
+  }
+})();
+
 // ─── DYNAMIC SEO HARMONIZATION (FOR AUDIT & PREVIEW SITES) ───────────────
 (function harmonizeSeoTagsForAudit() {
   try {

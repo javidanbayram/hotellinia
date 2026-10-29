@@ -4259,32 +4259,33 @@ body.preloader-locked {
 }
 
 .hotel-partner-logo-box {
-  width: 58px;
-  height: 58px;
+  width: 64px;
+  height: 64px;
   border-radius: 16px;
-  background: linear-gradient(135deg, rgba(0,200,150,0.12), rgba(0,102,255,0.08));
-  border: 1.5px solid var(--border-glass);
+  background: #FFFFFF;
+  border: 1.5px solid rgba(15, 23, 42, 0.08);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
   overflow: hidden;
   flex-shrink: 0;
+  padding: 6px;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.hotel-partner-card:hover .hotel-partner-logo-box {
+  border-color: rgba(0, 200, 150, 0.4);
+  transform: scale(1.04);
+  box-shadow: 0 6px 18px rgba(0, 200, 150, 0.15);
 }
 
 .hotel-partner-img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 2;
-}
-
-.hotel-partner-img:not([src]),
-.hotel-partner-img[src=""] {
-  display: none;
+  object-fit: contain;
+  display: block;
 }
 
 .hotel-logo-placeholder {
@@ -4675,5 +4676,110 @@ body.preloader-locked {
 html, body {
   overflow-x: hidden;
   max-width: 100%;
+}
+
+/* ═════════════════════════════════════════════
+   FLOATING WHATSAPP BUTTON WIDGET
+═════════════════════════════════════════════ */
+.whatsapp-float {
+  position: fixed;
+  bottom: 26px;
+  right: 26px;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #25D366, #128C7E);
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 24px rgba(37, 211, 102, 0.4), 0 2px 6px rgba(0, 0, 0, 0.15);
+  z-index: 9999;
+  text-decoration: none;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.1) translateY(-3px);
+  box-shadow: 0 14px 32px rgba(37, 211, 102, 0.5), 0 4px 10px rgba(0, 0, 0, 0.2);
+  color: #FFFFFF;
+}
+
+.whatsapp-icon {
+  width: 32px;
+  height: 32px;
+  position: relative;
+  z-index: 2;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.15));
+}
+
+.whatsapp-pulse {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: rgba(37, 211, 102, 0.6);
+  z-index: 1;
+  animation: waPulse 2s infinite ease-out;
+  pointer-events: none;
+}
+
+@keyframes waPulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.4);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+
+.whatsapp-tooltip {
+  position: absolute;
+  right: 68px;
+  background: rgba(15, 23, 42, 0.92);
+  color: #FFFFFF;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-family: var(--font-body, -apple-system, BlinkMacSystemFont, sans-serif);
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateX(10px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+}
+
+.whatsapp-float:hover .whatsapp-tooltip {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+@media (max-width: 640px) {
+  .whatsapp-float {
+    bottom: 20px;
+    right: 20px;
+    width: 52px;
+    height: 52px;
+  }
+  .whatsapp-icon {
+    width: 28px;
+    height: 28px;
+  }
+  .whatsapp-tooltip {
+    display: none;
+  }
 }
 

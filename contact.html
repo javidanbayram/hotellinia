@@ -138,64 +138,136 @@
     }
     .form-success svg { margin-bottom: 16px; display: block; margin-inline: auto; }
 
-    /* Offices */
+    /* Offices Section (Matched to Official Headquarters & Florida Cards) */
     .offices-grid {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 24px;
       margin: 40px auto 0;
-      max-width: 860px;
+      max-width: 1240px;
     }
-    .office-card {
-      position: relative; overflow: hidden;
-      display: flex; flex-direction: column;
-      background: linear-gradient(160deg, rgba(0,200,150,0.07), rgba(0,102,255,0.04) 55%, var(--bg-card));
-      border: 1px solid var(--border-glass);
-      border-radius: var(--radius-xl);
-      padding: 32px;
-      backdrop-filter: blur(12px);
-      transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+    .office-card-v2 {
+      background: #111827;
+      border: 1px solid rgba(56, 189, 248, 0.22);
+      border-radius: 20px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+      transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
     }
-    .office-card::before {
-      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
-      background: linear-gradient(90deg, #00C896, #0066FF);
-      opacity: 0.7;
+    .office-card-v2:hover {
+      transform: translateY(-6px);
+      border-color: rgba(56, 189, 248, 0.55);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 25px rgba(56, 189, 248, 0.12);
     }
-    .office-card--hq::before { background: linear-gradient(90deg, #8B5CF6, #0066FF); }
-    .office-card:hover {
-      transform: translateY(-4px);
-      border-color: rgba(0,200,150,0.35);
-      box-shadow: 0 18px 40px rgba(0,0,0,0.35), 0 0 30px rgba(0,200,150,0.08);
+    .office-banner {
+      height: 180px;
+      position: relative;
+      overflow: hidden;
+      background: #0F172A;
     }
-    .office-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 20px; flex-wrap: wrap; }
-    .office-flag {
-      width: 52px; height: 52px; border-radius: 14px; font-size: 28px;
-      display: flex; align-items: center; justify-content: center;
-      background: rgba(255,255,255,0.05); border: 1px solid var(--border-glass);
+    .office-banner-art {
+      width: 100%;
+      height: 100%;
+      display: block;
     }
-    .office-city { font-family: var(--font-display); font-size: 22px; font-weight: 700; margin-bottom: 18px; }
-    .office-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.7; }
-    .office-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 14px; }
-    .office-list li { display: flex; align-items: flex-start; gap: 12px; font-size: 14px; color: var(--text-secondary); line-height: 1.55; }
-    .office-list a { color: var(--text-primary, #fff); font-weight: 600; text-decoration: none; transition: color 0.2s; }
-    .office-list a:hover { color: var(--green); }
-    .office-ico {
-      flex: 0 0 32px; width: 32px; height: 32px; border-radius: 10px;
-      display: flex; align-items: center; justify-content: center;
-      background: rgba(0,200,150,0.1); color: var(--green);
+    .office-banner-text {
+      position: absolute;
+      bottom: 22px;
+      left: 24px;
+      z-index: 2;
     }
-    .office-type {
+    .office-banner-city {
+      font-family: var(--font-display, -apple-system, BlinkMacSystemFont, sans-serif);
+      font-size: 32px;
+      font-weight: 800;
+      color: #FFFFFF;
+      margin: 0 0 4px;
+      line-height: 1.1;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+    }
+    .office-banner-country {
+      font-size: 15px;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.85);
+      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+    }
+    .office-body {
+      padding: 26px 24px 30px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      background: #111827;
+    }
+    .office-badge {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1.2px;
+      color: #818CF8;
+      text-transform: uppercase;
+      margin-bottom: 10px;
       display: inline-block;
-      font-size: 11px; font-weight: 700;
-      padding: 5px 12px; border-radius: 100px;
-      background: rgba(0,200,150,0.1);
-      border: 1px solid rgba(0,200,150,0.2);
-      color: var(--green);
     }
-    .office-type--hq { background: rgba(139,92,246,0.12); border-color: rgba(139,92,246,0.3); color: #A78BFA; }
+    .office-badge--florida {
+      color: #F472B6;
+    }
+    .office-badge--az {
+      color: #34D399;
+    }
+    .office-company {
+      font-family: var(--font-display, -apple-system, BlinkMacSystemFont, sans-serif);
+      font-size: 22px;
+      font-weight: 800;
+      color: #FFFFFF;
+      margin: 0 0 22px;
+      line-height: 1.25;
+    }
+    .office-details {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .office-details li {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      font-size: 13.5px;
+      color: #94A3B8;
+      line-height: 1.55;
+    }
+    .office-details a {
+      color: #38BDF8;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .office-details a:hover {
+      color: #7DD3FC;
+      text-decoration: underline;
+    }
+    .office-detail-ico {
+      flex: 0 0 20px;
+      width: 20px;
+      height: 20px;
+      color: #38BDF8;
+      margin-top: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    @media (max-width: 1060px) {
+      .offices-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
     @media (max-width: 720px) {
-      .offices-grid { grid-template-columns: 1fr; }
-      .office-card { padding: 24px; }
+      .offices-grid {
+        grid-template-columns: 1fr;
+      }
     }
 
     /* FAQ Accordion */
@@ -548,38 +620,192 @@
           <h2 class="section-title" style="text-align:center;" data-i18n="contact.offices_title">Harada <span class="gradient-text">fəaliyyət göstəririk</span></h2>
         </div>
         <div class="offices-grid">
-          <div class="office-card" id="office-baku">
-            <div class="office-top">
-              <div class="office-flag">🇦🇿</div>
-              <span class="office-type" data-i18n="contact.rep_az">Azərbaycan nümayəndəliyi</span>
+          <!-- 1. İSTANBUL (BAŞ OFİS) -->
+          <div class="office-card-v2" id="office-istanbul">
+            <div class="office-banner">
+              <svg class="office-banner-art" viewBox="0 0 400 180" preserveAspectRatio="none" fill="none">
+                <defs>
+                  <linearGradient id="istGrad" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#2563EB"/>
+                    <stop offset="50%" stop-color="#1E1B4B"/>
+                    <stop offset="100%" stop-color="#0F172A"/>
+                  </linearGradient>
+                </defs>
+                <rect width="400" height="180" fill="url(#istGrad)"/>
+                <!-- Glowing Moon -->
+                <circle cx="330" cy="50" r="28" fill="rgba(255,255,255,0.22)"/>
+                <!-- Distant Shoreline -->
+                <path d="M0 180 L0 140 Q120 110 240 145 T400 135 L400 180 Z" fill="#0A0F1D" opacity="0.6"/>
+                <!-- Suspension Bridge Arc & Cables -->
+                <path d="M220 145 Q310 70 400 140" stroke="rgba(255,255,255,0.3)" stroke-width="3" fill="none"/>
+                <path d="M250 120 L250 150 M280 100 L280 150 M310 90 L310 150 M340 95 L340 150 M370 115 L370 150" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+                <rect x="220" y="100" width="4" height="50" fill="rgba(255,255,255,0.4)"/>
+                <!-- Mosque Silhouettes & Minarets -->
+                <rect x="55" y="55" width="4" height="95" fill="#0A0F1D"/>
+                <polygon points="57,40 54,55 60,55" fill="#0A0F1D"/>
+                <rect x="155" y="55" width="4" height="95" fill="#0A0F1D"/>
+                <polygon points="157,40 154,55 160,55" fill="#0A0F1D"/>
+                <path d="M70 150 C70 95 140 95 140 150 Z" fill="#0A0F1D"/>
+                <path d="M60 150 C60 125 90 125 90 150 Z" fill="#0A0F1D"/>
+                <path d="M120 150 C120 125 150 125 150 150 Z" fill="#0A0F1D"/>
+                <path d="M0 180 L0 160 Q200 150 400 160 L400 180 Z" fill="#070C18"/>
+              </svg>
+              <div class="office-banner-text">
+                <h3 class="office-banner-city" data-i18n="contact.hq_city">İstanbul</h3>
+                <span class="office-banner-country" data-i18n="contact.hq_country">Türkiyə</span>
+              </div>
             </div>
-            <div class="office-city" data-i18n="contact.rep_az_country">Azərbaycan</div>
-            <ul class="office-list">
-              <li>
-                <span class="office-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="2"/></svg></span>
-                <span><strong data-i18n="contact.city_ganja">Gəncə:</strong> <span data-i18n="contact.rep_az_ganja">Gəncə Biznes Mərkəzi, Gəncə, Azərbaycan</span></span>
-              </li>
-              <li>
-                <span class="office-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="2"/></svg></span>
-                <span><strong data-i18n="contact.city_baku">Bakı:</strong> <span data-i18n="contact.rep_az_baku">İçərişəhər, Qəsr küçəsi, 50 Döngə 1, Bakı</span></span>
-              </li>
-              <li>
-                <span class="office-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 2h3a2 2 0 012 1.72c.127.96.36 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.34 1.85.573 2.81.7A2 2 0 0122 16.92z" stroke="currentColor" stroke-width="2"/></svg></span>
-                <a href="tel:+994997252000">+994 997 25 20 00</a>
-              </li>
-              <li>
-                <span class="office-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="currentColor" stroke-width="2"/><polyline points="22,6 12,13 2,6" stroke="currentColor" stroke-width="2"/></svg></span>
-                <a href="mailto:pms@hospitality.az">pms@hospitality.az</a>
-              </li>
-            </ul>
+            <div class="office-body">
+              <span class="office-badge" data-i18n="contact.rep_hq">BAŞ OFİS</span>
+              <h4 class="office-company" data-i18n="contact.hq_company">Hotellinia</h4>
+              <ul class="office-details">
+                <li>
+                  <span class="office-detail-ico" aria-hidden="true">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V5a2 2 0 012-2h10a2 2 0 012 2v16M9 9h1M9 13h1M9 17h1M14 9h1M14 13h1M14 17h1"/></svg>
+                  </span>
+                  <span data-i18n="contact.hq_entity">Ekelix Teknoloji ve Yazılım Hizmetleri Ltd. Şti.</span>
+                </li>
+                <li>
+                  <span class="office-detail-ico" aria-hidden="true">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                  </span>
+                  <span data-i18n="contact.hq_addr">AOSB 3. Kısım Mah. 40. Cad. Antalya OSB Teknopark Hizmet Binası No:4 Kat:3/310 Döşemealtı - ANTALYA</span>
+                </li>
+                <li>
+                  <span class="office-detail-ico" aria-hidden="true">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 2h3a2 2 0 012 1.72c.127.96.36 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.34 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                  </span>
+                  <a href="tel:+905348852764" data-i18n="contact.hq_phone">+90 534 885 27 64</a>
+                </li>
+                <li>
+                  <span class="office-detail-ico" aria-hidden="true">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                  </span>
+                  <a href="mailto:info@hotellinia.com" data-i18n="contact.hq_email">info@hotellinia.com</a>
+                </li>
+              </ul>
+            </div>
           </div>
-          <div class="office-card office-card--hq" id="office-istanbul">
-            <div class="office-top">
-              <div class="office-flag">🇹🇷</div>
-              <span class="office-type office-type--hq" data-i18n="contact.rep_hq">Baş ofis</span>
+
+          <!-- 2. FLORIDA (SƏLAHİYYƏTLİ DİSTRİBYUTOR) -->
+          <div class="office-card-v2" id="office-florida">
+            <div class="office-banner">
+              <svg class="office-banner-art" viewBox="0 0 400 180" preserveAspectRatio="none" fill="none">
+                <defs>
+                  <linearGradient id="floGrad" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#9333EA"/>
+                    <stop offset="45%" stop-color="#DB2777"/>
+                    <stop offset="100%" stop-color="#EA580C"/>
+                  </linearGradient>
+                </defs>
+                <rect width="400" height="180" fill="url(#floGrad)"/>
+                <!-- Glowing Moon -->
+                <circle cx="90" cy="55" r="28" fill="rgba(255,255,255,0.22)"/>
+                <!-- Skyscraper Silhouettes -->
+                <rect x="230" y="55" width="32" height="125" fill="#0A0F1D" opacity="0.6"/>
+                <rect x="270" y="70" width="30" height="110" fill="#0A0F1D" opacity="0.5"/>
+                <rect x="305" y="45" width="36" height="135" fill="#0A0F1D" opacity="0.7"/>
+                <rect x="350" y="65" width="24" height="115" fill="#0A0F1D" opacity="0.5"/>
+                <rect x="378" y="50" width="22" height="130" fill="#0A0F1D" opacity="0.65"/>
+                <!-- Coastline -->
+                <path d="M0 180 L0 155 Q200 140 400 155 L400 180 Z" fill="#070C18"/>
+                <path d="M0 180 L0 165 Q200 150 400 165 L400 180 Z" fill="#050811"/>
+              </svg>
+              <div class="office-banner-text">
+                <h3 class="office-banner-city" data-i18n="contact.us_city">Florida</h3>
+                <span class="office-banner-country" data-i18n="contact.us_country">ABŞ</span>
+              </div>
             </div>
-            <div class="office-city" data-i18n="contact.hq_country">Türkiyə</div>
-            <p class="office-desc" data-i18n="contact.hq_desc">Hotellinia-nın Türkiyədəki baş ofisi.</p>
+            <div class="office-body">
+              <span class="office-badge office-badge--florida" data-i18n="contact.rep_us">SƏLAHİYYƏTLİ DİSTRİBYUTOR</span>
+              <h4 class="office-company" data-i18n="contact.us_company">CUHA GROUP LLC</h4>
+              <ul class="office-details">
+                <li>
+                  <span class="office-detail-ico" aria-hidden="true">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                  </span>
+                  <span data-i18n="contact.us_addr">1000 Bay Drive Apt 311, Miami, FL 33141, USA</span>
+                </li>
+                <li>
+                  <span class="office-detail-ico" aria-hidden="true">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                  </span>
+                  <span data-i18n="contact.us_person">Səlahiyyətli şəxs: Anıl Çuha</span>
+                </li>
+                <li>
+                  <span class="office-detail-ico" aria-hidden="true">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 2h3a2 2 0 012 1.72c.127.96.36 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.34 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                  </span>
+                  <a href="tel:+13058139660" data-i18n="contact.us_phone">+1 (305) 813-9660</a>
+                </li>
+                <li>
+                  <span class="office-detail-ico" aria-hidden="true">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                  </span>
+                  <a href="mailto:florida@hotellinia.com" data-i18n="contact.us_email">florida@hotellinia.com</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- 3. AZƏRBAYCAN (NÜMAYƏNDƏLİK) -->
+          <div class="office-card-v2" id="office-azerbaijan">
+            <div class="office-banner">
+              <svg class="office-banner-art" viewBox="0 0 400 180" preserveAspectRatio="none" fill="none">
+                <defs>
+                  <linearGradient id="azGrad" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#0F766E"/>
+                    <stop offset="50%" stop-color="#042F2E"/>
+                    <stop offset="100%" stop-color="#021C1C"/>
+                  </linearGradient>
+                </defs>
+                <rect width="400" height="180" fill="url(#azGrad)"/>
+                <!-- Glowing Moon -->
+                <circle cx="80" cy="50" r="28" fill="rgba(255,255,255,0.2)"/>
+                <!-- Flame Towers Silhouettes -->
+                <path d="M250 180 C240 120 255 70 270 50 C275 80 280 120 280 180 Z" fill="#0A0F1D" opacity="0.7"/>
+                <path d="M285 180 C280 130 290 85 305 60 C310 90 315 130 315 180 Z" fill="#0A0F1D" opacity="0.6"/>
+                <path d="M320 180 C315 135 325 95 338 75 C342 100 345 135 345 180 Z" fill="#0A0F1D" opacity="0.5"/>
+                <!-- Maiden Tower Shape -->
+                <rect x="180" y="100" width="30" height="80" fill="#0A0F1D" opacity="0.6"/>
+                <!-- Caspian Coast -->
+                <path d="M0 180 L0 155 Q200 145 400 155 L400 180 Z" fill="#070C18"/>
+              </svg>
+              <div class="office-banner-text">
+                <h3 class="office-banner-city" data-i18n="contact.az_city">Bakı & Gəncə</h3>
+                <span class="office-banner-country" data-i18n="contact.rep_az_country">Azərbaycan</span>
+              </div>
+            </div>
+            <div class="office-body">
+              <span class="office-badge office-badge--az" data-i18n="contact.rep_az">AZƏRBAYCAN NÜMAYƏNDƏLİYİ</span>
+              <h4 class="office-company" data-i18n="contact.az_company">Hotellinia Azərbaycan</h4>
+              <ul class="office-details">
+                <li>
+                  <span class="office-detail-ico" aria-hidden="true">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                  </span>
+                  <span><strong data-i18n="contact.city_ganja">Gəncə:</strong> <span data-i18n="contact.rep_az_ganja">Gəncə Biznes Mərkəzi, Gəncə, Azərbaycan</span></span>
+                </li>
+                <li>
+                  <span class="office-detail-ico" aria-hidden="true">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                  </span>
+                  <span><strong data-i18n="contact.city_baku">Bakı:</strong> <span data-i18n="contact.rep_az_baku">İçərişəhər, Qəsr küçəsi, 50 Döngə 1, Bakı</span></span>
+                </li>
+                <li>
+                  <span class="office-detail-ico" aria-hidden="true">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 2h3a2 2 0 012 1.72c.127.96.36 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.34 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                  </span>
+                  <a href="tel:+994997252000" data-i18n="contact.az_phone">+994 997 25 20 00</a>
+                </li>
+                <li>
+                  <span class="office-detail-ico" aria-hidden="true">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                  </span>
+                  <a href="mailto:pms@hospitality.az" data-i18n="contact.az_email">pms@hospitality.az</a>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>

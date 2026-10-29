@@ -127,3 +127,11 @@ All tasks and feature implementations completed during this development session,
   - Nizam Babayev: *Ölkə üzrə biznes meneceri* (RU: *Менеджер по развитию бизнеса по стране*)
   - Cavidan Bayramlı: *Ölkə üzrə IT menecer* (RU: *IT-менеджер по стране*)
 - [x] **Grid Layout Harmonization** — Updated `.team-grid` across `about.html` and `style.css` to a balanced 3-column layout (`repeat(3, 1fr)`) on desktop screens with smooth responsive adaptations on tablet and mobile.
+---
+
+## 14. Floating WhatsApp Widget, Homepage Team Removal, Hotel Partner Branding & Global Offices Showcase
+- [x] **Persistent Floating WhatsApp Widget** — Added a fixed WhatsApp button at the bottom-right corner (`bottom: 26px; right: 26px; z-index: 9999`) across all pages with pulsing wave animation, hover tooltip ("WhatsApp ilə əlaqə"), and direct link to Hotellinia WhatsApp (`https://wa.me/994997252000`).
+- [x] **Remove Team Section from Homepage** — Removed `#team` section from `index.html`, preserving it exclusively on the dedicated About page (`about.html`).
+- [x] **Hotel Partner Section Heading & Authentic Logos** — Updated heading to *"Bizə güvənən otellər və komplekslər"* (RU: *"Отели и комплексы, которые доверяют нам"*), and integrated official high-resolution logos for both partner hotels (`dasli-qala-logo.png` and `national-hotel-logo.png`) inside clean `.hotel-partner-logo-box` containers.
+- [x] **Global Operating Offices Showcase (Istanbul, Florida & Azerbaijan)** — Rebuilt the "Harada fəaliyyət göstəririk" section on `contact.html` with screenshot-matching dark cards, custom vector skyline banners (Istanbul minarets & Bosphorus bridge, Florida sunset skyscrapers, and Baku Flame Towers), official badges (BAŞ OFİS, SƏLAHİYYƏTLİ DİSTRİBYUTOR, AZƏRBAYCAN NÜMAYƏNDƏLİYİ), and full contact credentials (Ekelix Teknoloji, CUHA GROUP LLC, and Hospitality.az).
+
