@@ -198,17 +198,72 @@
       .office-card { padding: 24px; }
     }
 
-    /* FAQ */
+    /* FAQ Accordion */
     .cfaq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 40px; }
     .cfaq-card {
       background: var(--bg-card);
       border: 1px solid var(--border-glass);
       border-radius: var(--radius-lg);
-      padding: 24px;
+      overflow: hidden;
       backdrop-filter: blur(12px);
+      transition: border-color 0.25s, box-shadow 0.25s;
     }
-    .cfaq-q { font-size: 15px; font-weight: 700; margin-bottom: 8px; }
-    .cfaq-a { font-size: 13px; color: var(--text-secondary); line-height: 1.65; }
+    .cfaq-card:hover { border-color: var(--border-bright); }
+    .cfaq-card.open { border-color: rgba(0,200,150,0.35); box-shadow: 0 8px 30px rgba(0,200,150,0.06); }
+    .cfaq-q {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 22px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      cursor: pointer;
+      text-align: left;
+      color: var(--text-primary);
+      font-family: var(--font-display);
+      font-size: 15px;
+      font-weight: 700;
+      transition: color 0.2s;
+    }
+    .cfaq-q:hover { color: var(--green); }
+    .cfaq-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--bg-glass);
+      border: 1px solid var(--border-glass);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--text-muted);
+      font-size: 18px;
+      line-height: 1;
+      transition: all 0.3s ease;
+    }
+    .cfaq-card.open .cfaq-icon {
+      transform: rotate(45deg);
+      background: var(--green-dim);
+      color: var(--green);
+      border-color: rgba(0,200,150,0.25);
+    }
+    .cfaq-a {
+      font-size: 13.5px;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      padding: 0 24px;
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height 0.35s ease, padding 0.3s ease, opacity 0.3s ease;
+    }
+    .cfaq-card.open .cfaq-a {
+      max-height: 250px;
+      opacity: 1;
+      padding: 0 24px 22px;
+    }
 
     @media (max-width: 900px) {
       .contact-wrap { grid-template-columns: 1fr; }
@@ -539,19 +594,31 @@
         </div>
         <div class="cfaq-grid">
           <div class="cfaq-card" id="cfaq-1">
-            <div class="cfaq-q" data-i18n="contact.faq1_q">Demo nə qədər davam edir?</div>
+            <button class="cfaq-q" onclick="toggleContactFaq('cfaq-1')" aria-expanded="false">
+              <span data-i18n="contact.faq1_q">Demo nə qədər davam edir?</span>
+              <span class="cfaq-icon">+</span>
+            </button>
             <div class="cfaq-a" data-i18n="contact.faq1_a">Demo görüşü adətən 30–45 dəqiqə davam edir. Bu müddətdə sistemin bütün əsas modullarını canlı görər, suallarınızı verə bilərsiniz.</div>
           </div>
           <div class="cfaq-card" id="cfaq-2">
-            <div class="cfaq-q" data-i18n="contact.faq2_q">Pulsuz sınaq dövrü varmı?</div>
+            <button class="cfaq-q" onclick="toggleContactFaq('cfaq-2')" aria-expanded="false">
+              <span data-i18n="contact.faq2_q">Pulsuz sınaq dövrü varmı?</span>
+              <span class="cfaq-icon">+</span>
+            </button>
             <div class="cfaq-a" data-i18n="contact.faq2_a">Bəli. Demonu izlədikdən sonra 14 günlük pulsuz sınaq dövrü təqdim edirik. Kredit kartı tələb olunmur.</div>
           </div>
           <div class="cfaq-card" id="cfaq-3">
-            <div class="cfaq-q" data-i18n="contact.faq3_q">Müqavilə imzalamaq lazımdırmı?</div>
+            <button class="cfaq-q" onclick="toggleContactFaq('cfaq-3')" aria-expanded="false">
+              <span data-i18n="contact.faq3_q">Müqavilə imzalamaq lazımdırmı?</span>
+              <span class="cfaq-icon">+</span>
+            </button>
             <div class="cfaq-a" data-i18n="contact.faq3_a">Xeyr. Aylıq planlarda uzunmüddətli öhdəlik yoxdur. İstənilən vaxt ləğv edə bilərsiniz.</div>
           </div>
           <div class="cfaq-card" id="cfaq-4">
-            <div class="cfaq-q" data-i18n="contact.faq4_q">Mövcud sistemdən köçürmə mümkündürmü?</div>
+            <button class="cfaq-q" onclick="toggleContactFaq('cfaq-4')" aria-expanded="false">
+              <span data-i18n="contact.faq4_q">Mövcud sistemdən köçürmə mümkündürmü?</span>
+              <span class="cfaq-icon">+</span>
+            </button>
             <div class="cfaq-a" data-i18n="contact.faq4_a">Bəli. Komandamız mövcud PMS-dən, Excel-dən və ya hər hansı sistemdən məlumatlarınızı köçürməkdə sizə kömək edir.</div>
           </div>
         </div>
@@ -647,6 +714,22 @@
         form.style.display = 'none';
         success.style.display = 'block';
       }, 800);
+    }
+
+    function toggleContactFaq(id) {
+      const item = document.getElementById(id);
+      if (!item) return;
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.cfaq-card').forEach(f => {
+        f.classList.remove('open');
+        const btn = f.querySelector('.cfaq-q');
+        if (btn) btn.setAttribute('aria-expanded', 'false');
+      });
+      if (!isOpen) {
+        item.classList.add('open');
+        const btn = item.querySelector('.cfaq-q');
+        if (btn) btn.setAttribute('aria-expanded', 'true');
+      }
     }
   </script>
   <script src="translations.js?v=4"></script>

@@ -117,7 +117,13 @@ All tasks and feature implementations completed during this development session,
 - [x] **Merge Top Features & Bottom All-Ops Grid** — Unified the 6 top feature cards and the 8 bottom operations cards into a single, comprehensive 8-module grid (`.modules-grid`) under *Tam İnteqrasiyalı Həll*.
 - [x] **Zero Duplicate Information** — Combined distinct items from both sections (such as Otaq Panosu, Qrup Rezervasiyaları, Şirkət/Agentlik Hesabları, Gün Sonu Night Audit, Resepturalı Menyu, SPA & Concierge, 18+ Analitik Hesabat, Qonaq Təcrübəsi və Sədaqət, Personal və Uyğunluq KVKK/GDPR) into 8 rich, complete cards with zero redundancy.
 - [x] **Remove Redundant Divider & Sub-Grid** — Removed `.modules-divider` ('Bütün əməliyyatlar bir platformada') and `.allops-grid`, and updated translations in `translations.js` for Azerbaijani and Russian.
+---
 
-
-
-
+## 13. Interactive FAQ Accordion on Contact Page & Team Reinstatement with Country-Level Titles
+- [x] **Contact Page Interactive FAQ Accordion** — Converted the previously static FAQ grid on `contact.html` into a fully interactive accordion. Clicking any question smoothly reveals its answer with CSS transitions (`max-height`, `opacity`, `padding`), rotates the glowing `+` indicator by 45 degrees, and supports full keyboard accessibility (`aria-expanded`).
+- [x] **Reinstate Cavidan Bayramlı to the Team** — Re-activated and restored Cavidan Bayramlı to the active team roster on both `about.html` and `index.html` with his photo `javidan.png` and direct LinkedIn link.
+- [x] **Country-Level Position Prefixing ("Ölkə üzrə")** — Updated leadership and executive titles across all pages and translations (`translations.js` AZ & RU) with the "Ölkə üzrə" prefix:
+  - Anar Məmmədov: *Ölkə üzrə direktor* (RU: *Директор по стране*)
+  - Nizam Babayev: *Ölkə üzrə biznes meneceri* (RU: *Менеджер по развитию бизнеса по стране*)
+  - Cavidan Bayramlı: *Ölkə üzrə IT menecer* (RU: *IT-менеджер по стране*)
+- [x] **Grid Layout Harmonization** — Updated `.team-grid` across `about.html` and `style.css` to a balanced 3-column layout (`repeat(3, 1fr)`) on desktop screens with smooth responsive adaptations on tablet and mobile.
