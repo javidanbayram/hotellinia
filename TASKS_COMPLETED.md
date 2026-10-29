@@ -99,3 +99,10 @@ All tasks and feature implementations completed during this development session,
 - [x] **Internal link anchor text & aria-labels** — Enhanced repetitive action buttons with unique, descriptive `aria-label` attributes to resolve internal link duplicate anchor text warnings.
 - [x] **Staging & preview domain SEO harmonization** — Added an automatic runtime adapter in `app.js` to ensure self-referential hreflang and canonical tags match dynamically when scanned on preview environments like `javeedan.me`.
 
+---
+
+## 10. Unification of Duplicate Sections on About Page
+- [x] **Eliminate duplicate values/features block** — Removed the redundant `.story-feat-cards` that was placed at the bottom of the story section repeating the exact same titles ("Sürət və Sadəlik", "Maksimum Təhlükəsizlik", "Daimi İnkişaf") right above the official "Dəyərlərimiz" section.
+- [x] **Consolidate into single Values section** — Merged and enhanced `.values-section` ("Dəyərlərimiz — Bizi irəli aparan prinsiplər") as the single, authoritative section featuring all 4 principles with custom glowing icons (🎯 Sürət və Sadəlik, ⚡ Maksimum Təhlükəsizlik, 🔒 Daimi İnkişaf, 🚀 24/7 Canlı Dəstək) in a balanced 4-column desktop layout.
+
+
