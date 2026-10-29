@@ -478,28 +478,7 @@ styleSheet.textContent = `
 `;
 document.head.appendChild(styleSheet);
 
-// ─── WORKFLOW ANIMATION ─────────────────────────────
-// Animate nodes sequentially on scroll
-const wfObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      const nodes = entry.target.querySelectorAll('.wf-node');
-      nodes.forEach((node, i) => {
-        node.style.opacity = '0';
-        node.style.transform = 'translateX(20px)';
-        setTimeout(() => {
-          node.style.transition = 'all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)';
-          node.style.opacity = '1';
-          node.style.transform = 'translateX(0)';
-        }, 200 + i * 150);
-      });
-      wfObserver.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.2 });
 
-const wfDiagram = document.querySelector('.workflow-diagram');
-if (wfDiagram) wfObserver.observe(wfDiagram);
 
 // ─── COUNTING NUMBER ANIMATION ──────────────────────
 function animateCount(el, target, suffix, duration = 1800) {
@@ -573,8 +552,43 @@ if (counterRooms) {
 // ─── BENTO POS & WORKFLOW ANIMATIONS (Intersection Observed) ──
 let posInterval = null;
 let wfInterval = null;
+let currentWfStep = 0;
+
+function setWorkflowStep(stepIndex) {
+  const nodes = document.querySelectorAll('.workflow-diagram .wf-node');
+  const arrow1 = document.getElementById('wf-a1');
+  const arrow2 = document.getElementById('wf-a2');
+  const trackerText = document.getElementById('wfTrackerText');
+  if (!nodes.length) return;
+
+  currentWfStep = stepIndex % nodes.length;
+
+  nodes.forEach((node, i) => {
+    node.classList.remove('active', 'completed');
+    if (i === currentWfStep) {
+      node.classList.add('active');
+    } else if (i < currentWfStep) {
+      node.classList.add('completed');
+    }
+  });
+
+  // Arrows state
+  if (arrow1) arrow1.classList.toggle('active', currentWfStep === 1);
+  if (arrow2) arrow2.classList.toggle('active', currentWfStep === 3);
+
+  // Update status text
+  if (trackerText) {
+    const activeKey = `bento.wf_status_${currentWfStep + 1}`;
+    trackerText.setAttribute('data-i18n', activeKey);
+    const currentLang = localStorage.getItem('hotellinia_lang') || 'az';
+    if (typeof translations !== 'undefined' && translations[currentLang] && translations[currentLang][activeKey]) {
+      trackerText.textContent = translations[currentLang][activeKey];
+    }
+  }
+}
 
 function startBentoTimers() {
+  // POS Order rotation
   const items = document.querySelectorAll('.pos-order-item');
   if (items.length && !posInterval) {
     let pIdx = 0;
@@ -585,18 +599,28 @@ function startBentoTimers() {
     }, 3000);
   }
 
-  const nodes = document.querySelectorAll('.wf-node');
-  if (nodes.length && !wfInterval) {
-    let wIdx = 0;
+  // Interactive automated workflow progression
+  const wfDiagram = document.getElementById('workflowDiagram');
+  if (wfDiagram && !wfInterval) {
+    if (!wfDiagram.dataset.bound) {
+      wfDiagram.querySelectorAll('.wf-node').forEach((node, idx) => {
+        node.addEventListener('click', () => {
+          setWorkflowStep(idx);
+        });
+        node.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            setWorkflowStep(idx);
+          }
+        });
+      });
+      wfDiagram.dataset.bound = 'true';
+    }
+
+    setWorkflowStep(currentWfStep);
     wfInterval = setInterval(() => {
-      nodes.forEach(n => { n.style.borderColor = ''; n.style.background = ''; });
-      const active = nodes[wIdx % nodes.length];
-      if (active) {
-        active.style.borderColor = 'rgba(0,200,150,0.6)';
-        active.style.background  = 'rgba(0,200,150,0.08)';
-      }
-      wIdx++;
-    }, 1400);
+      setWorkflowStep(currentWfStep + 1);
+    }, 2400);
   }
 }
 
