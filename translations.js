@@ -25,6 +25,11 @@ const HOTELLINIA_TRANSLATIONS = {
     "hotel_partners.sub": "Ölkə daxilində və regionda qonaqpərvərlik əməliyyatlarını və rezervasiyalarını Hotellinia platformasına həvalə edən tərəfdaş otellərimiz.",
     "hotel_partners.cta_text": "Siz də otelinizi Hotellinia ailəsinə qoşun, əməliyyatlarınızı tam avtomatlaşdırın.",
     "hotel_partners.cta_btn": "Bizə Qoşulun →",
+    "hotel_partners.h1_name": "Daşlı Qala Hotel",
+    "hotel_partners.h1_type": "Otel · Gəncə",
+    "hotel_partners.h2_name": "National Hotel",
+    "hotel_partners.h2_type": "Otel · Gəncə",
+    "hotel_partners.verified": "Partnyor",
 
     // Preloader
     "preloader.slogan": "Mükəmməl qonaqpərvərlik sizdən, <br class=\"preloader-br\" /><span class=\"preloader-slogan-accent\">gələcəyin texnologiyası bizdən!</span>",
@@ -511,6 +516,11 @@ const HOTELLINIA_TRANSLATIONS = {
     "hotel_partners.sub": "Отели, курорты и бутик-гостиницы по всей стране и в регионе, доверяющие управление бронированием и гостеприимством платформе Hotellinia.",
     "hotel_partners.cta_text": "Присоединяйте свой отель к семье Hotellinia и автоматизируйте все процессы.",
     "hotel_partners.cta_btn": "Присоединиться →",
+    "hotel_partners.h1_name": "Daşlı Qala Hotel",
+    "hotel_partners.h1_type": "Отель · Гянджа",
+    "hotel_partners.h2_name": "National Hotel",
+    "hotel_partners.h2_type": "Отель · Гянджа",
+    "hotel_partners.verified": "Партнер",
 
     // Preloader
     "preloader.slogan": "Безупречное гостеприимство от вас, <br class=\"preloader-br\" /><span class=\"preloader-slogan-accent\">технологии будущего от нас!</span>",

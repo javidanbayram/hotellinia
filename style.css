@@ -4334,9 +4334,9 @@ body.preloader-locked {
 
 .hotel-partners-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  max-width: 1080px;
+  grid-template-columns: repeat(2, minmax(280px, 1fr));
+  gap: 24px;
+  max-width: 840px;
   margin: 0 auto;
 }
 
@@ -4344,10 +4344,10 @@ body.preloader-locked {
   background: var(--bg-card);
   border: 1px solid var(--border-glass);
   border-radius: var(--radius-lg);
-  padding: 22px 20px;
+  padding: 24px 22px;
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 18px;
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   transition: all 0.3s var(--ease-smooth);
@@ -4363,10 +4363,10 @@ body.preloader-locked {
 }
 
 .hotel-partner-logo-box {
-  width: 54px;
-  height: 54px;
-  border-radius: 14px;
-  background: linear-gradient(135deg, rgba(0,200,150,0.1), rgba(0,102,255,0.08));
+  width: 58px;
+  height: 58px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, rgba(0,200,150,0.12), rgba(0,102,255,0.08));
   border: 1.5px solid var(--border-glass);
   display: flex;
   align-items: center;
@@ -4403,13 +4403,21 @@ body.preloader-locked {
 .hotel-partner-info {
   display: flex;
   flex-direction: column;
-  gap: 3px;
+  gap: 4px;
   min-width: 0;
+  flex: 1;
+}
+
+.hotel-partner-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
 }
 
 .hotel-partner-name {
   font-family: var(--font-display);
-  font-size: 16px;
+  font-size: 17px;
   font-weight: 700;
   color: var(--text-primary);
   white-space: nowrap;
@@ -4417,8 +4425,22 @@ body.preloader-locked {
   text-overflow: ellipsis;
 }
 
+.hotel-partner-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--green);
+  background: rgba(0, 200, 150, 0.1);
+  padding: 3px 9px;
+  border-radius: 999px;
+  border: 1px solid rgba(0, 200, 150, 0.22);
+  white-space: nowrap;
+}
+
 .hotel-partner-type {
-  font-size: 12px;
+  font-size: 13px;
   color: var(--text-muted);
   font-weight: 500;
 }
@@ -4439,12 +4461,8 @@ body.preloader-locked {
   font-weight: 500;
 }
 
-@media (max-width: 900px) {
-  .hotel-partners-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
-}
-
-@media (max-width: 560px) {
-  .hotel-partners-grid { grid-template-columns: 1fr; gap: 10px; }
+@media (max-width: 768px) {
+  .hotel-partners-grid { grid-template-columns: 1fr; gap: 14px; max-width: 440px; }
   .hotel-partners-cta { flex-direction: column; gap: 12px; }
 }
 
