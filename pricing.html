@@ -164,17 +164,29 @@
       font-size: 14px;
       color: var(--text-secondary);
       line-height: 1.6;
-      margin-bottom: 28px;
+      margin-bottom: 24px;
+      min-height: 44px;
+    }
+    .plan-price-block {
+      margin-bottom: 16px;
+    }
+    .plan-price-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--text-muted);
+      margin-bottom: 6px;
     }
     .plan-price {
       display: flex;
       align-items: baseline;
-      gap: 4px;
-      margin-bottom: 6px;
+      gap: 6px;
+      margin-bottom: 4px;
     }
     .plan-currency {
-      font-size: 20px;
-      font-weight: 600;
+      font-size: 22px;
+      font-weight: 700;
       color: var(--text-secondary);
     }
     .plan-amount {
@@ -183,20 +195,84 @@
       font-weight: 800;
       letter-spacing: -2px;
       line-height: 1;
+      color: var(--text-primary);
     }
     .plan-period {
-      font-size: 14px;
+      font-size: 15px;
+      font-weight: 600;
       color: var(--text-muted);
     }
-    .plan-price-note {
-      font-size: 12px;
+    .plan-setup-box {
+      background: rgba(248, 250, 252, 0.9);
+      border: 1px solid var(--border-glass);
+      border-radius: 14px;
+      padding: 14px 16px;
+      margin-bottom: 24px;
+      font-size: 13px;
+    }
+    .plan-card.featured .plan-setup-box {
+      background: rgba(0, 200, 150, 0.06);
+      border-color: rgba(0, 200, 150, 0.22);
+    }
+    .setup-badge-sale {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 10px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #00875A;
+      background: rgba(0, 200, 150, 0.15);
+      border: 1px solid rgba(0, 200, 150, 0.3);
+      padding: 3px 9px;
+      border-radius: 6px;
+      margin-bottom: 10px;
+    }
+    .plan-setup-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       color: var(--text-muted);
-      margin-bottom: 28px;
+      font-size: 12px;
+      margin-bottom: 6px;
+    }
+    .setup-old-val {
+      text-decoration: line-through;
+      color: #94A3B8;
+      font-weight: 600;
+    }
+    .plan-setup-row-discount {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 700;
+      color: var(--text-primary);
+      padding-top: 4px;
+      border-top: 1px dashed rgba(0,0,0,0.06);
+    }
+    .setup-new-val {
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--green);
+    }
+    .pricing-campaign-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(0, 200, 150, 0.1);
+      border: 1px solid rgba(0, 200, 150, 0.3);
+      color: var(--text-primary);
+      padding: 10px 22px;
+      border-radius: 100px;
+      font-size: 14px;
+      margin-top: 18px;
+      box-shadow: 0 4px 20px rgba(0, 200, 150, 0.1);
     }
     .plan-divider {
       height: 1px;
       background: var(--border-glass);
-      margin-bottom: 28px;
+      margin-bottom: 24px;
     }
     .plan-features { list-style: none; display: flex; flex-direction: column; gap: 14px; margin-bottom: 36px; }
     .plan-feature {
@@ -547,13 +623,18 @@
     <section class="page-hero">
       <div class="page-hero-aura"></div>
       <div class="container">
-        <div class="section-pill" data-i18n="pricing.hero_tag">Şəffaf Qiymətlər</div>
+        <div class="section-pill" data-i18n="pricing.hero_tag">Tarif Paketləri və Qiymətlər</div>
         <h1 class="page-hero-title" data-i18n="pricing.hero_title">
-          Otelinizin miqyasına uyğun <br/><span class="gradient-text">çevik planlar</span>
+          Otelinizin miqyasına uyğun <br/><span class="gradient-text">şəffaf tarif paketləri</span>
         </h1>
         <p class="page-hero-sub" data-i18n="pricing.hero_sub">
-          Gizli komissiyalar yoxdur. Otelinizin otaq sayına və ehtiyaclarına ən uyğun paketi seçin.
+          Sistemimiz standart halda bütün Hotellinia modullarının tam inteqrasiyası ilə 3 fərqli paket şəklində təqdim olunur:
         </p>
+        <div>
+          <div class="pricing-campaign-pill" data-i18n="pricing.campaign_badge">
+            🔥 Xüsusi Kampaniya: 31 Dekabr 2026-dək bütün standart quraşdırma haqlarına 50% endirim tətbiq olunur!
+          </div>
+        </div>
       </div>
     </section>
 
@@ -562,20 +643,38 @@
       <div class="container">
         <div class="plans-grid">
 
-          <!-- Başlanğıc -->
+          <!-- Start Paket -->
           <div class="plan-card" id="plan-starter">
             <div class="plan-card-glow"></div>
-            <div class="plan-name" data-i18n="pricing.p1_name">Başlanğıc (Starter)</div>
-            <p class="plan-desc" data-i18n="pricing.p1_desc">Kiçik butik otellər, qonaq evləri və hostellər üçün ideal seçim.</p>
-            <div class="plan-price plan-price--request" style="display:flex;flex-direction:column;align-items:flex-start;gap:4px;">
-              <span style="font-size:22px;font-weight:700;line-height:1.2;" data-i18n="pricing.price_on_request">Qiymət sorğu əsasında</span>
+            <div class="plan-name" data-i18n="pricing.p1_name">Start Paket</div>
+            <p class="plan-desc" data-i18n="pricing.p1_desc">25 otağa qədər, kiçik hotellər üçün tam inteqrasiyalı idarəetmə paketi.</p>
+            
+            <div class="plan-price-block">
+              <div class="plan-price-label" data-i18n="pricing.lbl_monthly">Aylıq Xidmət Haqqı</div>
+              <div class="plan-price">
+                <span class="plan-amount">250</span>
+                <span class="plan-currency">AZN</span>
+                <span class="plan-period">/ ay</span>
+              </div>
             </div>
-            <p class="plan-price-note" data-i18n="pricing.price_note">Otaq sayınıza və seçdiyiniz modullara görə fərdi təklif hazırlanır.</p>
+
+            <div class="plan-setup-box">
+              <span class="setup-badge-sale">31 Dekabr 2026-dək 50% Endirimlə</span>
+              <div class="plan-setup-row">
+                <span data-i18n="pricing.lbl_setup_std">Standart Quraşdırma:</span>
+                <span class="setup-old-val">2 500 AZN</span>
+              </div>
+              <div class="plan-setup-row-discount">
+                <span data-i18n="pricing.lbl_setup_sale">31 Dekabr 2026-dək 50% Endirimlə:</span>
+                <span class="setup-new-val">1 250 AZN</span>
+              </div>
+            </div>
+
             <div class="plan-divider"></div>
             <ul class="plan-features">
               <li class="plan-feature">
                 <span class="plan-feature-check">✓</span>
-                <span data-i18n="pricing.p1_feat1"><strong>20 otağa qədər</strong> tam dəstək</span>
+                <span data-i18n="pricing.p1_feat1"><strong>25 otağa qədər</strong> (kiçik hotellər)</span>
               </li>
               <li class="plan-feature">
                 <span class="plan-feature-check">✓</span>
@@ -597,21 +696,39 @@
             <a href="contact.html#contactForm" class="btn btn-ghost btn-plan-ghost" id="starter-btn" data-i18n="pricing.btn_choose">Planı Seçin →</a>
           </div>
 
-          <!-- Professional (Featured) -->
+          <!-- Biznes Paket (Featured) -->
           <div class="plan-card featured" id="plan-pro">
             <div class="plan-card-glow"></div>
             <div class="plan-badge-popular" data-i18n="pricing.p2_badge">Ən Populyar</div>
-            <div class="plan-name" data-i18n="pricing.p2_name">Peşəkar (Pro)</div>
-            <p class="plan-desc" data-i18n="pricing.p2_desc">Orta və böyük həcmli otellər üçün tam avtomatlaşdırma paketi.</p>
-            <div class="plan-price plan-price--request" style="display:flex;flex-direction:column;align-items:flex-start;gap:4px;">
-              <span style="font-size:22px;font-weight:700;line-height:1.2;" data-i18n="pricing.price_on_request">Qiymət sorğu əsasında</span>
+            <div class="plan-name" data-i18n="pricing.p2_name">Biznes Paket</div>
+            <p class="plan-desc" data-i18n="pricing.p2_desc">25-60 otaq aralığında olan otellər üçün tam avtomatlaşdırma paketi.</p>
+            
+            <div class="plan-price-block">
+              <div class="plan-price-label" data-i18n="pricing.lbl_monthly">Aylıq Xidmət Haqqı</div>
+              <div class="plan-price">
+                <span class="plan-amount">350</span>
+                <span class="plan-currency">AZN</span>
+                <span class="plan-period">/ ay</span>
+              </div>
             </div>
-            <p class="plan-price-note" data-i18n="pricing.price_note">Otaq sayınıza və seçdiyiniz modullara görə fərdi təklif hazırlanır.</p>
+
+            <div class="plan-setup-box">
+              <span class="setup-badge-sale">31 Dekabr 2026-dək 50% Endirimlə</span>
+              <div class="plan-setup-row">
+                <span data-i18n="pricing.lbl_setup_std">Standart Quraşdırma:</span>
+                <span class="setup-old-val">3 500 AZN</span>
+              </div>
+              <div class="plan-setup-row-discount">
+                <span data-i18n="pricing.lbl_setup_sale">31 Dekabr 2026-dək 50% Endirimlə:</span>
+                <span class="setup-new-val">1 750 AZN</span>
+              </div>
+            </div>
+
             <div class="plan-divider"></div>
             <ul class="plan-features">
               <li class="plan-feature">
                 <span class="plan-feature-check">✓</span>
-                <span data-i18n="pricing.p2_feat1"><strong>150 otağa qədər</strong> geniş imkanlar</span>
+                <span data-i18n="pricing.p2_feat1"><strong>25-60 otaq aralığı</strong></span>
               </li>
               <li class="plan-feature">
                 <span class="plan-feature-check">✓</span>
@@ -637,20 +754,38 @@
             <a href="contact.html#contactForm" class="btn btn-primary btn-plan-primary" id="pro-btn" data-i18n="pricing.btn_popular">İndi Başlayın →</a>
           </div>
 
-          <!-- Business -->
+          <!-- Premium Paket -->
           <div class="plan-card" id="plan-business">
             <div class="plan-card-glow"></div>
-            <div class="plan-name" data-i18n="pricing.p3_name">Müəssisə (Enterprise)</div>
-            <p class="plan-desc" data-i18n="pricing.p3_desc">Böyük kurort kompleksləri və otel şəbəkələri üçün fərdi həllər.</p>
-            <div class="plan-price plan-price--request" style="display:flex;flex-direction:column;align-items:flex-start;gap:4px;">
-              <span style="font-size:22px;font-weight:700;line-height:1.2;" data-i18n="pricing.p3_price">Fərdi</span>
+            <div class="plan-name" data-i18n="pricing.p3_name">Premium Paket</div>
+            <p class="plan-desc" data-i18n="pricing.p3_desc">60 otaqdan yuxarı böyük hotellər və komplekslər üçün qabaqcıl həll.</p>
+            
+            <div class="plan-price-block">
+              <div class="plan-price-label" data-i18n="pricing.lbl_monthly">Aylıq Xidmət Haqqı</div>
+              <div class="plan-price">
+                <span class="plan-amount">350</span>
+                <span class="plan-currency">AZN</span>
+                <span class="plan-period">/ ay</span>
+              </div>
             </div>
-            <p class="plan-price-note" data-i18n="pricing.price_note">Otaq sayınıza və seçdiyiniz modullara görə fərdi təklif hazırlanır.</p>
+
+            <div class="plan-setup-box">
+              <span class="setup-badge-sale">31 Dekabr 2026-dək 50% Endirimlə</span>
+              <div class="plan-setup-row">
+                <span data-i18n="pricing.lbl_setup_std">Standart Quraşdırma:</span>
+                <span class="setup-old-val">4 500 AZN</span>
+              </div>
+              <div class="plan-setup-row-discount">
+                <span data-i18n="pricing.lbl_setup_sale">31 Dekabr 2026-dək 50% Endirimlə:</span>
+                <span class="setup-new-val">2 250 AZN</span>
+              </div>
+            </div>
+
             <div class="plan-divider"></div>
             <ul class="plan-features">
               <li class="plan-feature">
                 <span class="plan-feature-check">✓</span>
-                <span data-i18n="pricing.p3_feat1"><strong>Limitsiz</strong> otaq və filial sayı</span>
+                <span data-i18n="pricing.p3_feat1"><strong>60 otaqdan yuxarı</strong></span>
               </li>
               <li class="plan-feature">
                 <span class="plan-feature-check">✓</span>
@@ -682,9 +817,9 @@
         <div class="enterprise-left">
           <div class="enterprise-tag">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
-            <span data-i18n="pricing.ent_tag">Enterprise</span>
+            <span data-i18n="pricing.ent_tag">Fərdi Layihələr</span>
           </div>
-          <h2 class="enterprise-title" data-i18n="pricing.ent_title">Böyük otel şəbəkəsi üçün<br/>fərdi həll</h2>
+          <h2 class="enterprise-title" data-i18n="pricing.ent_title">Böyük otel şəbəkələri üçün<br/>fərdi həll</h2>
           <p class="enterprise-desc" data-i18n="pricing.ent_desc">5-dən çox mülk, xüsusi tələblər, tam özəlləşdirilmiş inteqrasiyalar? Sizin üçün fərdi təklif hazırlayırıq.</p>
           <div class="enterprise-perks">
             <div class="enterprise-perk">
@@ -716,24 +851,42 @@
     <section class="compare-section">
       <div class="container">
         <div class="section-header">
-          <h2 class="section-title" data-i18n="pricing.compare_title">Xüsusiyyətləri Müqayisə Edin</h2>
+          <h2 class="section-title" data-i18n="pricing.compare_title">Tarif Paketləri və Xüsusiyyətlərin Müqayisəsi</h2>
         </div>
         <div class="table-scroll-wrap">
           <table class="compare-table" id="compare-table">
             <thead>
               <tr>
-                <th class="col-feature" data-i18n="pricing.th_feature">Xüsusiyyət</th>
-                <th class="col-plan-name" data-i18n="pricing.th_starter">Başlanğıc</th>
-                <th class="col-plan-name col-featured-plan" data-i18n="pricing.th_pro">Peşəkar</th>
-                <th class="col-plan-name" data-i18n="pricing.th_enterprise">Korporativ</th>
+                <th class="col-feature" data-i18n="pricing.th_feature">Paket Parametrləri</th>
+                <th class="col-plan-name" data-i18n="pricing.th_starter">Start Paket</th>
+                <th class="col-plan-name col-featured-plan" data-i18n="pricing.th_pro">Biznes Paket</th>
+                <th class="col-plan-name" data-i18n="pricing.th_enterprise">Premium Paket</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td data-i18n="pricing.row_rooms">Otaq sayı</td>
-                <td class="center" data-i18n="pricing.row_rooms_starter">20 otağa qədər</td>
-                <td class="center featured-col" data-i18n="pricing.row_rooms_pro">150 otağa qədər</td>
-                <td class="center" data-i18n="pricing.row_rooms_ent">Limitsiz</td>
+                <td class="center" data-i18n="pricing.row_rooms_starter">25 otağa qədər (kiçik hotellər)</td>
+                <td class="center featured-col" data-i18n="pricing.row_rooms_pro">25-60 otaq aralığı</td>
+                <td class="center" data-i18n="pricing.row_rooms_ent">60 otaqdan yuxarı</td>
+              </tr>
+              <tr>
+                <td data-i18n="pricing.row_monthly" style="font-weight:700;">Aylıq Xidmət Haqqı</td>
+                <td class="center" style="font-weight:700;color:var(--text-primary);" data-i18n="pricing.row_monthly_starter">250 AZN</td>
+                <td class="center featured-col" style="font-weight:700;color:var(--green);" data-i18n="pricing.row_monthly_pro">350 AZN</td>
+                <td class="center" style="font-weight:700;color:var(--text-primary);" data-i18n="pricing.row_monthly_ent">350 AZN</td>
+              </tr>
+              <tr>
+                <td data-i18n="pricing.row_setup_std">Standart Quraşdırma Haqqı</td>
+                <td class="center" data-i18n="pricing.row_setup_std_starter">2 500 AZN</td>
+                <td class="center featured-col" data-i18n="pricing.row_setup_std_pro">3 500 AZN</td>
+                <td class="center" data-i18n="pricing.row_setup_std_ent">4 500 AZN</td>
+              </tr>
+              <tr>
+                <td data-i18n="pricing.row_setup_sale" style="color:var(--green);font-weight:600;">31 Dekabr 2026-dək 50% Endirimlə</td>
+                <td class="center" style="font-weight:700;color:var(--green);" data-i18n="pricing.row_setup_sale_starter">1 250 AZN</td>
+                <td class="center featured-col" style="font-weight:700;color:var(--green);" data-i18n="pricing.row_setup_sale_pro">1 750 AZN</td>
+                <td class="center" style="font-weight:700;color:var(--green);" data-i18n="pricing.row_setup_sale_ent">2 250 AZN</td>
               </tr>
               <tr>
                 <td data-i18n="pricing.row_pms">Ön Büro (PMS)</td>

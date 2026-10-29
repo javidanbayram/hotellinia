@@ -135,3 +135,14 @@ All tasks and feature implementations completed during this development session,
 - [x] **Hotel Partner Section Heading & Authentic Logos** — Updated heading to *"Bizə güvənən otellər və komplekslər"* (RU: *"Отели и комплексы, которые доверяют нам"*), and integrated official high-resolution logos for both partner hotels (`dasli-qala-logo.png` and `national-hotel-logo.png`) inside clean `.hotel-partner-logo-box` containers.
 - [x] **Global Operating Offices Showcase (Istanbul, Florida & Azerbaijan)** — Rebuilt the "Harada fəaliyyət göstəririk" section on `contact.html` with screenshot-matching dark cards, custom vector skyline banners (Istanbul minarets & Bosphorus bridge, Florida sunset skyscrapers, and Baku Flame Towers), official badges (BAŞ OFİS, SƏLAHİYYƏTLİ DİSTRİBYUTOR, AZƏRBAYCAN NÜMAYƏNDƏLİYİ), and full contact credentials (Ekelix Teknoloji, CUHA GROUP LLC, and Hospitality.az).
 
+## 15. Pricing Structure Restructuring & Transparent Price Showcase
+- [x] **Rename Plans to Match Screenshot** — Renamed all 3 packages from Starter / Pro / Enterprise to the exact screenshot naming:
+  - **Start Paket** (25 otağa qədər, kiçik hotellər)
+  - **Biznes Paket** (25–60 otaq aralığı)
+  - **Premium Paket** (60 otaqdan yuxarı) — formally replacing Enterprise / Korporativ
+- [x] **Transparent Pricing & Setup Fee Display** — Displayed all monthly subscription fees and installation charges prominently on each card and in the comparison table:
+  - **Start Paket**: 250 AZN / ay (Standart quraşdırma: 2 500 AZN · 31 Dekabr 2026-dək 50% endirimlə 1 250 AZN)
+  - **Biznes Paket**: 350 AZN / ay (Standart quraşdırma: 3 500 AZN · 31 Dekabr 2026-dək 50% endirimlə 1 750 AZN)
+  - **Premium Paket**: 350 AZN / ay (Standart quraşdırma: 4 500 AZN · 31 Dekabr 2026-dək 50% endirimlə 2 250 AZN)
+- [x] **Preserve All Existing Module Features** — Kept all existing included features and modules intact as requested, only updating the room capacity descriptors (25 otağa qədər, 25–60 otaq, 60 otaqdan yuxarı).
+- [x] **50% Campaign Promotion & Comparison Table Harmonization** — Added a campaign badge promoting 50% off standard setup fees until December 31, 2026, and integrated setup fees into the interactive comparison table for complete transparency. Full multi-language support added in `translations.js` (AZ & RU).
