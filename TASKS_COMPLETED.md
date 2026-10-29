@@ -62,6 +62,8 @@ All tasks and feature implementations completed during this development session,
   - Microsoft Azure
   - Stripe Payments
 - [x] **Marquee & grid integration** — Applied the vector brand logos to both the animated sliding marquee and the static partner grids.
+- [x] **About page partner logos** — Replaced plain text partner cards on `about.html` with vector SVG logos, enhanced with glassmorphic cards, elevation hover animations, and responsive layouts.
+
 
 ---
 

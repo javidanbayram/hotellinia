@@ -388,33 +388,48 @@
 
     /* ── PARTNERS / LOGOS ── */
     .partners-section {
-      padding: 0 0 80px;
+      padding: 0 0 100px;
       position: relative;
       z-index: 1;
     }
     .partners-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
+      gap: 20px;
+      max-width: 1140px;
+      margin: 0 auto;
     }
     .partner-card {
       background: var(--bg-card);
       border: 1px solid var(--border-glass);
       border-radius: var(--radius-lg);
-      padding: 24px;
+      padding: 22px 24px;
       display: flex;
       align-items: center;
       justify-content: center;
-      opacity: 0.55;
-      transition: opacity 0.3s;
-      backdrop-filter: blur(12px);
+      transition: all 0.3s var(--ease-smooth);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      box-shadow: 0 4px 18px rgba(15, 23, 42, 0.03);
+      min-height: 86px;
+      position: relative;
+      overflow: hidden;
     }
-    .partner-card:hover { opacity: 0.9; }
-    .partner-name {
-      font-family: var(--font-display);
-      font-size: 18px;
-      font-weight: 800;
-      color: var(--text-secondary);
+    .partner-card:hover {
+      border-color: rgba(20, 184, 166, 0.4);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 28px rgba(15, 23, 42, 0.07), 0 0 20px rgba(20, 184, 166, 0.08);
+    }
+    .partner-logo-svg {
+      width: auto;
+      height: 32px;
+      max-width: 100%;
+      object-fit: contain;
+      display: block;
+      transition: transform 0.3s var(--ease-smooth);
+    }
+    .partner-card:hover .partner-logo-svg {
+      transform: scale(1.05);
     }
 
     /* ── RESPONSIVE ── */
@@ -427,6 +442,11 @@
     }
     @media (max-width: 768px) {
       .team-grid     { grid-template-columns: 1fr; max-width: 420px; }
+      .partners-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+      .partner-card  { min-height: 74px; padding: 16px 14px; }
+    }
+    @media (max-width: 480px) {
+      .partners-grid { grid-template-columns: 1fr; gap: 10px; }
     }
     @media (max-width: 640px) {
       .page-hero { padding: 140px 0 60px; }
@@ -783,14 +803,84 @@
           <h2 class="section-title" data-i18n="about.partners_title">Qlobal <span class="gradient-text">tərəfdaşlarımız</span></h2>
         </div>
         <div class="partners-grid">
-          <div class="partner-card"><span class="partner-name">Booking.com</span></div>
-          <div class="partner-card"><span class="partner-name">Expedia Group</span></div>
-          <div class="partner-card"><span class="partner-name">Airbnb</span></div>
-          <div class="partner-card"><span class="partner-name">Agoda</span></div>
-          <div class="partner-card"><span class="partner-name">Trip.com</span></div>
-          <div class="partner-card"><span class="partner-name">Hotels.com</span></div>
-          <div class="partner-card"><span class="partner-name">Microsoft Azure</span></div>
-          <div class="partner-card"><span class="partner-name">Stripe Payments</span></div>
+          <!-- 1. Booking.com -->
+          <div class="partner-card" title="Booking.com">
+            <svg class="partner-logo-svg" viewBox="0 0 145 32" fill="none" aria-label="Booking.com">
+              <rect width="28" height="28" y="2" rx="6" fill="#003580"/>
+              <path d="M7 8.5h6.2a3.8 3.8 0 0 1 2.2 6.8 4 4 0 0 1-2.2 7.2H7V8.5zm3.2 3.1v3.4h2.8a1.7 1.7 0 0 0 0-3.4h-2.8zm0 5.8v4.2h3.2a2.1 2.1 0 0 0 0-4.2h-3.2z" fill="#FFFFFF"/>
+              <circle cx="21" cy="22" r="2.2" fill="#006CE4"/>
+              <text x="35" y="22" font-family="'Plus Jakarta Sans',Inter,sans-serif" font-weight="800" font-size="16" fill="#003580" letter-spacing="-0.5">Booking<tspan fill="#006CE4">.com</tspan></text>
+            </svg>
+          </div>
+
+          <!-- 2. Expedia Group -->
+          <div class="partner-card" title="Expedia Group">
+            <svg class="partner-logo-svg" viewBox="0 0 150 32" fill="none" aria-label="Expedia Group">
+              <circle cx="14" cy="16" r="13" fill="#00355F"/>
+              <path d="M7 17l13-5.5-3.5 11-2.8-3.5-3.5 1.8 0.8-2.6-4-1.2z" fill="#FFD200"/>
+              <text x="33" y="19" font-family="'Plus Jakarta Sans',Inter,sans-serif" font-weight="800" font-size="14.5" fill="#00355F" letter-spacing="-0.4">Expedia</text>
+              <text x="34" y="28" font-family="'Plus Jakarta Sans',Inter,sans-serif" font-weight="700" font-size="8.5" fill="#64748B" letter-spacing="1.2">GROUP</text>
+            </svg>
+          </div>
+
+          <!-- 3. Airbnb -->
+          <div class="partner-card" title="Airbnb">
+            <svg class="partner-logo-svg" viewBox="0 0 115 32" fill="none" aria-label="Airbnb">
+              <path d="M14 3.5c-4.2 0-7.8 5.6-7.8 11.2 0 5.8 4.2 11.8 7.8 15.3 3.6-3.5 7.8-9.5 7.8-15.3 0-5.6-3.6-11.2-7.8-11.2zm0 14.5a3.8 3.8 0 1 1 0-7.6 3.8 3.8 0 0 1 0 7.6z" fill="#FF5A5F"/>
+              <text x="28" y="22" font-family="'Plus Jakarta Sans',Inter,sans-serif" font-weight="800" font-size="18" fill="#FF5A5F" letter-spacing="-0.6">airbnb</text>
+            </svg>
+          </div>
+
+          <!-- 4. Agoda -->
+          <div class="partner-card" title="Agoda">
+            <svg class="partner-logo-svg" viewBox="0 0 115 32" fill="none" aria-label="Agoda">
+              <circle cx="5" cy="8" r="3" fill="#EE2E24"/>
+              <circle cx="13" cy="6" r="3" fill="#F89E1B"/>
+              <circle cx="21" cy="6" r="3" fill="#8CC63F"/>
+              <circle cx="29" cy="8" r="3" fill="#00AEEF"/>
+              <circle cx="36" cy="12" r="3" fill="#92278F"/>
+              <text x="4" y="26" font-family="'Plus Jakarta Sans',Inter,sans-serif" font-weight="800" font-size="17" fill="#1F2937" letter-spacing="-0.5">agoda</text>
+            </svg>
+          </div>
+
+          <!-- 5. Trip.com -->
+          <div class="partner-card" title="Trip.com">
+            <svg class="partner-logo-svg" viewBox="0 0 120 32" fill="none" aria-label="Trip.com">
+              <rect width="26" height="26" y="3" rx="7" fill="#2681FF"/>
+              <path d="M7 21l3.5-10h5l3.5 10h-3l-0.8-2.6h-4.4L10 21H7zm3.4-4.8h3.2l-1.6-4.8-1.6 4.8z" fill="#FFFFFF"/>
+              <circle cx="20.5" cy="7.5" r="2.8" fill="#FF5A00"/>
+              <text x="32" y="22" font-family="'Plus Jakarta Sans',Inter,sans-serif" font-weight="800" font-size="16" fill="#0F294D" letter-spacing="-0.4">Trip<tspan fill="#2681FF">.com</tspan></text>
+            </svg>
+          </div>
+
+          <!-- 6. Hotels.com -->
+          <div class="partner-card" title="Hotels.com">
+            <svg class="partner-logo-svg" viewBox="0 0 135 32" fill="none" aria-label="Hotels.com">
+              <rect width="26" height="26" y="3" rx="6" fill="#D32F2F"/>
+              <path d="M7 8h3.6v4.6h4.8V8H19v16h-3.6v-5.6h-4.8V24H7V8z" fill="#FFFFFF"/>
+              <text x="32" y="22" font-family="'Plus Jakarta Sans',Inter,sans-serif" font-weight="800" font-size="15" fill="#D32F2F" letter-spacing="-0.3">Hotels<tspan fill="#334155">.com</tspan></text>
+            </svg>
+          </div>
+
+          <!-- 7. Microsoft Azure -->
+          <div class="partner-card" title="Microsoft Azure">
+            <svg class="partner-logo-svg" viewBox="0 0 160 32" fill="none" aria-label="Microsoft Azure">
+              <path d="M3 24.5l8.5-18h7l-8.5 18H3z" fill="#0078D4"/>
+              <path d="M12.5 19l4.5-9.5 7 15H17l-4.5-5.5z" fill="#0089D6"/>
+              <path d="M10 24.5h14l-4.5-5.5h-5z" fill="#005BA1" opacity="0.6"/>
+              <text x="29" y="16" font-family="'Plus Jakarta Sans',Inter,sans-serif" font-weight="600" font-size="10" fill="#64748B" letter-spacing="0.2">Microsoft</text>
+              <text x="29" y="26" font-family="'Plus Jakarta Sans',Inter,sans-serif" font-weight="800" font-size="13.5" fill="#0078D4" letter-spacing="-0.3">Azure</text>
+            </svg>
+          </div>
+
+          <!-- 8. Stripe Payments -->
+          <div class="partner-card" title="Stripe Payments">
+            <svg class="partner-logo-svg" viewBox="0 0 125 32" fill="none" aria-label="Stripe Payments">
+              <rect width="28" height="28" y="2" rx="7" fill="#635BFF"/>
+              <path d="M11 13.5c0-1.3 1.1-2 2.8-2 1.6 0 3 .5 4.2 1.3l-1 2.1c-0.9-0.6-2-1-3-1-0.6 0-0.9 0.2-0.9 0.5 0 1.2 4.1 0.7 4.1 3.8 0 1.6-1.3 2.7-3.4 2.7-1.9 0-3.4-0.7-4.5-1.6l1-2.1c1 0.8 2.2 1.2 3.4 1.2 0.7 0 1.1-0.2 1.1-0.6 0-1.2-4.3-0.8-4.3-4.3z" fill="#FFFFFF"/>
+              <text x="36" y="22" font-family="'Plus Jakarta Sans',Inter,sans-serif" font-weight="800" font-size="17" fill="#635BFF" letter-spacing="-0.4">stripe</text>
+            </svg>
+          </div>
         </div>
       </div>
     </section>
