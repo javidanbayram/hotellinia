@@ -692,7 +692,7 @@ if (featuresSec && 'IntersectionObserver' in window) {
   });
 
   window.addEventListener('resize', function() {
-    if (window.innerWidth > 768) closeMenu();
+    if (window.innerWidth > 1080) closeMenu();
   });
 
   document.addEventListener('keydown', function(e) {
