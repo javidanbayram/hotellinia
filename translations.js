@@ -9,6 +9,7 @@ const HOTELLINIA_TRANSLATIONS = {
     "nav.features": "Xüsusiyyətlər",
     "nav.modules": "Modullar",
     "nav.integrations": "İnteqrasiyalar",
+    "nav.partners": "Tərəfdaşlar",
     "nav.pricing": "Qiymətlər",
     "nav.about": "Haqqımızda",
     "nav.contact": "Əlaqə",
@@ -91,7 +92,7 @@ const HOTELLINIA_TRANSLATIONS = {
     "integ.label": "Qlobal liderlərlə tam sinxronlaşdırılmışdır",
 
     // Index - Bento Features
-    "bento.tag": "İmkanlar",
+    "bento.tag": "Əsas Xüsusiyyətlər",
     "bento.title": "Müasir otellər üçün <span class=\"gradient-text\">hər şey bir yerdə</span>",
     "bento.sub": "Ənənəvi, qarışıq proqramları unudun. Hotellinia ilə komandanız dəqiqələr içində işə başlaya bilər.",
 
@@ -491,7 +492,7 @@ const HOTELLINIA_TRANSLATIONS = {
     "contact.success_sub": "Komandamız ən gec 24 saat ərzində sizinlə əlaqə saxlayacaq.",
 
     "contact.demo_title": "Canlı Demo",
-    "contact.demo_val": "Pulsuz 30 dəqiqəlik demo",
+    "contact.demo_val": "Pulsuz 15 günlük demo",
     "contact.demo_sub": "Sistemi canlı görün, suallarınızı verin",
     "contact.email_sub": "24 saat ərzində cavab veririk",
     "contact.addr_sub": "Hotellinia Ofisləri",
@@ -545,6 +546,7 @@ const HOTELLINIA_TRANSLATIONS = {
     "nav.features": "Возможности",
     "nav.modules": "Модули",
     "nav.integrations": "Интеграции",
+    "nav.partners": "Партнеры",
     "nav.pricing": "Цены",
     "nav.about": "О нас",
     "nav.contact": "Контакты",
@@ -627,7 +629,7 @@ const HOTELLINIA_TRANSLATIONS = {
     "integ.label": "Полная синхронизация с мировыми лидерами",
 
     // Index - Bento Features
-    "bento.tag": "Возможности",
+    "bento.tag": "Основные возможности",
     "bento.title": "Всё необходимое для современных отелей <span class=\"gradient-text\">в одной платформе</span>",
     "bento.sub": "Забудьте о разрозненных и устаревших программах. С Hotellinia ваш персонал начинает продуктивно работать с первого дня.",
 
@@ -1027,7 +1029,7 @@ const HOTELLINIA_TRANSLATIONS = {
     "contact.success_sub": "Наша команда свяжется с вами в течение 24 часов.",
 
     "contact.demo_title": "Живое демо",
-    "contact.demo_val": "Бесплатное 30-минутное демо",
+    "contact.demo_val": "Бесплатное 15-дневное демо",
     "contact.demo_sub": "Посмотрите систему в действии, задайте вопросы",
     "contact.email_sub": "Отвечаем в течение 24 часов",
     "contact.addr_sub": "Офисы Hotellinia",
