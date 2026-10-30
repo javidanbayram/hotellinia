@@ -2570,6 +2570,34 @@ body.preloader-locked {
 }
 
 .footer-copy { font-size: 13px; color: var(--text-muted); }
+.footer-copy-group {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.footer-copy-divider {
+  color: var(--text-muted);
+  font-size: 13px;
+  opacity: 0.6;
+  user-select: none;
+}
+.footer-creator {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+.footer-author-link {
+  color: var(--text-primary);
+  text-decoration: underline;
+  text-decoration-color: rgba(0, 200, 150, 0.4);
+  text-underline-offset: 3px;
+  font-weight: 500;
+  transition: color 0.2s ease, text-decoration-color 0.2s ease;
+}
+.footer-author-link:hover {
+  color: var(--green);
+  text-decoration-color: var(--green);
+}
 
 .footer-legal { display: flex; gap: 24px; }
 .footer-legal-link {
